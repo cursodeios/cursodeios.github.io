@@ -1,0 +1,16 @@
+name: Curso de iOS en Español
+description: Curso completo de desarrollo iOS en Español
+meta_description: "Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas."
+
+markdown: kramdown
+highlighter: pygments
+logo: false
+paginate: 20
+baseurl: /
+domain_name: 'http://yourblog-domain.com'
+google_analytics: 'UA-XXXXXXXX-X'
+gems: [jekyll-paginate]
+
+# Details for the RSS feed generator
+url:            'blog url'
+author:         'Blanca Suarez'
