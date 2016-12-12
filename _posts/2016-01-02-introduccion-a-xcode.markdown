@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Introducción al lenguaje Swift"
-date:   2016-01-02 10:18:00
+title:  "Introducción a XCode"
+date:   2016-01-03 10:18:00
 categories: iOS Swift
 ---
 
