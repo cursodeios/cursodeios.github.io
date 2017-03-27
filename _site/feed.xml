@@ -5,29 +5,76 @@
     <description>Curso completo de desarrollo iOS en Español</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Dec 2016 20:15:17 -0600</pubDate>
-    <lastBuildDate>Sun, 11 Dec 2016 20:15:17 -0600</lastBuildDate>
-    <generator>Jekyll v3.3.1</generator>
+    <pubDate>Mon, 27 Mar 2017 12:37:15 -0600</pubDate>
+    <lastBuildDate>Mon, 27 Mar 2017 12:37:15 -0600</lastBuildDate>
+    <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>Introducción a XCode</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+        <title>Primeros pasos en Swift</title>
+        <description>&lt;p&gt;Para comenzar a aprender Swift vamos a utilizar un &lt;strong&gt;Playground&lt;/strong&gt; que es una herramienta genial creada por Apple que ya está incluida en XCode.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;Comenzamos abriendo XCode y veremos varias opciones, vamos a hacer en click en &lt;strong&gt;Get started with a Playground&lt;/strong&gt;, le damos un nombre y seleccionamos un directorio para guardarlo.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// Funcion que devuelve un valor entero&lt;/span&gt;
-	
-	&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/post/img-2-1.png&quot; alt=&quot;XCode Playground&quot; class=&quot;img-50&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Luego tendremos una ventana como la siguiente donde empezaremos a probar Swift:&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/images/post/img-2-2.png&quot; alt=&quot;Xcode Playground&quot; class=&quot;img-100&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Un Playground nos permite escribir codigo y ejecutar inmediatamente para ver el resultado, borremos el contenido y escribamos lo siguiente:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class=&quot;kd&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UIKit&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Bienvenido al curso de iOS&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ahora podemos ver al lado derecho la &lt;em&gt;barra de resultado&lt;/em&gt; y en la parte inferior el &lt;em&gt;Área de DEBUG&lt;/em&gt; para ver la ejecución de nuestro código. Si no pueden ver la barra en la parte inferior podemos ir al menu de XCode y seleccionar &lt;code&gt;View\Debug Area\Show Debug Area&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/post/img-2-3.png&quot; alt=&quot;Xcode Playground&quot; class=&quot;img-100&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ahora vamos a escribir mas código debajo de lo que ya tenemos:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Variables y constantes&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Una variable se declara con la palabra reservada var&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Una constante con la palable reservada let&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+
+    &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Tambien podemos escribir especificando el tipo de datos&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Double&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.14159&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// No podemos cambiar el valor de una constante&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// pi = 2.10 // nos daria un error&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Actualizar el valor de una variable&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Valores booleanos&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Bool&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;z es verdadero&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;x es falso&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Tambien lo podemos escribir de esta manera&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;x es falso&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// El signo ! es un operador lógico de negación&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ahora ya sabes como crear y jugar con un &lt;em&gt;Playground&lt;/em&gt; en XCode, en los proximos Posts seguiremos aprendiendo sobre Swift hasta que puedas desarrollar un App totalmente funcional.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/UcK7JalnjCz0k/giphy.gif&quot; alt=&quot;Programming&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 03 Jan 2016 04:18:00 -0600</pubDate>
-        <link>http://localhost:4000//ios/swift/2016/01/03/introduccion-a-xcode.html</link>
-        <guid isPermaLink="true">http://localhost:4000//ios/swift/2016/01/03/introduccion-a-xcode.html</guid>
+        <pubDate>Sun, 01 Jan 2017 04:20:00 -0600</pubDate>
+        <link>http://localhost:4000//ios/swift/2017/01/01/primeros-pasos-en-swift.html</link>
+        <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/primeros-pasos-en-swift.html</guid>
         
         
         <category>iOS</category>
@@ -37,51 +84,27 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
       </item>
     
       <item>
-        <title>Introducción al lenguaje Swift</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+        <title>Introducción a Swift y el desarrollo de iOS</title>
+        <description>&lt;p&gt;Swift es un lenguaje de programación creado por Apple (desde el 2010) para el desarrollo de aplicaciones iOS y macOS. Se creó basado en lo mejor de lenguajes como Ruby, Python, Haskell, RUST y C# con la intención de ser un lenguaje seguro, de desarrollo rápido y sencillo.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;Antes de Swift el desarrollo para iOS se hacía usando el lenguaje &lt;strong&gt;Objective-C&lt;/strong&gt; pero Apple creo &lt;strong&gt;Swift&lt;/strong&gt; para ser el nuevo referente y se pueden combinar librerías hechas en Objective-C en un proyecto iniciado con Swift (esto lo veremos más adelante en el curso).&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// Funcion que devuelve un valor entero&lt;/span&gt;
-	
-	&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Para iniciar es necesario tener un Mac y descargar XCode que es la “Suite” de Apple para el desarrollo de aplicaciones iOS y macOS (no está disponible para Windows ni Linux).&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pasos para descargar XCode:&lt;/strong&gt;&lt;/p&gt;
 
+&lt;ol&gt;
+  &lt;li&gt;Abrir la App Store en tu Mac.&lt;/li&gt;
+  &lt;li&gt;En la barra de búsqueda escribe XCode y presiona Enter, la aplicacion deberia aparecer de primero en la lista de resultados.&lt;/li&gt;
+  &lt;li&gt;Luego presiona Obtener y despues Instalar (Introduce tu Apple ID y password si es requerido).&lt;/li&gt;
+  &lt;li&gt;Deber esperar a que se descargue, esto puede durar mucho ya que el tamaño de la descarga es mas de 4GB, al finalizar estará disponible en el directorio &lt;code&gt;/Applications&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Debemos saber que XCode es gratis e igualmente desarrollar y probar en el simulador pero necesitamos tener una cuenta de &lt;strong&gt;Apple Developer&lt;/strong&gt; para probar en un dispositivo real (iPhone o iPad) y subir nuestra App a la tienda de Apple.&lt;/p&gt;
 </description>
-        <pubDate>Sat, 02 Jan 2016 04:18:00 -0600</pubDate>
-        <link>http://localhost:4000//ios/swift/2016/01/02/introduccion-a-swift.html</link>
-        <guid isPermaLink="true">http://localhost:4000//ios/swift/2016/01/02/introduccion-a-swift.html</guid>
-        
-        
-        <category>iOS</category>
-        
-        <category>Swift</category>
-        
-      </item>
-    
-      <item>
-        <title>Bienvenido al curso completo de iOS en español</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 01 Jan 2016 04:18:00 -0600</pubDate>
-        <link>http://localhost:4000//ios/swift/2016/01/01/bienvenido-al-curso.html</link>
-        <guid isPermaLink="true">http://localhost:4000//ios/swift/2016/01/01/bienvenido-al-curso.html</guid>
+        <pubDate>Sun, 01 Jan 2017 04:18:00 -0600</pubDate>
+        <link>http://localhost:4000//ios/swift/2017/01/01/introduccion-a-ios.html</link>
+        <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/introduccion-a-ios.html</guid>
         
         
         <category>iOS</category>

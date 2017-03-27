@@ -5,6 +5,21 @@ archive: false
 post_class: post-template
 ---
 
+<style media="screen">
+  .img-100 {
+    width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .img-50 {
+    width: 50%;
+    height: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+</style>
+
 <header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
     <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
         <a class="back-button icon-arrow-left" href="{{ site.baseurl }}">Home</a>
@@ -68,7 +83,7 @@ post_class: post-template
                     <span class="hidden">{{site.author}}'s Picture</span></a>
                 </figure>
                 <section class="author">
-                    <h4> {{ site.author }} </h4>                
+                    <h4> {{ site.author }} </h4>
                     <p>
                         Here goes the author description. You might want to place some links too in here
                     </p>

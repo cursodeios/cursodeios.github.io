@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Curso de iOS en Español - Curso completo de desarrollo iOS en Español</title>
+    <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <!-- Customisation  -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+
+</head>
+<body class="home-template">
+
+    <style media="screen">
+  .img-100 {
+    width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .img-50 {
+    width: 50%;
+    height: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+</style>
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Primeros pasos en Swift</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-01-01">01 Jan 2017</time>
+                
+                    on iOS and Swift
+                
+            </section>
+        </header>
+
+<!--         <header class="post-header">
+            <a id="blog-logo" href="http://localhost:4000">
+                
+                    <span class="blog-title">Curso de iOS en Español</span>
+                
+            </a>
+        </header> -->
+
+        <!-- <span class="post-meta">
+            <time datetime="2017-01-01">01 Jan 2017</time>
+            
+                on iOS and Swift
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">Primeros pasos en Swift</h1> -->
+
+        <section class="post-content">
+            <p>Para comenzar a aprender Swift vamos a utilizar un <strong>Playground</strong> que es una herramienta genial creada por Apple que ya está incluida en XCode.</p>
+
+<p>Comenzamos abriendo XCode y veremos varias opciones, vamos a hacer en click en <strong>Get started with a Playground</strong>, le damos un nombre y seleccionamos un directorio para guardarlo.</p>
+
+<p><img src="/assets/images/post/img-2-1.png" alt="XCode Playground" class="img-50" /></p>
+
+<p>Luego tendremos una ventana como la siguiente donde empezaremos a probar Swift:</p>
+
+<p><img src="/assets/images/post/img-2-2.png" alt="Xcode Playground" class="img-100" /></p>
+
+<p>Un Playground nos permite escribir codigo y ejecutar inmediatamente para ver el resultado, borremos el contenido y escribamos lo siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">import</span> <span class="nc">UIKit</span>
+
+  <span class="kd">var</span> <span class="nv">title</span> <span class="p">=</span> <span class="s">&quot;Bienvenido al curso de iOS&quot;</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code></pre></figure>
+
+<p>Ahora podemos ver al lado derecho la <em>barra de resultado</em> y en la parte inferior el <em>Área de DEBUG</em> para ver la ejecución de nuestro código. Si no pueden ver la barra en la parte inferior podemos ir al menu de XCode y seleccionar <code>View\Debug Area\Show Debug Area</code></p>
+
+<p><img src="/assets/images/post/img-2-3.png" alt="Xcode Playground" class="img-100" /></p>
+
+<p>Ahora vamos a escribir mas código debajo de lo que ya tenemos:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Variables y constantes</span>
+    <span class="c1">// Una variable se declara con la palabra reservada var</span>
+    <span class="c1">// Una constante con la palable reservada let</span>
+
+    <span class="kd">var</span> <span class="nv">a</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="kd">let</span> <span class="nv">b</span> <span class="p">=</span> <span class="mi">100</span>
+
+    <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="c1">// Tambien podemos escribir especificando el tipo de datos</span>
+    <span class="kd">var</span> <span class="nv">c</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">100</span>
+    <span class="kd">let</span> <span class="nv">pi</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.14159</span>
+    <span class="c1">// No podemos cambiar el valor de una constante</span>
+    <span class="c1">// pi = 2.10 // nos daria un error</span>
+    <span class="c1">// Actualizar el valor de una variable</span>
+    <span class="n">c</span> <span class="p">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="c1">// Valores booleanos</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="kc">false</span>
+    <span class="kd">var</span> <span class="nv">z</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span>  <span class="kc">true</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="p">==</span> <span class="kc">true</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;z es verdadero&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="p">==</span> <span class="kc">false</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// Tambien lo podemos escribir de esta manera</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">x</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// El signo ! es un operador lógico de negación</span></code></pre></figure>
+
+<p>Ahora ya sabes como crear y jugar con un <em>Playground</em> en XCode, en los proximos Posts seguiremos aprendiendo sobre Swift hasta que puedas desarrollar un App totalmente funcional.</p>
+
+<p><img src="https://media.giphy.com/media/UcK7JalnjCz0k/giphy.gif" alt="Programming" /></p>
+
+        </section>
+
+        
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            <!-- 
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Blanca Suarez's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <h4> Blanca Suarez </h4>
+                    <p>
+                        Here goes the author description. You might want to place some links too in here
+                    </p>
+                </section>
+             -->
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Primeros pasos en Swift&amp;url=http://yourblog-domain.com/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yourblog-domain.com/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yourblog-domain.com/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+            <!-- Disqus comments -->
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS en Español</a> &copy; 
+               &bull; All rights reserved.
+      </section>
+      <!-- <section class="poweredby">Made with Jekyll using 
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section> -->
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>   
+</body>
+</html>

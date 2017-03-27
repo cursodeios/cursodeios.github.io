@@ -894,7 +894,7 @@ body:not(.post-template) .post-title {
 /* Break out larger images to be wider than the main text column
    the class is applied with jQuery */
 .post-content .full-img {
-    width: 126%;
+    /*width: 126%;*/
     max-width: none;
     margin: 0 -13%;
 }
