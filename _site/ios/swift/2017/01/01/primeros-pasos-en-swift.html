@@ -19,7 +19,22 @@
 </head>
 <body class="home-template">
 
-    <header class="main-header post-head no-cover">
+    <style media="screen">
+  .img-100 {
+    width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .img-50 {
+    width: 50%;
+    height: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+</style>
+
+<header class="main-header post-head no-cover">
     <nav class="main-nav  clearfix">
         <a class="back-button icon-arrow-left" href="/">Home</a>
         <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
@@ -31,9 +46,9 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">Bienvenido al curso completo de iOS en español</h1>
+            <h1 class="post-title">Primeros pasos en Swift</h1>
             <section class="post-meta">
-                <time class="post-date" datetime="2016-01-01">01 Jan 2016</time>
+                <time class="post-date" datetime="2017-01-01">01 Jan 2017</time>
                 
                     on iOS and Swift
                 
@@ -49,28 +64,35 @@
         </header> -->
 
         <!-- <span class="post-meta">
-            <time datetime="2016-01-01">01 Jan 2016</time>
+            <time datetime="2017-01-01">01 Jan 2017</time>
             
                 on iOS and Swift
             
         </span> -->
 
-        <!-- <h1 class="post-title">Bienvenido al curso completo de iOS en español</h1> -->
+        <!-- <h1 class="post-title">Primeros pasos en Swift</h1> -->
 
         <section class="post-content">
-            <p>You’ll find this post in your <code>_posts</code> directory - edit this post and re-build (or run with the <code>-w</code> switch) to see your changes!
-To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+            <p>Para comenzar a aprender Swift vamos a utilizar un <strong>Playground</strong> que es una herramienta genial creada por Apple que ya está incluida en XCode.</p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<p>Comenzamos abriendo XCode y veremos varias opciones, vamos a hacer en click en <strong>Get started with a Playground</strong>, le damos un nombre y seleccionamos un directorio para guardarlo.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span></span><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">&quot;Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">)</span>
-<span class="c1">#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</span></code></pre></figure>
+<p><img src="/assets/images/post/img-2-1.png" alt="XCode Playground" class="img-50" /></p>
 
-<p>Check out the <a href="http://jekyllrb.com">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/mojombo/jekyll">Jekyll’s GitHub repo</a>.</p>
+<p>Luego tendremos una ventana como la siguiente donde empezaremos a probar Swift:</p>
 
+<p><img src="/assets/images/post/img-2-2.png" alt="Xcode Playground" class="img-100" /></p>
+
+<p>Un Playground nos permite escribir codigo y ejecutar inmediatamente para ver el resultado, borremos el contenido y escribamos lo siguiente:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">import</span> <span class="nc">UIKit</span>
+
+  <span class="kd">var</span> <span class="nv">title</span> <span class="p">=</span> <span class="s">&quot;Bienvenido al curso de iOS&quot;</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code></pre></figure>
+
+<p>Ahora podemos ver al lado derecho la <em>barra de resultado</em> y en la parte inferior el <em>Área de DEBUG</em> para ver la ejecución de nuestro código. Si no pueden ver la barra en la parte inferior podemos ir al menu de XCode y seleccionar <code>View\Debug Area\Show Debug Area</code></p>
+
+<p><img src="/assets/images/post/img-2-3.png" alt="Xcode Playground" class="img-100" /></p>
 
         </section>
 
@@ -84,7 +106,7 @@ To add new posts, simply add a file in the <code>_posts</code> directory that fo
                     <span class="hidden">Blanca Suarez's Picture</span></a>
                 </figure>
                 <section class="author">
-                    <h4> Blanca Suarez </h4>                
+                    <h4> Blanca Suarez </h4>
                     <p>
                         Here goes the author description. You might want to place some links too in here
                     </p>
@@ -94,15 +116,15 @@ To add new posts, simply add a file in the <code>_posts</code> directory that fo
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=Bienvenido al curso completo de iOS en español&amp;url=http://yourblog-domain.com/ios/swift/2016/01/01/bienvenido-al-curso.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=Primeros pasos en Swift&amp;url=http://yourblog-domain.com/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yourblog-domain.com/ios/swift/2016/01/01/bienvenido-al-curso.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yourblog-domain.com/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yourblog-domain.com/ios/swift/2016/01/01/bienvenido-al-curso.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yourblog-domain.com/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
