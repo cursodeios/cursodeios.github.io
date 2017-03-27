@@ -94,6 +94,46 @@
 
 <p><img src="/assets/images/post/img-2-3.png" alt="Xcode Playground" class="img-100" /></p>
 
+<p>Ahora vamos a escribir mas código debajo de lo que ya tenemos:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Variables y constantes</span>
+    <span class="c1">// Una variable se declara con la palabra reservada var</span>
+    <span class="c1">// Una constante con la palable reservada let</span>
+
+    <span class="kd">var</span> <span class="nv">a</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="kd">let</span> <span class="nv">b</span> <span class="p">=</span> <span class="mi">100</span>
+
+    <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="c1">// Tambien podemos escribir especificando el tipo de datos</span>
+    <span class="kd">var</span> <span class="nv">c</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">100</span>
+    <span class="kd">let</span> <span class="nv">pi</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.14159</span>
+    <span class="c1">// No podemos cambiar el valor de una constante</span>
+    <span class="c1">// pi = 2.10 // nos daria un error</span>
+    <span class="c1">// Actualizar el valor de una variable</span>
+    <span class="n">c</span> <span class="p">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="c1">// Valores booleanos</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="kc">false</span>
+    <span class="kd">var</span> <span class="nv">z</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span>  <span class="kc">true</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="p">==</span> <span class="kc">true</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;z es verdadero&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="p">==</span> <span class="kc">false</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// Tambien lo podemos escribir de esta manera</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">x</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// El signo ! es un operador lógico de negación</span></code></pre></figure>
+
+<p>Ahora ya sabes como crear y jugar con un <em>Playground</em> en XCode, en los proximos Posts seguiremos aprendiendo sobre Swift hasta que puedas desarrollar un App totalmente funcional.</p>
+
+<p><img src="https://media.giphy.com/media/UcK7JalnjCz0k/giphy.gif" alt="Programming" /></p>
+
         </section>
 
         
