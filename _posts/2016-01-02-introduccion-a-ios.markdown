@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "1- Introducción a Swift y el desarrollo de iOS"
+title:  "Introducción a Swift y el desarrollo de iOS"
 date:   2017-01-01 10:15:00
 categories: iOS Swift
 ---
