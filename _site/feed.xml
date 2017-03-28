@@ -5,12 +5,12 @@
     <description>Curso completo de desarrollo iOS en Español</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Mar 2017 09:00:12 -0600</pubDate>
-    <lastBuildDate>Tue, 28 Mar 2017 09:00:12 -0600</lastBuildDate>
+    <pubDate>Tue, 28 Mar 2017 09:45:37 -0600</pubDate>
+    <lastBuildDate>Tue, 28 Mar 2017 09:45:37 -0600</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>4- Funciones en Swift</title>
+        <title>5- Funciones en Swift</title>
         <description>&lt;p&gt;Las funciones son bloques de código aisladas que realizan una tarea especifica, a cada funcion se le daba dar un nombre descriptivo para identificar lo que hace.&lt;/p&gt;
 
 &lt;p&gt;Veamos lo siguiente en el Playground que habiamos iniciado anteriormente:&lt;/p&gt;
@@ -61,6 +61,76 @@
         <pubDate>Sun, 01 Jan 2017 05:00:00 -0600</pubDate>
         <link>http://localhost:4000//ios/swift/2017/01/01/funciones-en-swift.html</link>
         <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/funciones-en-swift.html</guid>
+        
+        
+        <category>iOS</category>
+        
+        <category>Swift</category>
+        
+      </item>
+    
+      <item>
+        <title>4- Estructuras de control - Parte 2</title>
+        <description>&lt;h5 id=&quot;ciclo-for-in&quot;&gt;Ciclo For-In&lt;/h5&gt;
+
+&lt;p&gt;Itera sobre una secuencia que podria ser un arreglo, rango de numeros o los caracteres de una cadena.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;//- Arreglo de String&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;persons&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Juan&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Pedro&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Carlos&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;persons&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Hola &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;person&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Hola Juan&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Hola Pedro&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Hola Carlos&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//- Diccionario&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numberOfLegs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Araña&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Hormiga&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Vaca&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;animalName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numberOfLegs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;La &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;animalName&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; tiene &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;legs&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; patas&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// La Vaca tiene 4 patas&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// La Hormiga tiene 6 patas&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// La Araña tiene 8 patas&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//- Rango de numeros&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Imprime la tabla de multiplicar del 5&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; x 5 = &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h5 id=&quot;ciclo-while&quot;&gt;Ciclo While&lt;/h5&gt;
+
+&lt;p&gt;Evalua una condicion para ejecutar un bloque de codigo, mientras sea &lt;strong&gt;true&lt;/strong&gt; y se detiene cuando se vuelve &lt;strong&gt;false&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2010&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Feliz año &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// Incrementamos el valor de la variable &amp;quot;year&amp;quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h5 id=&quot;ciclo-repeat-while&quot;&gt;Ciclo Repeat while&lt;/h5&gt;
+
+&lt;p&gt;Igualmente evalua un condicion pero que ejecuta el bloque de codigo antes de la condicion.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1990&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;repeat&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Feliz año &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Sun, 01 Jan 2017 04:25:00 -0600</pubDate>
+        <link>http://localhost:4000//ios/swift/2017/01/01/estructuras-de-control-parte-2.html</link>
+        <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/estructuras-de-control-parte-2.html</guid>
         
         
         <category>iOS</category>
@@ -133,8 +203,8 @@
 
 </description>
         <pubDate>Sun, 01 Jan 2017 04:25:00 -0600</pubDate>
-        <link>http://localhost:4000//ios/swift/2017/01/01/estructuras-de-control.html</link>
-        <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/estructuras-de-control.html</guid>
+        <link>http://localhost:4000//ios/swift/2017/01/01/estructuras-de-control-parte-1.html</link>
+        <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/estructuras-de-control-parte-1.html</guid>
         
         
         <category>iOS</category>
