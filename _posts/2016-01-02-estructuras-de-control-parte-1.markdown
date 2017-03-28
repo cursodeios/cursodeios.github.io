@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "3- Estructuras de control - Parte 1"
+title:  "Estructuras de control - Parte 1"
 date:   2017-01-01 10:25:00
 categories: iOS Swift
 ---

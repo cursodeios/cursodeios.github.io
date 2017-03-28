@@ -5,7 +5,7 @@ meta_description: "Curso completo de iOS en español. Aprende a desarrollar Apps
 markdown: kramdown
 highlighter: pygments
 logo: false
-paginate: 20
+paginate: 100
 baseurl: /
 domain_name: 'https://cursodeios.github.io'
 #google_analytics: 'UA-XXXXXXXX-X'

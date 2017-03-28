@@ -5,12 +5,12 @@
     <description>Curso completo de desarrollo iOS en Español</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Mar 2017 10:07:50 -0600</pubDate>
-    <lastBuildDate>Tue, 28 Mar 2017 10:07:50 -0600</lastBuildDate>
+    <pubDate>Tue, 28 Mar 2017 11:03:46 -0600</pubDate>
+    <lastBuildDate>Tue, 28 Mar 2017 11:03:46 -0600</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
-        <title>5- Funciones en Swift</title>
+        <title>Funciones en Swift</title>
         <description>&lt;p&gt;Las funciones son bloques de código aisladas que realizan una tarea especifica, a cada funcion se le daba dar un nombre descriptivo para identificar lo que hace.&lt;/p&gt;
 
 &lt;p&gt;Veamos lo siguiente en el Playground que habiamos iniciado anteriormente:&lt;/p&gt;
@@ -70,7 +70,7 @@
       </item>
     
       <item>
-        <title>4- Estructuras de control - Parte 2</title>
+        <title>Estructuras de control - Parte 2</title>
         <description>&lt;h5 id=&quot;ciclo-for-in&quot;&gt;Ciclo For-In&lt;/h5&gt;
 
 &lt;p&gt;Itera sobre una secuencia que podria ser un arreglo, rango de numeros o los caracteres de una cadena.&lt;/p&gt;
@@ -140,7 +140,7 @@
       </item>
     
       <item>
-        <title>3- Estructuras de control - Parte 1</title>
+        <title>Estructuras de control - Parte 1</title>
         <description>&lt;h5 id=&quot;condicionales&quot;&gt;Condicionales&lt;/h5&gt;
 
 &lt;p&gt;Son muy utiles para ejecutar diferentes partes de codigo basados en una condicion, veamos el ejemplo:&lt;/p&gt;
@@ -214,7 +214,7 @@
       </item>
     
       <item>
-        <title>2- Primeros pasos en Swift</title>
+        <title>Primeros pasos en Swift</title>
         <description>&lt;p&gt;Para comenzar a aprender Swift vamos a utilizar un &lt;strong&gt;Playground&lt;/strong&gt; que es una herramienta genial creada por Apple que ya está incluida en XCode.&lt;/p&gt;
 
 &lt;p&gt;Comenzamos abriendo XCode y veremos varias opciones, vamos a hacer en click en &lt;strong&gt;Get started with a Playground&lt;/strong&gt;, le damos un nombre y seleccionamos un directorio para guardarlo.&lt;/p&gt;
@@ -288,7 +288,7 @@
       </item>
     
       <item>
-        <title>1- Introducción a Swift y el desarrollo de iOS</title>
+        <title>Introducción a Swift y el desarrollo de iOS</title>
         <description>&lt;p&gt;Swift es un lenguaje de programación creado por Apple (desde el 2010) para el desarrollo de aplicaciones iOS y macOS. Se creó basado en lo mejor de lenguajes como Ruby, Python, Haskell, RUST y C# con la intención de ser un lenguaje seguro, de desarrollo rápido y sencillo.&lt;/p&gt;
 
 &lt;p&gt;Antes de Swift el desarrollo para iOS se hacía usando el lenguaje &lt;strong&gt;Objective-C&lt;/strong&gt; pero Apple creo &lt;strong&gt;Swift&lt;/strong&gt; para ser el nuevo referente y se pueden combinar librerías hechas en Objective-C en un proyecto iniciado con Swift (esto lo veremos más adelante en el curso).&lt;/p&gt;
