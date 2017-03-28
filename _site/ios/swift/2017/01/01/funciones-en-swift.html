@@ -25,8 +25,8 @@
   <!-- Set a page title, or default to site title if missing for some reason  -->
 
   
-    <meta name="twitter:title" content="2- Primeros pasos en Swift">
-    <meta content="2- Primeros pasos en Swift" property="og:title">
+    <meta name="twitter:title" content="5- Funciones en Swift">
+    <meta content="5- Funciones en Swift" property="og:title">
     <meta content="article" property="og:type">
   
 
@@ -38,12 +38,12 @@
   
 
   
-    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/01/primeros-pasos-en-swift.html">
-    <meta content="http://localhost:4000/ios/swift/2017/01/01/primeros-pasos-en-swift.html" property="og:url">
+    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/01/funciones-en-swift.html">
+    <meta content="http://localhost:4000/ios/swift/2017/01/01/funciones-en-swift.html" property="og:url">
   
 
   
-    <meta content="2017-01-01T04:20:00-06:00" property="article:published_time">
+    <meta content="2017-01-01T05:00:00-06:00" property="article:published_time">
   
   
     <meta content="http://localhost:4000/img/twitter_card2.png" property="og:image">
@@ -110,7 +110,7 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">2- Primeros pasos en Swift</h1>
+            <h1 class="post-title">5- Funciones en Swift</h1>
             <!-- <section class="post-meta">
                 <time class="post-date" datetime="2017-01-01">01 Jan 2017</time>
                 
@@ -134,78 +134,62 @@
             
         </span> -->
 
-        <!-- <h1 class="post-title">2- Primeros pasos en Swift</h1> -->
+        <!-- <h1 class="post-title">5- Funciones en Swift</h1> -->
 
         <section class="post-content">
-            <p>Para comenzar a aprender Swift vamos a utilizar un <strong>Playground</strong> que es una herramienta genial creada por Apple que ya está incluida en XCode.</p>
+            <p>Las funciones son bloques de código aisladas que realizan una tarea especifica, a cada funcion se le daba dar un nombre descriptivo para identificar lo que hace.</p>
 
-<p>Comenzamos abriendo XCode y veremos varias opciones, vamos a hacer en click en <strong>Get started with a Playground</strong>, le damos un nombre y seleccionamos un directorio para guardarlo.</p>
+<p>Veamos lo siguiente en el Playground que habiamos iniciado anteriormente:</p>
 
-<p><img src="/assets/images/post/img-2-1.png" alt="XCode Playground" class="img-50" /></p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Hello </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span>
+  <span class="p">}</span>
 
-<p>Luego tendremos una ventana como la siguiente donde empezaremos a probar Swift:</p>
+  <span class="n">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">)</span> <span class="c1">// Hello John!</span>
+  <span class="n">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;Anna&quot;</span><span class="p">)</span> <span class="c1">// Hello Anna!</span></code></pre></figure>
 
-<p><img src="/assets/images/post/img-2-2.png" alt="Xcode Playground" class="img-100" /></p>
+<p>En este caso tenemos una funcion que recibe el nombre de una persona y devuelve una saludo como cadena de texto.</p>
 
-<p>Un Playground nos permite escribir codigo y ejecutar inmediatamente para ver el resultado, borremos el contenido y escribamos lo siguiente:</p>
+<p>La estructura de una funcion debe ser:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">import</span> <span class="nc">UIKit</span>
+<p><code>func nombreFuncion(nombreParametro: tipo) -&gt; tipo</code></p>
 
-  <span class="kd">var</span> <span class="nv">title</span> <span class="p">=</span> <span class="s">&quot;Bienvenido al curso de iOS&quot;</span>
-  <span class="bp">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code></pre></figure>
+<p>Tambien puede ser que una funcion no devuelva ningun dato:</p>
 
-<p>Ahora podemos ver al lado derecho la <em>barra de resultado</em> y en la parte inferior el <em>Área de DEBUG</em> para ver la ejecución de nuestro código. Si no pueden ver la barra en la parte inferior podemos ir al menu de XCode y seleccionar <code>View\Debug Area\Show Debug Area</code></p>
+<p><code>func nombreFuncion(nombreParametro: tipo)</code></p>
 
-<p><img src="/assets/images/post/img-2-3.png" alt="Xcode Playground" class="img-100" /></p>
+<p>o quizas no reciba ningun parametro:</p>
 
-<p>Ahora vamos a escribir mas código debajo de lo que ya tenemos:</p>
+<p><code>func nombreFuncion()</code></p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Variables y constantes</span>
-    <span class="c1">// Una variable se declara con la palabra reservada var</span>
-    <span class="c1">// Una constante con la palable reservada let</span>
+<h4 id="veamos-los-ejemplos">Veamos los ejemplos:</h4>
 
-    <span class="kd">var</span> <span class="nv">a</span> <span class="p">=</span> <span class="mi">10</span>
-    <span class="kd">let</span> <span class="nv">b</span> <span class="p">=</span> <span class="mi">100</span>
-
-    <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
-
-    <span class="c1">// Tambien podemos escribir especificando el tipo de datos</span>
-    <span class="kd">var</span> <span class="nv">c</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">100</span>
-    <span class="kd">let</span> <span class="nv">pi</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.14159</span>
-    <span class="c1">// No podemos cambiar el valor de una constante</span>
-    <span class="c1">// pi = 2.10 // nos daria un error</span>
-    <span class="c1">// Actualizar el valor de una variable</span>
-    <span class="n">c</span> <span class="p">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-
-    <span class="c1">// Valores booleanos</span>
-    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="kc">false</span>
-    <span class="kd">var</span> <span class="nv">z</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span>  <span class="kc">true</span>
-    <span class="k">if</span> <span class="n">z</span> <span class="p">==</span> <span class="kc">true</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;z es verdadero&quot;</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// No tiene valor de retorno</span>
+    <span class="kd">func</span> <span class="nf">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Good bye </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="p">==</span> <span class="kc">false</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="c1">// Tambien lo podemos escribir de esta manera</span>
-    <span class="k">if</span> <span class="o">!</span><span class="n">x</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="c1">// El signo ! es un operador lógico de negación</span></code></pre></figure>
+    <span class="n">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">)</span> <span class="c1">// Good bye Alex!</span>
+    <span class="n">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">)</span> <span class="c1">// Good bye Jonh!</span>
 
-<p>Ahora ya sabes como crear y jugar con un <em>Playground</em> en XCode, en los proximos Posts seguiremos aprendiendo sobre Swift hasta que puedas desarrollar un App totalmente funcional.</p>
+    <span class="c1">// Recibe 2 parametros y devuelve un Entero</span>
+    <span class="kd">func</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="p">}</span>
+    <span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// 110</span>
 
-<p><img src="https://media.giphy.com/media/UcK7JalnjCz0k/giphy.gif" alt="Programming" /></p>
+    <span class="c1">// No recibe parametros y no tiene valor de retorno</span>
+    <span class="kd">func</span> <span class="nf">sayWelcome</span><span class="p">(){</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Bienvenido al curso de Android!&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">sayWelcome</span><span class="p">()</span> <span class="c1">// Bienvenido al curso de Android!</span></code></pre></figure>
+
 
         </section>
 
         <nav class="PageNavigation">
   
-    <a class="prev" href="/ios/swift/2017/01/01/introduccion-a-ios.html">&laquo; 1- Introducción a Swift y el desarrollo de iOS</a>
+    <a class="prev" href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">&laquo; 4- Estructuras de control - Parte 2</a>
   
-  
-    <a class="next" href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">3- Estructuras de control - Parte 1 &raquo;</a>
   
 </nav>
 
@@ -230,15 +214,15 @@
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=2- Primeros pasos en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=5- Funciones en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/01/funciones-en-swift.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/01/funciones-en-swift.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/01/primeros-pasos-en-swift.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/01/funciones-en-swift.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
