@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <!-- other stuff in your site header like javascript or whatever above here -->
+
+  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@your_twitter_handle">
+  <meta name="twitter:creator" content="@your_twitter_handle"> -->
+
+  <!-- hardcoding an image here so I don't have to worry about attaching an image to each blog post in the future  -->
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
+  <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
+  <meta content="" property="og:site_name">
+
+  <!-- Set a page title, or default to site title if missing for some reason  -->
+
+  
+    <meta name="twitter:title" content="4- Estructuras de control - Parte 2">
+    <meta content="4- Estructuras de control - Parte 2" property="og:title">
+    <meta content="article" property="og:type">
+  
+
+  <!-- set page description or default to site description  -->
+
+  
+    <meta name="twitter:description" content="Curso completo de desarrollo iOS en Español">
+    <meta content="Curso completo de desarrollo iOS en Español" property="og:description">
+  
+
+  
+    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">
+    <meta content="http://localhost:4000/ios/swift/2017/01/01/estructuras-de-control-parte-2.html" property="og:url">
+  
+
+  
+    <meta content="2017-01-01T04:25:00-06:00" property="article:published_time">
+  
+  
+    <meta content="http://localhost:4000/img/twitter_card2.png" property="og:image">
+  
+
+  
+    
+    <meta content="iOS" property="article:section">
+    
+  
+
+  
+    
+  
+
+</head>
+<body class="home-template">
+
+    <style media="screen">
+  h5 {
+    color: #999999 !important;
+    margin-top: 50px !important;
+  }
+  .img-100 {
+    width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .img-50 {
+    width: 50%;
+    height: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .PageNavigation {
+    font-size: 14px;
+    display: block;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .PageNavigation a {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 1em 0;
+  }
+
+  .PageNavigation .next {
+    text-align: right;
+  }
+</style>
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Home</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">4- Estructuras de control - Parte 2</h1>
+            <!-- <section class="post-meta">
+                <time class="post-date" datetime="2017-01-01">01 Jan 2017</time>
+                
+                    on iOS and Swift
+                
+            </section> -->
+        </header>
+
+<!--         <header class="post-header">
+            <a id="blog-logo" href="http://localhost:4000">
+                
+                    <span class="blog-title">Curso de iOS en Español</span>
+                
+            </a>
+        </header> -->
+
+        <!-- <span class="post-meta">
+            <time datetime="2017-01-01">01 Jan 2017</time>
+            
+                on iOS and Swift
+            
+        </span> -->
+
+        <!-- <h1 class="post-title">4- Estructuras de control - Parte 2</h1> -->
+
+        <section class="post-content">
+            <h5 id="ciclo-for-in">Ciclo For-In</h5>
+
+<p>Itera sobre una secuencia que podria ser un arreglo, rango de numeros o los caracteres de una cadena.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="c1">//- Arreglo de String</span>
+
+  <span class="kd">let</span> <span class="nv">persons</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Juan&quot;</span><span class="p">,</span> <span class="s">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s">&quot;Carlos&quot;</span><span class="p">]</span>
+
+  <span class="k">for</span> <span class="n">person</span> <span class="k">in</span> <span class="n">persons</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// Hola Juan</span>
+  <span class="c1">// Hola Pedro</span>
+  <span class="c1">// Hola Carlos</span>
+
+  <span class="c1">//- Diccionario</span>
+  <span class="kd">let</span> <span class="nv">numberOfLegs</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Araña&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&quot;Hormiga&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&quot;Vaca&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="n">animalName</span><span class="p">,</span> <span class="n">legs</span><span class="p">)</span> <span class="k">in</span> <span class="n">numberOfLegs</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La </span><span class="si">\(</span><span class="n">animalName</span><span class="si">)</span><span class="s"> tiene </span><span class="si">\(</span><span class="n">legs</span><span class="si">)</span><span class="s"> patas&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">// La Vaca tiene 4 patas</span>
+  <span class="c1">// La Hormiga tiene 6 patas</span>
+  <span class="c1">// La Araña tiene 8 patas</span>
+
+  <span class="c1">//- Rango de numeros</span>
+
+  <span class="c1">// Imprime la tabla de multiplicar del 5</span>
+  <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">12</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s"> x 5 = </span><span class="si">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span></code></pre></figure>
+
+<h5 id="ciclo-while">Ciclo While</h5>
+
+<p>Evalua una condicion para ejecutar un bloque de codigo, mientras sea <strong>true</strong> y se detiene cuando se vuelve <strong>false</strong>.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">var</span> <span class="nv">year</span> <span class="p">=</span> <span class="mi">2000</span>
+
+  <span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="mi">2010</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Feliz año </span><span class="si">\(</span><span class="n">year</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+      <span class="c1">// Incrementamos el valor de la variable &quot;year&quot;</span>
+      <span class="n">year</span> <span class="p">=</span> <span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="p">}</span></code></pre></figure>
+
+<h5 id="ciclo-repeat-while">Ciclo Repeat while</h5>
+
+<p>Igualmente evalua un condicion pero que ejecuta el bloque de codigo antes de la condicion.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">var</span> <span class="nv">year</span> <span class="p">=</span> <span class="mi">1990</span>
+
+    <span class="k">repeat</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Feliz año </span><span class="si">\(</span><span class="n">year</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="n">year</span> <span class="p">=</span> <span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="mi">2000</span></code></pre></figure>
+
+
+        </section>
+
+        <nav class="PageNavigation">
+  
+    <a class="prev" href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">&laquo; 3- Estructuras de control - Parte 1</a>
+  
+  
+    <a class="next" href="/ios/swift/2017/01/01/funciones-en-swift.html">5- Funciones en Swift &raquo;</a>
+  
+</nav>
+
+
+        <!--  -->
+
+        <footer class="post-footer">
+            <!-- If we want to display author's name and bio -->
+            <!-- 
+                <figure class="author-image">
+                    <a class="img" href="/" style="background-image: url(/assets/images/profile.png)">
+                    <span class="hidden">Alejandro M's Picture</span></a>
+                </figure>
+                <section class="author">
+                    <h4> Alejandro M </h4>
+                    <p>
+                        Here goes the author description. You might want to place some links too in here
+                    </p>
+                </section>
+             -->
+
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=4- Estructuras de control - Parte 2&amp;url=https://cursodeios.github.io/ios/swift/2017/01/01/estructuras-de-control-parte-2.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/01/estructuras-de-control-parte-2.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/01/estructuras-de-control-parte-2.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+            <!-- Disqus comments -->
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS en Español</a> &copy;
+               &bull; All rights reserved.
+      </section>
+      <!-- <section class="poweredby">Made with Jekyll using
+        <a href="http://github.com/rosario/kasper">Kasper theme</a>
+      </section> -->
+    </footer>
+
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Google Analytics Tracking code -->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</body>
+</html>

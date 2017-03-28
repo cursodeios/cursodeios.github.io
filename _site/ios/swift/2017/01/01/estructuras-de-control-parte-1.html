@@ -25,8 +25,8 @@
   <!-- Set a page title, or default to site title if missing for some reason  -->
 
   
-    <meta name="twitter:title" content="1- Introducción a Swift y el desarrollo de iOS">
-    <meta content="1- Introducción a Swift y el desarrollo de iOS" property="og:title">
+    <meta name="twitter:title" content="3- Estructuras de control - Parte 1">
+    <meta content="3- Estructuras de control - Parte 1" property="og:title">
     <meta content="article" property="og:type">
   
 
@@ -38,12 +38,12 @@
   
 
   
-    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/01/introduccion-a-ios.html">
-    <meta content="http://localhost:4000/ios/swift/2017/01/01/introduccion-a-ios.html" property="og:url">
+    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">
+    <meta content="http://localhost:4000/ios/swift/2017/01/01/estructuras-de-control-parte-1.html" property="og:url">
   
 
   
-    <meta content="2017-01-01T04:15:00-06:00" property="article:published_time">
+    <meta content="2017-01-01T04:25:00-06:00" property="article:published_time">
   
   
     <meta content="http://localhost:4000/img/twitter_card2.png" property="og:image">
@@ -110,7 +110,7 @@
     <article class="post">
 
         <header class="post-header">
-            <h1 class="post-title">1- Introducción a Swift y el desarrollo de iOS</h1>
+            <h1 class="post-title">3- Estructuras de control - Parte 1</h1>
             <!-- <section class="post-meta">
                 <time class="post-date" datetime="2017-01-01">01 Jan 2017</time>
                 
@@ -134,32 +134,78 @@
             
         </span> -->
 
-        <!-- <h1 class="post-title">1- Introducción a Swift y el desarrollo de iOS</h1> -->
+        <!-- <h1 class="post-title">3- Estructuras de control - Parte 1</h1> -->
 
         <section class="post-content">
-            <p>Swift es un lenguaje de programación creado por Apple (desde el 2010) para el desarrollo de aplicaciones iOS y macOS. Se creó basado en lo mejor de lenguajes como Ruby, Python, Haskell, RUST y C# con la intención de ser un lenguaje seguro, de desarrollo rápido y sencillo.</p>
+            <h5 id="condicionales">Condicionales</h5>
 
-<p>Antes de Swift el desarrollo para iOS se hacía usando el lenguaje <strong>Objective-C</strong> pero Apple creo <strong>Swift</strong> para ser el nuevo referente y se pueden combinar librerías hechas en Objective-C en un proyecto iniciado con Swift (esto lo veremos más adelante en el curso).</p>
+<p>Son muy utiles para ejecutar diferentes partes de codigo basados en una condicion, veamos el ejemplo:</p>
 
-<p>Para iniciar es necesario tener un Mac y descargar XCode que es la “Suite” de Apple para el desarrollo de aplicaciones iOS y macOS (no está disponible para Windows ni Linux).</p>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>      <span class="c1">// If</span>
+      <span class="kd">var</span> <span class="nv">temperature</span> <span class="p">=</span> <span class="mi">10</span>
 
-<p><strong>Pasos para descargar XCode:</strong></p>
+      <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">15</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace frio&quot;</span><span class="p">)</span>
+      <span class="p">}</span>
 
-<ol>
-  <li>Abrir la App Store en tu Mac.</li>
-  <li>En la barra de búsqueda escribe XCode y presiona Enter, la aplicacion deberia aparecer de primero en la lista de resultados.</li>
-  <li>Luego presiona Obtener y despues Instalar (Introduce tu Apple ID y password si es requerido).</li>
-  <li>Deber esperar a que se descargue, esto puede durar mucho ya que el tamaño de la descarga es mas de 4GB, al finalizar estará disponible en el directorio <code>/Applications</code>.</li>
-</ol>
+      <span class="c1">// If ... else ...</span>
 
-<p>Debemos saber que XCode es gratis e igualmente desarrollar y probar en el simulador pero necesitamos tener una cuenta de <strong>Apple Developer</strong> para probar en un dispositivo real (iPhone o iPad) y subir nuestra App a la tienda de Apple.</p>
+      <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace frio&quot;</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace calor&quot;</span><span class="p">)</span>
+      <span class="p">}</span>
+
+      <span class="c1">// Multiples condiciones</span>
+
+      <span class="n">temperature</span> <span class="p">=</span> <span class="mi">16</span>
+
+      <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace mucho frio&quot;</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace frio&quot;</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace calor&quot;</span><span class="p">)</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;=</span> <span class="mi">15</span> <span class="o">&amp;&amp;</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El clima es agradable&quot;</span><span class="p">)</span>
+      <span class="p">}</span></code></pre></figure>
+
+<h5 id="switch">Switch</h5>
+
+<p>El switch compara un valor con varias sentencias o patrones y luego ejecuta el codigo correspondiente.</p>
+
+<p>Veamos el siguiente ejemplo:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    
+    <span class="kd">let</span> <span class="nv">myCharacter</span> <span class="p">=</span> <span class="s">&quot;z&quot;</span>
+
+    <span class="k">switch</span> <span class="n">myCharacter</span> <span class="p">{</span>
+
+      <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La primer letra del abecedario&quot;</span><span class="p">)</span>
+
+      <span class="k">case</span> <span class="s">&quot;z&quot;</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La ultima letra del abecedario&quot;</span><span class="p">)</span>
+
+      <span class="k">case</span> <span class="s">&quot;1&quot;</span><span class="p">:</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Esto es un numero&quot;</span><span class="p">)</span>
+
+      <span class="k">default</span><span class="p">:</span>
+      <span class="c1">// Se ejecuta si no cumple ninguno de los anteriores</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;No identificado&quot;</span><span class="p">)</span>
+    <span class="p">}</span></code></pre></figure>
+
 
         </section>
 
         <nav class="PageNavigation">
   
+    <a class="prev" href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">&laquo; 2- Primeros pasos en Swift</a>
   
-    <a class="next" href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">2- Primeros pasos en Swift &raquo;</a>
+  
+    <a class="next" href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">4- Estructuras de control - Parte 2 &raquo;</a>
   
 </nav>
 
@@ -184,15 +230,15 @@
             <!-- Share links section -->
             <section class="share">
     <h4>Share this post</h4>
-    <a class="icon-twitter" href="http://twitter.com/share?text=1- Introducción a Swift y el desarrollo de iOS&amp;url=https://cursodeios.github.io/ios/swift/2017/01/01/introduccion-a-ios.html"
+    <a class="icon-twitter" href="http://twitter.com/share?text=3- Estructuras de control - Parte 1&amp;url=https://cursodeios.github.io/ios/swift/2017/01/01/estructuras-de-control-parte-1.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <span class="hidden">Twitter</span>
     </a>
-    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/01/introduccion-a-ios.html"
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/01/estructuras-de-control-parte-1.html"
         onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
         <span class="hidden">Facebook</span>
     </a>
-    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/01/introduccion-a-ios.html"
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/01/estructuras-de-control-parte-1.html"
        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
         <span class="hidden">Google+</span>
     </a>
