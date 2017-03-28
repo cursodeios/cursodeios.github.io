@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Primeros pasos en Swift"
+title:  "2- Primeros pasos en Swift"
 date:   2017-01-01 10:20:00
 categories: iOS Swift
 ---
