@@ -71,7 +71,7 @@
     <style media="screen">
   h5 {
     color: #9E9E9E !important;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
     margin-top: 50px !important;
   }
   .img-100 {
@@ -165,6 +165,32 @@
       <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Bienvenido al curso de Android!&quot;</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="n">sayWelcome</span><span class="p">()</span> <span class="c1">// Bienvenido al curso de Android!</span></code></pre></figure>
+
+<h5 id="omitir-nombre-del-parámetro-en-la-llamada-de-la-función">Omitir nombre del parámetro en la llamada de la función</h5>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Escribimos un _ antes del nombre del parámetro</span>
+
+    <span class="kd">func</span> <span class="nf">sayWelcome</span><span class="p">(</span><span class="kc">_</span> <span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">){</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Welcome </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">sayWelcome</span><span class="p">(</span><span class="s">&quot;Pedro&quot;</span><span class="p">)</span> <span class="c1">// &quot;Welcome Pedro!&quot;</span></code></pre></figure>
+
+<h5 id="retornar-múltiples-valores">Retornar múltiples valores</h5>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Esta función nos devolvera 2 enteros y una cadena de texto</span>
+
+    <span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nv">_min</span> <span class="p">=</span> <span class="n">a</span>
+        <span class="kd">var</span> <span class="nv">_max</span> <span class="p">=</span> <span class="n">b</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="p">{</span>
+            <span class="n">_min</span> <span class="p">=</span> <span class="n">b</span>
+            <span class="n">_max</span> <span class="p">=</span> <span class="n">a</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">_min</span><span class="p">,</span> <span class="n">_max</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">\(</span><span class="n">_max</span><span class="si">)</span><span class="s"> es mayor que </span><span class="si">\(</span><span class="n">_min</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">minMax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">// (11, 20, &quot;20 es mayor que 11&quot;)</span></code></pre></figure>
 
 
         </section>

@@ -57,3 +57,38 @@ o quizas no reciba ningun parametro:
     sayWelcome() // Bienvenido al curso de Android!
 
 {% endhighlight %}
+
+##### Omitir nombre del parámetro en la llamada de la función
+
+{% highlight swift %}
+
+    // Escribimos un _ antes del nombre del parámetro
+
+    func sayWelcome(_ person: String){
+      print("Welcome \(person)!")
+    }
+
+    sayWelcome("Pedro") // "Welcome Pedro!"
+
+{% endhighlight %}
+
+
+##### Retornar múltiples valores
+
+{% highlight swift %}
+
+    // Esta función nos devolvera 2 enteros y una cadena de texto
+
+    func minMax(a: Int, b: Int)-> (min: Int, max: Int, msg: String) {
+        var _min = a
+        var _max = b
+        if a > b {
+            _min = b
+            _max = a
+        }
+        return (_min, _max, "\(_max) es mayor que \(_min)")
+    }
+
+    minMax(a: 20, b: 11) // (11, 20, "20 es mayor que 11")
+
+{% endhighlight %}
