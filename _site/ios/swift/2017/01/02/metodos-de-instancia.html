@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-1673144615294747",
+      enable_page_level_ads: true
+    });
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <!-- other stuff in your site header like javascript or whatever above here -->
+
+  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@your_twitter_handle">
+  <meta name="twitter:creator" content="@your_twitter_handle"> -->
+
+  <!-- hardcoding an image here so I don't have to worry about attaching an image to each blog post in the future  -->
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
+  <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
+  <meta content="" property="og:site_name">
+
+  <!-- Set a page title, or default to site title if missing for some reason  -->
+
+  
+    <meta name="twitter:title" content="Métodos de Instancia">
+    <meta content="Métodos de Instancia" property="og:title">
+    <meta content="article" property="og:type">
+  
+
+  <!-- set page description or default to site description  -->
+
+  
+    <meta name="twitter:description" content="Curso completo de desarrollo iOS en Español">
+    <meta content="Curso completo de desarrollo iOS en Español" property="og:description">
+  
+
+  
+    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/02/metodos-de-instancia.html">
+    <meta content="http://localhost:4000/ios/swift/2017/01/02/metodos-de-instancia.html" property="og:url">
+  
+
+  
+    <meta content="2017-01-02T05:05:00-06:00" property="article:published_time">
+  
+  
+    <meta content="http://localhost:4000/img/twitter_card2.png" property="og:image">
+  
+
+  
+    
+    <meta content="iOS" property="article:section">
+    
+  
+
+  
+    
+  
+
+</head>
+<body class="home-template">
+    <style media="screen">
+  h5 {
+    color: #9E9E9E !important;
+    /*text-decoration: underline;*/
+    margin-top: 50px !important;
+  }
+  .img-100 {
+    width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .img-50 {
+    width: 50%;
+    height: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .PageNavigation {
+    font-size: 14px;
+    display: block;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .PageNavigation a {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 1em 0;
+    color: #2196F3;
+    font-size: 16px;
+  }
+
+  .PageNavigation .next {
+    text-align: right;
+  }
+</style>
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <header class="post-header">
+            <h2>Métodos de Instancia</h2>
+        </header>
+        <section class="post-content">
+            <p>Los métodos de instancia son funciones que pertenecen a una instacia de <strong>clase</strong> o <strong>estructura</strong>. Deben ser declaradas dentro de la clase de la misma forma que ya aprendimos a declarar funciones.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">class</span> <span class="nc">Counter</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nv">count</span> <span class="p">=</span> <span class="mi">0</span>
+
+      <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+          <span class="bp">count</span> <span class="o">+=</span> <span class="mi">1</span>
+      <span class="p">}</span>
+      <span class="kd">func</span> <span class="nf">increment</span><span class="p">(</span><span class="n">by</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+          <span class="bp">count</span> <span class="o">+=</span> <span class="n">amount</span>
+      <span class="p">}</span>
+      <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
+          <span class="bp">count</span> <span class="p">=</span> <span class="mi">0</span>
+      <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>En esta clase se definen 3 métodos para manejar un contador:</p>
+
+<ol>
+  <li><code>increment()</code> aumenta el contador por 1.</li>
+  <li><code>increment(by amount: Int)</code> incrementa el contador por el valor especificado.</li>
+  <li><code>reset()</code> reestablece el contador a su valor inicial.</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">counter</span> <span class="p">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+    <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="bp">count</span><span class="p">)</span> <span class="c1">// 1</span>
+
+    <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="bp">count</span><span class="p">)</span> <span class="c1">// 6</span>
+
+    <span class="n">counter</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="bp">count</span><span class="p">)</span> <span class="c1">// 0</span></code></pre></figure>
+
+<h5 id="propiedad-self">Propiedad self</h5>
+
+<p>Cada instancia de una clase o estructura tiene una propiedad implicita llamada <strong>self</strong> que hace referencia a si misma, con ella podemos llamar propiedades y métodos.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Podriamos reescribir el método increment() de esta forma:</span>
+    <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="bp">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span></code></pre></figure>
+
+
+        </section>
+        <nav class="PageNavigation">
+  
+    <a class="prev" href="/ios/swift/2017/01/02/clases-y-estructuras.html">&laquo; Clases y Estructuras</a>
+  
+  
+</nav>
+
+        <footer class="post-footer">
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Métodos de Instancia&amp;url=https://cursodeios.github.io/ios/swift/2017/01/02/metodos-de-instancia.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/02/metodos-de-instancia.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/02/metodos-de-instancia.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            <!-- Disqus comments -->
+            
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS en Español</a> &copy; 2017 &bull; All rights reserved.
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91146008-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
