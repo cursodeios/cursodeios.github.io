@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-1673144615294747",
+      enable_page_level_ads: true
+    });
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <!-- other stuff in your site header like javascript or whatever above here -->
+
+  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@your_twitter_handle">
+  <meta name="twitter:creator" content="@your_twitter_handle"> -->
+
+  <!-- hardcoding an image here so I don't have to worry about attaching an image to each blog post in the future  -->
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
+  <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
+  <meta content="" property="og:site_name">
+
+  <!-- Set a page title, or default to site title if missing for some reason  -->
+
+  
+    <meta name="twitter:title" content="Closures en Swift">
+    <meta content="Closures en Swift" property="og:title">
+    <meta content="article" property="og:type">
+  
+
+  <!-- set page description or default to site description  -->
+
+  
+    <meta name="twitter:description" content="Curso completo de desarrollo iOS en Español">
+    <meta content="Curso completo de desarrollo iOS en Español" property="og:description">
+  
+
+  
+    <meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/03/closures-swift.html">
+    <meta content="http://localhost:4000/ios/swift/2017/01/03/closures-swift.html" property="og:url">
+  
+
+  
+    <meta content="2017-01-03T05:05:00-06:00" property="article:published_time">
+  
+  
+    <meta content="http://localhost:4000/img/twitter_card2.png" property="og:image">
+  
+
+  
+    
+    <meta content="iOS" property="article:section">
+    
+  
+
+  
+    
+  
+
+</head>
+<body class="home-template">
+    <style media="screen">
+  h5 {
+    color: #00000 !important;
+    /*text-decoration: underline;*/
+    margin-top: 50px !important;
+  }
+  .img-100 {
+    width: 100%;
+    height: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .img-50 {
+    width: 50%;
+    height: 50%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .PageNavigation {
+    font-size: 14px;
+    display: block;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .PageNavigation a {
+    display: block;
+    width: 50%;
+    float: left;
+    margin: 1em 0;
+    color: #2196F3;
+    font-size: 16px;
+  }
+
+  .PageNavigation .next {
+    text-align: right;
+  }
+</style>
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <header class="post-header">
+            <h2>Closures en Swift</h2>
+        </header>
+        <section class="post-content">
+            <p>Los <em>Closures</em> en Swift son fragmentos con una funcionalidad especifica que puedes usar en tu código. Lo puedes pasar como argumento en una función o usarlo como propiedad de un objeto.</p>
+
+<h5 id="sintaxis">Sintaxis</h5>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Sintaxis Básica</span>
+    <span class="p">{(</span><span class="n">parametro</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">tipo</span> <span class="k">in</span>
+       <span class="c1">// Aquí escribimos la funcionalidad</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Ejemplo sencillo</span>
+    <span class="p">{(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
+      <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Ahora puedes crear un nuevo <strong>playground</strong> y seguir los ejemplos que vamos a realizar.</p>
+
+<h5 id="closure-como-parámetro-en-una-función">Closure como parámetro en una función</h5>
+
+<p>En el siguiente ejemplo vamos a utilizar un arreglo de enteros y elevar al cuadrado cada numero. Vamos a usar la funcion <code>map()</code> para crear otro arreglo de los numeros elevados al cuadrado.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+
+    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+        <span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
+        <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
+    <span class="p">})</span>
+
+    <span class="bp">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1">// [4, 25, 49, 64, 81]</span></code></pre></figure>
+
+<h5 id="omitiendo-el-tipo-en-el-closure-type-inference">Omitiendo el TIPO en el closure (Type Inference)</h5>
+
+<p>Sabemos que Swift es un lenguaje potente e inteligente, al tener un arreglo de Enteros al invocar la funcion map en el closure no es necesario especificar el tipo del <em>parámetro number</em>.</p>
+
+<p>Entonces transformamos nuestro código:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+        <span class="n">number</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
+        <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
+    <span class="p">})</span>
+
+    <span class="c1">// Pero aun podemos hacerlo mas corto</span>
+    <span class="c1">// Omitimos la palabra reservada RETURN</span>
+    <span class="c1">// Y tendremos el mismo resultado</span>
+
+    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+        <span class="n">number</span> <span class="k">in</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
+    <span class="p">})</span></code></pre></figure>
+
+<h5 id="nombres-de-agurmentos-abreviados">Nombres de Agurmentos Abreviados</h5>
+
+<p>Aun podemos resumir mas nuestro código abreviando el nombre de nuestros parámetros, incluso podemos omitir la palabra reservada <strong>in</strong> que separa los parametros del cuerpo del closure.</p>
+
+<p>Swift nos permite nombrar nuestro primer parámetro en el closure como <strong>$0</strong>, el segundo como <strong>$1</strong> y así sucesivamente.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Ahora lo escribimos de la siguiente forma</span>
+    <span class="c1">// Debemos tener el mismo resultado</span>
+    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">})</span></code></pre></figure>
+
+<h5 id="trailing-closures">Trailing Closures</h5>
+
+<p>Swift nos da la facilidad que cuando un closure sea el último o único argumento de una función podemos llamarlo fuera de los paréntesis de los parametros.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">(){</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span>
+
+    <span class="c1">// Si es el unico parametro podemos quitar los paréntesis</span>
+    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span></code></pre></figure>
+
+<h5 id="otro-ejemplo">Otro ejemplo</h5>
+
+<p>Vamos a ordenar un arreglo de Enteros de mayor a menor usando <em>closures</em>:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span>
+
+    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="k">in</span>
+        <span class="k">return</span> <span class="n">n1</span> <span class="o">&gt;</span> <span class="n">n2</span>
+    <span class="p">})</span>
+
+    <span class="kd">let</span> <span class="nv">result2</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">})</span>
+
+    <span class="c1">// En ambos casos el resultado será:</span>
+    <span class="c1">// [100, 53, 22, 9, 8, 7, 5, 2, 1]</span></code></pre></figure>
+
+
+        </section>
+        <nav class="PageNavigation">
+  
+    <a class="prev" href="/ios/swift/2017/01/02/metodos-de-instancia.html">&laquo; Métodos de Instancia</a>
+  
+  
+</nav>
+
+        <footer class="post-footer">
+            <!-- Share links section -->
+            <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Closures en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/03/closures-swift.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/03/closures-swift.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/03/closures-swift.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+            <!-- Disqus comments -->
+            
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS en Español</a> &bull; 2017
+        <!-- <a href="/">Curso de iOS en Español</a> &copy; 2017 &bull; All rights reserved. -->
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91146008-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

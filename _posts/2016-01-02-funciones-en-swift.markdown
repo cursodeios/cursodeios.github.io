@@ -33,7 +33,7 @@ o quizas no reciba ningun parametro:
 
 `func nombreFuncion()`
 
-#### Veamos los ejemplos:
+##### Veamos los ejemplos:
 
 {% highlight swift %}
 
