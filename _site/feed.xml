@@ -5,8 +5,8 @@
     <description>Curso completo de desarrollo iOS en Español</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Apr 2017 12:08:41 -0600</pubDate>
-    <lastBuildDate>Tue, 11 Apr 2017 12:08:41 -0600</lastBuildDate>
+    <pubDate>Mon, 17 Apr 2017 17:35:23 -0600</pubDate>
+    <lastBuildDate>Mon, 17 Apr 2017 17:35:23 -0600</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -94,6 +94,36 @@
     &lt;span class=&quot;c1&quot;&gt;// En ambos casos el resultado será:&lt;/span&gt;
     &lt;span class=&quot;c1&quot;&gt;// [100, 53, 22, 9, 8, 7, 5, 2, 1]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;h5 id=&quot;captura-de-valores&quot;&gt;Captura de Valores&lt;/h5&gt;
+
+&lt;p&gt;Un &lt;em&gt;Closure&lt;/em&gt; puede capturar variables o constantes dentro de un contexto circundante, el &lt;em&gt;closure&lt;/em&gt; puede hacer referencia o modificar estas variables.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;makeIncrementer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forIncrement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;runningTotal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;incrementer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;runningTotal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;runningTotal&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;incrementer&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;El valor de retorno de &lt;strong&gt;makeIncrementer&lt;/strong&gt; es &lt;code&gt;() -&amp;gt; Int&lt;/code&gt;. Eso quiere decir que retorno una función en vez de un valor simple. La función que devuelve no recibe parametros pero retorna un &lt;strong&gt;Entero&lt;/strong&gt; cada vez que es invocada.&lt;/p&gt;
+
+&lt;p&gt;Dentro de la función &lt;strong&gt;makeIncrementer&lt;/strong&gt; se define una variable &lt;strong&gt;runningTotal&lt;/strong&gt; que almacena el valor inicial, tenemos un función llamada &lt;strong&gt;incrementer&lt;/strong&gt; que modifica la variable &lt;strong&gt;runningTotal&lt;/strong&gt; y retorna el nuevo valor.&lt;/p&gt;
+
+&lt;p&gt;Ahora veamos un ejemplo de uso de la función &lt;strong&gt;makeIncrementer&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;incrementByTen&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makeIncrementer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forIncrement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;incrementByTen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// El resultado es 10&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;incrementByTen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// El resultado es 20&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;incrementBySeven&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;makeIncrementer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;forIncrement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;incrementBySeven&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// El resultado es 7&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;incrementBySeven&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// El resultado es 14&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Declaramos una constante &lt;strong&gt;incrementByTen&lt;/strong&gt;, cada vez que la invocamos se incrementa el valor de la variable &lt;strong&gt;runningTotal&lt;/strong&gt;. Si declaramos otra constante &lt;strong&gt;incrementBySeven&lt;/strong&gt; veremos que esta tiene su propia referencia a la variable &lt;strong&gt;runningTotal&lt;/strong&gt; y funcionan independientemente una de la otra.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Jan 2017 05:05:00 -0600</pubDate>
         <link>http://localhost:4000//ios/swift/2017/01/03/closures-swift.html</link>

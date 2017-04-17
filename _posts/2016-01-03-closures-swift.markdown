@@ -111,3 +111,40 @@ Vamos a ordenar un arreglo de Enteros de mayor a menor usando *closures*:
     // [100, 53, 22, 9, 8, 7, 5, 2, 1]
 
 {% endhighlight %}
+
+##### Captura de Valores
+
+Un *Closure* puede capturar variables o constantes dentro de un contexto circundante, el *closure* puede hacer referencia o modificar estas variables.
+
+
+{% highlight swift %}
+    func makeIncrementer(forIncrement amount: Int) -> () -> Int {
+        var runningTotal = 0
+        func incrementer() -> Int {
+          runningTotal += amount
+          return runningTotal
+        }
+        return incrementer
+    }
+{% endhighlight %}
+
+El valor de retorno de **makeIncrementer** es `() -> Int`. Eso quiere decir que retorno una función en vez de un valor simple. La función que devuelve no recibe parametros pero retorna un **Entero** cada vez que es invocada.
+
+Dentro de la función **makeIncrementer** se define una variable **runningTotal** que almacena el valor inicial, tenemos un función llamada **incrementer** que modifica la variable **runningTotal** y retorna el nuevo valor.
+
+Ahora veamos un ejemplo de uso de la función **makeIncrementer**:
+
+{% highlight swift %}
+
+    let incrementByTen = makeIncrementer(forIncrement: 10)
+
+    incrementByTen() // El resultado es 10
+    incrementByTen() // El resultado es 20
+
+    let incrementBySeven = makeIncrementer(forIncrement: 7)
+
+    incrementBySeven() // El resultado es 7
+    incrementBySeven() // El resultado es 14
+{% endhighlight %}
+
+Declaramos una constante **incrementByTen**, cada vez que la invocamos se incrementa el valor de la variable **runningTotal**. Si declaramos otra constante **incrementBySeven** veremos que esta tiene su propia referencia a la variable **runningTotal** y funcionan independientemente una de la otra.

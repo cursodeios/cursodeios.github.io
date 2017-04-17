@@ -203,6 +203,36 @@
     <span class="c1">// En ambos casos el resultado será:</span>
     <span class="c1">// [100, 53, 22, 9, 8, 7, 5, 2, 1]</span></code></pre></figure>
 
+<h5 id="captura-de-valores">Captura de Valores</h5>
+
+<p>Un <em>Closure</em> puede capturar variables o constantes dentro de un contexto circundante, el <em>closure</em> puede hacer referencia o modificar estas variables.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">func</span> <span class="nf">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nv">runningTotal</span> <span class="p">=</span> <span class="mi">0</span>
+        <span class="kd">func</span> <span class="nf">incrementer</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+          <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
+          <span class="k">return</span> <span class="n">runningTotal</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">incrementer</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>El valor de retorno de <strong>makeIncrementer</strong> es <code>() -&gt; Int</code>. Eso quiere decir que retorno una función en vez de un valor simple. La función que devuelve no recibe parametros pero retorna un <strong>Entero</strong> cada vez que es invocada.</p>
+
+<p>Dentro de la función <strong>makeIncrementer</strong> se define una variable <strong>runningTotal</strong> que almacena el valor inicial, tenemos un función llamada <strong>incrementer</strong> que modifica la variable <strong>runningTotal</strong> y retorna el nuevo valor.</p>
+
+<p>Ahora veamos un ejemplo de uso de la función <strong>makeIncrementer</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">incrementByTen</span> <span class="p">=</span> <span class="n">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">incrementByTen</span><span class="p">()</span> <span class="c1">// El resultado es 10</span>
+    <span class="n">incrementByTen</span><span class="p">()</span> <span class="c1">// El resultado es 20</span>
+
+    <span class="kd">let</span> <span class="nv">incrementBySeven</span> <span class="p">=</span> <span class="n">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+
+    <span class="n">incrementBySeven</span><span class="p">()</span> <span class="c1">// El resultado es 7</span>
+    <span class="n">incrementBySeven</span><span class="p">()</span> <span class="c1">// El resultado es 14</span></code></pre></figure>
+
+<p>Declaramos una constante <strong>incrementByTen</strong>, cada vez que la invocamos se incrementa el valor de la variable <strong>runningTotal</strong>. Si declaramos otra constante <strong>incrementBySeven</strong> veremos que esta tiene su propia referencia a la variable <strong>runningTotal</strong> y funcionan independientemente una de la otra.</p>
 
         </section>
         <nav class="PageNavigation">
