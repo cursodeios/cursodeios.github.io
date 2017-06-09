@@ -3,10 +3,11 @@
 <head>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-1673144615294747",
-      enable_page_level_ads: true
-    });
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script>
     </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -124,7 +125,7 @@
 
 <h5 id="sintaxis">Sintaxis</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Sintaxis Básica</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Sintaxis Básica</span>
     <span class="p">{(</span><span class="n">parametro</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">tipo</span> <span class="k">in</span>
        <span class="c1">// Aquí escribimos la funcionalidad</span>
     <span class="p">}</span>
@@ -136,11 +137,11 @@
 
 <p>Ahora puedes crear un nuevo <strong>playground</strong> y seguir los ejemplos que vamos a realizar.</p>
 
-<h5 id="closure-como-parámetro-en-una-función">Closure como parámetro en una función</h5>
+<h5 id="closure-como-parmetro-en-una-funcin">Closure como parámetro en una función</h5>
 
 <p>En el siguiente ejemplo vamos a utilizar un arreglo de enteros y elevar al cuadrado cada numero. Vamos a usar la funcion <code>map()</code> para crear otro arreglo de los numeros elevados al cuadrado.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
 
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
         <span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
@@ -155,7 +156,7 @@
 
 <p>Entonces transformamos nuestro código:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
         <span class="n">number</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
         <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
     <span class="p">})</span>
@@ -174,7 +175,7 @@
 
 <p>Swift nos permite nombrar nuestro primer parámetro en el closure como <strong>$0</strong>, el segundo como <strong>$1</strong> y así sucesivamente.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Ahora lo escribimos de la siguiente forma</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Ahora lo escribimos de la siguiente forma</span>
     <span class="c1">// Debemos tener el mismo resultado</span>
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">})</span></code></pre></figure>
 
@@ -182,7 +183,7 @@
 
 <p>Swift nos da la facilidad que cuando un closure sea el último o único argumento de una función podemos llamarlo fuera de los paréntesis de los parametros.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">(){</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">(){</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span>
 
     <span class="c1">// Si es el unico parametro podemos quitar los paréntesis</span>
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span></code></pre></figure>
@@ -191,7 +192,7 @@
 
 <p>Vamos a ordenar un arreglo de Enteros de mayor a menor usando <em>closures</em>:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span>
 
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span>
         <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="k">in</span>
@@ -207,7 +208,7 @@
 
 <p>Un <em>Closure</em> puede capturar variables o constantes dentro de un contexto circundante, el <em>closure</em> puede hacer referencia o modificar estas variables.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">func</span> <span class="nf">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">func</span> <span class="nf">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nv">runningTotal</span> <span class="p">=</span> <span class="mi">0</span>
         <span class="kd">func</span> <span class="nf">incrementer</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
           <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
@@ -222,7 +223,7 @@
 
 <p>Ahora veamos un ejemplo de uso de la función <strong>makeIncrementer</strong>:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">incrementByTen</span> <span class="p">=</span> <span class="n">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">incrementByTen</span> <span class="p">=</span> <span class="n">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="n">incrementByTen</span><span class="p">()</span> <span class="c1">// El resultado es 10</span>
     <span class="n">incrementByTen</span><span class="p">()</span> <span class="c1">// El resultado es 20</span>
