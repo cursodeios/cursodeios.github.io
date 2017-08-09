@@ -13,4 +13,6 @@ gems: [jekyll-paginate, jekyll-sitemap, jekyll-paginate]
 
 # Details for the RSS feed generator
 url:            'https://cursodeios.github.io'
-author:         'Alejandro M'
+author: 'Danny Al'
+bio: 'Lorem ipsum'
+profile-img: '/assets/images/profile-1.jpg'

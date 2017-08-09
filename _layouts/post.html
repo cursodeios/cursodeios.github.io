@@ -1,11 +1,10 @@
 ---
 layout: default
 disqus: false
-archive: false
+archive: true
 post_class: post-template
 ---
 
-{% include style.html %}
 <header class="main-header post-head {% if page.cover %}" style="background-image: url({{ page.cover }}) {%else%}no-cover{% endif %}">
     <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
         <a class="back-button icon-arrow-left" href="{{ site.baseurl }}">Inicio</a>
@@ -15,20 +14,17 @@ post_class: post-template
 
 <main class="content" role="main">
     <article class="post">
-        <header class="post-header">
-            <h2>{{ page.title }}</h2>
-        </header>
+        {% include post-header.html %}
         <section class="post-content">
             {{content}}
         </section>
-        {% include postpaginator.html %}
+        {% include archive.html %}
         <footer class="post-footer">
-            <!-- Share links section -->
-            {% include share.html %}
-            <!-- Disqus comments -->
-            {% if page.disqus %}
-                {% include disqus.html %}
-            {% endif %}
+         {% include post-author.html %}
+         {% include share.html %}
+         {% if page.disqus %}
+            {% include disqus.html %}
+         {% endif %}
         </footer>
     </article>
 </main>

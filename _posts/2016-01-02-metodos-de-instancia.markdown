@@ -3,6 +3,7 @@ layout: post
 title:  "Métodos de Instancia"
 date:   2017-01-02 11:05:00
 categories: iOS Swift
+archive: true
 ---
 
 Los métodos de instancia son funciones que pertenecen a una instacia de **clase** o **estructura**. Deben ser declaradas dentro de la clase de la misma forma que ya aprendimos a declarar funciones.

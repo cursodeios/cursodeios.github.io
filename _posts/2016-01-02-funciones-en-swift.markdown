@@ -3,6 +3,7 @@ layout: post
 title:  "Funciones en Swift"
 date:   2017-01-01 11:00:00
 categories: iOS Swift
+archive: true
 ---
 
 

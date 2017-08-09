@@ -3,6 +3,7 @@ layout: post
 title:  "Closures en Swift"
 date:   2017-01-03 11:05:00
 categories: iOS Swift
+archive: true
 ---
 
 Los *Closures* en Swift son fragmentos con una funcionalidad especifica que puedes usar en tu código. Lo puedes pasar como argumento en una función o usarlo como propiedad de un objeto.

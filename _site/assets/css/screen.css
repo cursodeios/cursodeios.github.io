@@ -463,7 +463,7 @@ margin on the iframe, cause it breaks stuff. */
 .vertical {
     display: table-cell;
     vertical-align: middle;
-    background: #FAFAFA;
+    /*background: #FAFAFA;*/
 }
 
 
@@ -680,6 +680,10 @@ margin on the iframe, cause it breaks stuff. */
     font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
     color: rgba(255,255,255,0.8);
+}
+
+.page-description a {
+  color: #FAFAFA;
 }
 
 .no-cover.main-header {

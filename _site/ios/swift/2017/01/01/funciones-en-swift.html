@@ -69,46 +69,7 @@
 
 </head>
 <body class="home-template">
-    <style media="screen">
-  h5 {
-    color: #00000 !important;
-    /*text-decoration: underline;*/
-    margin-top: 50px !important;
-  }
-  .img-100 {
-    width: 100%;
-    height: 100%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .img-50 {
-    width: 50%;
-    height: 50%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .PageNavigation {
-    font-size: 14px;
-    display: block;
-    width: auto;
-    overflow: hidden;
-  }
-
-  .PageNavigation a {
-    display: block;
-    width: 50%;
-    float: left;
-    margin: 1em 0;
-    color: #2196F3;
-    font-size: 16px;
-  }
-
-  .PageNavigation .next {
-    text-align: right;
-  }
-</style>
-
-<header class="main-header post-head no-cover">
+    <header class="main-header post-head no-cover">
     <nav class="main-nav  clearfix">
         <a class="back-button icon-arrow-left" href="/">Inicio</a>
         <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
@@ -118,14 +79,21 @@
 <main class="content" role="main">
     <article class="post">
         <header class="post-header">
-            <h2>Funciones en Swift</h2>
-        </header>
+      <h1 class="post-title">Funciones en Swift</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-01">01-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+
         <section class="post-content">
             <p>Las funciones son bloques de código aisladas que realizan una tarea especifica, a cada funcion se le daba dar un nombre descriptivo para identificar lo que hace.</p>
 
 <p>Veamos lo siguiente en el Playground que habiamos iniciado anteriormente:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s">&quot;Hello </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span>
   <span class="p">}</span>
 
@@ -148,7 +116,7 @@
 
 <h5 id="veamos-los-ejemplos">Veamos los ejemplos:</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// No tiene valor de retorno</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// No tiene valor de retorno</span>
     <span class="kd">func</span> <span class="nf">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
       <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Good bye </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
     <span class="p">}</span>
@@ -167,9 +135,9 @@
     <span class="p">}</span>
     <span class="n">sayWelcome</span><span class="p">()</span> <span class="c1">// Bienvenido al curso de Android!</span></code></pre></figure>
 
-<h5 id="omitir-nombre-del-parmetro-en-la-llamada-de-la-funcin">Omitir nombre del parámetro en la llamada de la función</h5>
+<h5 id="omitir-nombre-del-parámetro-en-la-llamada-de-la-función">Omitir nombre del parámetro en la llamada de la función</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Escribimos un _ antes del nombre del parámetro</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Escribimos un _ antes del nombre del parámetro</span>
 
     <span class="kd">func</span> <span class="nf">sayWelcome</span><span class="p">(</span><span class="kc">_</span> <span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">){</span>
       <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Welcome </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
@@ -177,9 +145,9 @@
 
     <span class="n">sayWelcome</span><span class="p">(</span><span class="s">&quot;Pedro&quot;</span><span class="p">)</span> <span class="c1">// &quot;Welcome Pedro!&quot;</span></code></pre></figure>
 
-<h5 id="retornar-mltiples-valores">Retornar múltiples valores</h5>
+<h5 id="retornar-múltiples-valores">Retornar múltiples valores</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Esta función nos devolvera 2 enteros y una cadena de texto</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Esta función nos devolvera 2 enteros y una cadena de texto</span>
 
     <span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nv">_min</span> <span class="p">=</span> <span class="n">a</span>
@@ -195,18 +163,44 @@
 
 
         </section>
-        <nav class="PageNavigation">
-  
-    <a class="prev" href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">&laquo; Estructuras de control - Parte 2</a>
-  
-  
-    <a class="next" href="/ios/swift/2017/01/02/clases-y-estructuras.html">Clases y Estructuras &raquo;</a>
-  
-</nav>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li><span>2017-01-03</span>  <a href="/ios/swift/2017/01/03/closures-swift.html">Closures en Swift</a></li>
+         
+             <li><span>2017-01-02</span>  <a href="/ios/swift/2017/01/02/metodos-de-instancia.html">Métodos de Instancia</a></li>
+         
+             <li><span>2017-01-02</span>  <a href="/ios/swift/2017/01/02/clases-y-estructuras.html">Clases y Estructuras</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/funciones-en-swift.html">Funciones en Swift</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">Estructuras de control - Parte 2</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">Estructuras de control - Parte 1</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">Primeros pasos en Swift</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/introduccion-a-ios.html">Introducción a Swift y el desarrollo de iOS</a></li>
+         
+     </ul>
+ </section>
+ 
 
         <footer class="post-footer">
-            <!-- Share links section -->
-            <section class="share">
+         
+    <figure class="author-image">
+        <a class="img" href="/" style="background-image: url(/assets/images/profile-1.jpg)">
+        <span class="hidden">Danny Al's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4> Danny Al </h4>
+        <p> Lorem ipsum </p>
+    </section>
+
+
+         <section class="share">
     <h4>Share this post</h4>
     <a class="icon-twitter" href="http://twitter.com/share?text=Funciones en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/01/funciones-en-swift.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
@@ -221,8 +215,7 @@
         <span class="hidden">Google+</span>
     </a>
 </section>
-            <!-- Disqus comments -->
-            
+         
         </footer>
     </article>
 </main>

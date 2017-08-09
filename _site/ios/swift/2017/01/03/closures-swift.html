@@ -69,46 +69,7 @@
 
 </head>
 <body class="home-template">
-    <style media="screen">
-  h5 {
-    color: #00000 !important;
-    /*text-decoration: underline;*/
-    margin-top: 50px !important;
-  }
-  .img-100 {
-    width: 100%;
-    height: 100%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .img-50 {
-    width: 50%;
-    height: 50%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .PageNavigation {
-    font-size: 14px;
-    display: block;
-    width: auto;
-    overflow: hidden;
-  }
-
-  .PageNavigation a {
-    display: block;
-    width: 50%;
-    float: left;
-    margin: 1em 0;
-    color: #2196F3;
-    font-size: 16px;
-  }
-
-  .PageNavigation .next {
-    text-align: right;
-  }
-</style>
-
-<header class="main-header post-head no-cover">
+    <header class="main-header post-head no-cover">
     <nav class="main-nav  clearfix">
         <a class="back-button icon-arrow-left" href="/">Inicio</a>
         <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
@@ -118,14 +79,21 @@
 <main class="content" role="main">
     <article class="post">
         <header class="post-header">
-            <h2>Closures en Swift</h2>
-        </header>
+      <h1 class="post-title">Closures en Swift</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-03">03-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+
         <section class="post-content">
             <p>Los <em>Closures</em> en Swift son fragmentos con una funcionalidad especifica que puedes usar en tu código. Lo puedes pasar como argumento en una función o usarlo como propiedad de un objeto.</p>
 
 <h5 id="sintaxis">Sintaxis</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Sintaxis Básica</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Sintaxis Básica</span>
     <span class="p">{(</span><span class="n">parametro</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">tipo</span> <span class="k">in</span>
        <span class="c1">// Aquí escribimos la funcionalidad</span>
     <span class="p">}</span>
@@ -137,11 +105,11 @@
 
 <p>Ahora puedes crear un nuevo <strong>playground</strong> y seguir los ejemplos que vamos a realizar.</p>
 
-<h5 id="closure-como-parmetro-en-una-funcin">Closure como parámetro en una función</h5>
+<h5 id="closure-como-parámetro-en-una-función">Closure como parámetro en una función</h5>
 
 <p>En el siguiente ejemplo vamos a utilizar un arreglo de enteros y elevar al cuadrado cada numero. Vamos a usar la funcion <code>map()</code> para crear otro arreglo de los numeros elevados al cuadrado.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
 
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
         <span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
@@ -156,7 +124,7 @@
 
 <p>Entonces transformamos nuestro código:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
         <span class="n">number</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
         <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">number</span>
     <span class="p">})</span>
@@ -175,7 +143,7 @@
 
 <p>Swift nos permite nombrar nuestro primer parámetro en el closure como <strong>$0</strong>, el segundo como <strong>$1</strong> y así sucesivamente.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Ahora lo escribimos de la siguiente forma</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Ahora lo escribimos de la siguiente forma</span>
     <span class="c1">// Debemos tener el mismo resultado</span>
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">})</span></code></pre></figure>
 
@@ -183,7 +151,7 @@
 
 <p>Swift nos da la facilidad que cuando un closure sea el último o único argumento de una función podemos llamarlo fuera de los paréntesis de los parametros.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">(){</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span><span class="p">(){</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span>
 
     <span class="c1">// Si es el unico parametro podemos quitar los paréntesis</span>
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span> <span class="p">}</span></code></pre></figure>
@@ -192,7 +160,7 @@
 
 <p>Vamos a ordenar un arreglo de Enteros de mayor a menor usando <em>closures</em>:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">numbers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">53</span><span class="p">]</span>
 
     <span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span>
         <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="k">in</span>
@@ -208,7 +176,7 @@
 
 <p>Un <em>Closure</em> puede capturar variables o constantes dentro de un contexto circundante, el <em>closure</em> puede hacer referencia o modificar estas variables.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">func</span> <span class="nf">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">func</span> <span class="nf">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nv">runningTotal</span> <span class="p">=</span> <span class="mi">0</span>
         <span class="kd">func</span> <span class="nf">incrementer</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
           <span class="n">runningTotal</span> <span class="o">+=</span> <span class="n">amount</span>
@@ -223,7 +191,7 @@
 
 <p>Ahora veamos un ejemplo de uso de la función <strong>makeIncrementer</strong>:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">incrementByTen</span> <span class="p">=</span> <span class="n">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">incrementByTen</span> <span class="p">=</span> <span class="n">makeIncrementer</span><span class="p">(</span><span class="n">forIncrement</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
 
     <span class="n">incrementByTen</span><span class="p">()</span> <span class="c1">// El resultado es 10</span>
     <span class="n">incrementByTen</span><span class="p">()</span> <span class="c1">// El resultado es 20</span>
@@ -236,16 +204,44 @@
 <p>Declaramos una constante <strong>incrementByTen</strong>, cada vez que la invocamos se incrementa el valor de la variable <strong>runningTotal</strong>. Si declaramos otra constante <strong>incrementBySeven</strong> veremos que esta tiene su propia referencia a la variable <strong>runningTotal</strong> y funcionan independientemente una de la otra.</p>
 
         </section>
-        <nav class="PageNavigation">
-  
-    <a class="prev" href="/ios/swift/2017/01/02/metodos-de-instancia.html">&laquo; Métodos de Instancia</a>
-  
-  
-</nav>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li><span>2017-01-03</span>  <a href="/ios/swift/2017/01/03/closures-swift.html">Closures en Swift</a></li>
+         
+             <li><span>2017-01-02</span>  <a href="/ios/swift/2017/01/02/metodos-de-instancia.html">Métodos de Instancia</a></li>
+         
+             <li><span>2017-01-02</span>  <a href="/ios/swift/2017/01/02/clases-y-estructuras.html">Clases y Estructuras</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/funciones-en-swift.html">Funciones en Swift</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">Estructuras de control - Parte 2</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">Estructuras de control - Parte 1</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">Primeros pasos en Swift</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/introduccion-a-ios.html">Introducción a Swift y el desarrollo de iOS</a></li>
+         
+     </ul>
+ </section>
+ 
 
         <footer class="post-footer">
-            <!-- Share links section -->
-            <section class="share">
+         
+    <figure class="author-image">
+        <a class="img" href="/" style="background-image: url(/assets/images/profile-1.jpg)">
+        <span class="hidden">Danny Al's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4> Danny Al </h4>
+        <p> Lorem ipsum </p>
+    </section>
+
+
+         <section class="share">
     <h4>Share this post</h4>
     <a class="icon-twitter" href="http://twitter.com/share?text=Closures en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/03/closures-swift.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
@@ -260,8 +256,7 @@
         <span class="hidden">Google+</span>
     </a>
 </section>
-            <!-- Disqus comments -->
-            
+         
         </footer>
     </article>
 </main>

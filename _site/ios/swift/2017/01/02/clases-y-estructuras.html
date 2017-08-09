@@ -69,46 +69,7 @@
 
 </head>
 <body class="home-template">
-    <style media="screen">
-  h5 {
-    color: #00000 !important;
-    /*text-decoration: underline;*/
-    margin-top: 50px !important;
-  }
-  .img-100 {
-    width: 100%;
-    height: 100%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .img-50 {
-    width: 50%;
-    height: 50%;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .PageNavigation {
-    font-size: 14px;
-    display: block;
-    width: auto;
-    overflow: hidden;
-  }
-
-  .PageNavigation a {
-    display: block;
-    width: 50%;
-    float: left;
-    margin: 1em 0;
-    color: #2196F3;
-    font-size: 16px;
-  }
-
-  .PageNavigation .next {
-    text-align: right;
-  }
-</style>
-
-<header class="main-header post-head no-cover">
+    <header class="main-header post-head no-cover">
     <nav class="main-nav  clearfix">
         <a class="back-button icon-arrow-left" href="/">Inicio</a>
         <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
@@ -118,8 +79,15 @@
 <main class="content" role="main">
     <article class="post">
         <header class="post-header">
-            <h2>Clases y Estructuras</h2>
-        </header>
+      <h1 class="post-title">Clases y Estructuras</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-02">02-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+
         <section class="post-content">
             <p>Las clases y estructuras son modelos flexibles que definen una variable. Estas tienen algunas caracteristicas en común como:</p>
 
@@ -142,7 +110,7 @@
 
 <h5 id="sintaxis-para-definir-una-clase">Sintaxis para definir una clase</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">class</span> <span class="nc">NombreClase</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>  <span class="kd">class</span> <span class="nc">NombreClase</span> <span class="p">{</span>
       <span class="c1">// Definicion de la clase</span>
   <span class="p">}</span>
   <span class="kd">struct</span> <span class="nc">NombreStructura</span> <span class="p">{</span>
@@ -155,7 +123,7 @@
 
 <p>Veamos la definición completa de una clase y estructura:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">struct</span> <span class="nc">Resolution</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">struct</span> <span class="nc">Resolution</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nv">width</span> <span class="p">=</span> <span class="mi">0</span>
         <span class="kd">var</span> <span class="nv">height</span> <span class="p">=</span> <span class="mi">0</span>
     <span class="p">}</span>
@@ -169,7 +137,7 @@
 
 <p>Ahora creamos la instancias de nuestra clase y estructura, luego accedemos a sus propiedades:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">var</span> <span class="nv">someResolution</span> <span class="p">=</span> <span class="n">Resolution</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">var</span> <span class="nv">someResolution</span> <span class="p">=</span> <span class="n">Resolution</span><span class="p">()</span>
 
     <span class="kd">var</span> <span class="nv">someVideoMode</span> <span class="p">=</span> <span class="n">VideoMode</span><span class="p">()</span>
 
@@ -180,7 +148,7 @@
 
 <p>Podemos actualizar las propiedades de nuestras instancias:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">height</span> <span class="p">=</span> <span class="mi">1080</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">height</span> <span class="p">=</span> <span class="mi">1080</span>
     <span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span> <span class="p">=</span> <span class="mi">1920</span>
     <span class="n">someVideoMode</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;HD&quot;</span>
 
@@ -199,18 +167,44 @@
 
 
         </section>
-        <nav class="PageNavigation">
-  
-    <a class="prev" href="/ios/swift/2017/01/01/funciones-en-swift.html">&laquo; Funciones en Swift</a>
-  
-  
-    <a class="next" href="/ios/swift/2017/01/02/metodos-de-instancia.html">Métodos de Instancia &raquo;</a>
-  
-</nav>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li><span>2017-01-03</span>  <a href="/ios/swift/2017/01/03/closures-swift.html">Closures en Swift</a></li>
+         
+             <li><span>2017-01-02</span>  <a href="/ios/swift/2017/01/02/metodos-de-instancia.html">Métodos de Instancia</a></li>
+         
+             <li><span>2017-01-02</span>  <a href="/ios/swift/2017/01/02/clases-y-estructuras.html">Clases y Estructuras</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/funciones-en-swift.html">Funciones en Swift</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">Estructuras de control - Parte 2</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">Estructuras de control - Parte 1</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">Primeros pasos en Swift</a></li>
+         
+             <li><span>2017-01-01</span>  <a href="/ios/swift/2017/01/01/introduccion-a-ios.html">Introducción a Swift y el desarrollo de iOS</a></li>
+         
+     </ul>
+ </section>
+ 
 
         <footer class="post-footer">
-            <!-- Share links section -->
-            <section class="share">
+         
+    <figure class="author-image">
+        <a class="img" href="/" style="background-image: url(/assets/images/profile-1.jpg)">
+        <span class="hidden">Danny Al's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4> Danny Al </h4>
+        <p> Lorem ipsum </p>
+    </section>
+
+
+         <section class="share">
     <h4>Share this post</h4>
     <a class="icon-twitter" href="http://twitter.com/share?text=Clases y Estructuras&amp;url=https://cursodeios.github.io/ios/swift/2017/01/02/clases-y-estructuras.html"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
@@ -225,8 +219,7 @@
         <span class="hidden">Google+</span>
     </a>
 </section>
-            <!-- Disqus comments -->
-            
+         
         </footer>
     </article>
 </main>

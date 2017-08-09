@@ -3,6 +3,7 @@ layout: post
 title:  "Primeros pasos en Swift"
 date:   2017-01-01 10:20:00
 categories: iOS Swift
+archive: true
 ---
 
 Para comenzar a aprender Swift vamos a utilizar un **Playground** que es una herramienta genial creada por Apple que ya está incluida en XCode.
