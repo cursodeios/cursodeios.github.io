@@ -14,5 +14,5 @@ gems: [jekyll-paginate, jekyll-sitemap, jekyll-paginate]
 # Details for the RSS feed generator
 url:            'https://cursodeios.github.io'
 author: 'Danny Al'
-bio: 'Lorem ipsum'
+bio: 'Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.'
 profile-img: '/assets/images/profile-1.jpg'

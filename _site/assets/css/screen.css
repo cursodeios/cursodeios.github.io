@@ -486,6 +486,8 @@ margin on the iframe, cause it breaks stuff. */
 
 .main-header .inner {
     width: 80%;
+    background: #000;
+    opacity: 0.6;
 }
 
 .main-nav {
@@ -725,9 +727,9 @@ margin on the iframe, cause it breaks stuff. */
     position: relative;
     width: 80%;
     max-width: 710px;
-    margin: 4rem auto;
+    margin: 1rem auto;
     padding-bottom: 2rem;
-    border-bottom: #EBF2F6 1px solid;
+    /*border-bottom: #EBF2F6 1px solid;*/
     word-break: break-word;
     hyphens: auto;
 }
@@ -736,7 +738,7 @@ margin on the iframe, cause it breaks stuff. */
    just for the lolz and stylepoints. */
 .post:after {
     display: block;
-    content: "";
+    /*content: "";*/
     width: 7px;
     height: 7px;
     border: #E7EEF2 1px solid;
