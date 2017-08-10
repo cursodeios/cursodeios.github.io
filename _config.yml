@@ -1,18 +1,17 @@
 name: Curso de iOS en Español
 description: Curso completo de desarrollo iOS en Español
 meta_description: "Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas."
-
+# Configuration
 markdown: kramdown
 highlighter: pygments
 logo: false
 paginate: 100
-baseurl: /
+baseurl: '/'
 domain_name: 'https://cursodeios.github.io'
 #google_analytics: 'UA-XXXXXXXX-X'
 gems: [jekyll-paginate, jekyll-sitemap, jekyll-paginate]
-
 # Details for the RSS feed generator
-url:            'https://cursodeios.github.io'
+url: 'https://cursodeios.github.io'
 author: 'Danny Al'
 bio: 'Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.'
 profile-img: '/assets/images/profile-1.jpg'

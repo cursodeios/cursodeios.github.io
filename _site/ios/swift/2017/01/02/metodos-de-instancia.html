@@ -91,7 +91,7 @@
         <section class="post-content">
             <p>Los métodos de instancia son funciones que pertenecen a una instacia de <strong>clase</strong> o <strong>estructura</strong>. Deben ser declaradas dentro de la clase de la misma forma que ya aprendimos a declarar funciones.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">class</span> <span class="nc">Counter</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">class</span> <span class="nc">Counter</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nv">count</span> <span class="p">=</span> <span class="mi">0</span>
 
       <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
@@ -113,7 +113,7 @@
   <li><code>reset()</code> reestablece el contador a su valor inicial.</li>
 </ol>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="kd">let</span> <span class="nv">counter</span> <span class="p">=</span> <span class="n">Counter</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">let</span> <span class="nv">counter</span> <span class="p">=</span> <span class="n">Counter</span><span class="p">()</span>
 
     <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">()</span>
     <span class="bp">print</span><span class="p">(</span><span class="n">counter</span><span class="p">.</span><span class="bp">count</span><span class="p">)</span> <span class="c1">// 1</span>
@@ -128,7 +128,7 @@
 
 <p>Cada instancia de una clase o estructura tiene una propiedad implicita llamada <strong>self</strong> que hace referencia a si misma, con ella podemos llamar propiedades y métodos.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span></span>    <span class="c1">// Podriamos reescribir el método increment() de esta forma:</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Podriamos reescribir el método increment() de esta forma:</span>
     <span class="kd">func</span> <span class="nf">increment</span><span class="p">()</span> <span class="p">{</span>
         <span class="kc">self</span><span class="p">.</span><span class="bp">count</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="p">}</span></code></pre></figure>
