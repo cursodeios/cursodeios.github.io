@@ -9,13 +9,15 @@
       });
     </script>
     </script>
+    <meta http-equiv="Cache-control" content="public" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     
@@ -25,6 +27,7 @@
   <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
   <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
 
+  <title>Estructuras de control - Parte 2</title>
   <meta name="twitter:title" content="Estructuras de control - Parte 2">
   <meta content="Estructuras de control - Parte 2" property="og:title">
   <meta content="article" property="og:type">
@@ -80,20 +83,20 @@
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="c1">//- Arreglo de String</span>
 
-  <span class="kd">let</span> <span class="nv">persons</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Juan&quot;</span><span class="p">,</span> <span class="s">&quot;Pedro&quot;</span><span class="p">,</span> <span class="s">&quot;Carlos&quot;</span><span class="p">]</span>
+  <span class="k">let</span> <span class="nv">persons</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Juan"</span><span class="p">,</span> <span class="s">"Pedro"</span><span class="p">,</span> <span class="s">"Carlos"</span><span class="p">]</span>
 
   <span class="k">for</span> <span class="n">person</span> <span class="k">in</span> <span class="n">persons</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hola </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
   <span class="p">}</span>
   <span class="c1">// Hola Juan</span>
   <span class="c1">// Hola Pedro</span>
   <span class="c1">// Hola Carlos</span>
 
   <span class="c1">//- Diccionario</span>
-  <span class="kd">let</span> <span class="nv">numberOfLegs</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Araña&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&quot;Hormiga&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&quot;Vaca&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
+  <span class="k">let</span> <span class="nv">numberOfLegs</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Araña"</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s">"Hormiga"</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"Vaca"</span><span class="p">:</span> <span class="mi">4</span><span class="p">]</span>
 
   <span class="k">for</span> <span class="p">(</span><span class="n">animalName</span><span class="p">,</span> <span class="n">legs</span><span class="p">)</span> <span class="k">in</span> <span class="n">numberOfLegs</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La </span><span class="si">\(</span><span class="n">animalName</span><span class="si">)</span><span class="s"> tiene </span><span class="si">\(</span><span class="n">legs</span><span class="si">)</span><span class="s"> patas&quot;</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"La </span><span class="se">\(</span><span class="n">animalName</span><span class="se">)</span><span class="s"> tiene </span><span class="se">\(</span><span class="n">legs</span><span class="se">)</span><span class="s"> patas"</span><span class="p">)</span>
   <span class="p">}</span>
 
   <span class="c1">// La Vaca tiene 4 patas</span>
@@ -103,31 +106,31 @@
   <span class="c1">//- Rango de numeros</span>
 
   <span class="c1">// Imprime la tabla de multiplicar del 5</span>
-  <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">12</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">index</span><span class="si">)</span><span class="s"> x 5 = </span><span class="si">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">12</span> <span class="p">{</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">index</span><span class="se">)</span><span class="s"> x 5 = </span><span class="se">\(</span><span class="n">index</span> <span class="o">*</span> <span class="mi">5</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
   <span class="p">}</span></code></pre></figure>
 
 <h5 id="ciclo-while">Ciclo While</h5>
 
 <p>Evalua una condicion para ejecutar un bloque de codigo, mientras sea <strong>true</strong> y se detiene cuando se vuelve <strong>false</strong>.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">var</span> <span class="nv">year</span> <span class="p">=</span> <span class="mi">2000</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="k">var</span> <span class="nv">year</span> <span class="o">=</span> <span class="mi">2000</span>
 
   <span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="mi">2010</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Feliz año </span><span class="si">\(</span><span class="n">year</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-      <span class="c1">// Incrementamos el valor de la variable &quot;year&quot;</span>
-      <span class="n">year</span> <span class="p">=</span> <span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Feliz año </span><span class="se">\(</span><span class="n">year</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+      <span class="c1">// Incrementamos el valor de la variable "year"</span>
+      <span class="n">year</span> <span class="o">=</span> <span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
   <span class="p">}</span></code></pre></figure>
 
 <h5 id="ciclo-repeat-while">Ciclo Repeat while</h5>
 
 <p>Igualmente evalua un condicion pero que ejecuta el bloque de codigo antes de la condicion.</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">var</span> <span class="nv">year</span> <span class="p">=</span> <span class="mi">1990</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="k">var</span> <span class="nv">year</span> <span class="o">=</span> <span class="mi">1990</span>
 
-    <span class="n">repeat</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Feliz año </span><span class="si">\(</span><span class="n">year</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-        <span class="n">year</span> <span class="p">=</span> <span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">repeat</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Feliz año </span><span class="se">\(</span><span class="n">year</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">year</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="p">}</span> <span class="k">while</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="mi">2000</span></code></pre></figure>
 
 
@@ -164,8 +167,8 @@
         <span class="hidden">Danny Al's Picture</span></a>
     </figure>
     <section class="author">
-        <h4> Danny Al </h4>
-        <p> Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida. </p>
+        <h4>Danny Al</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
     </section>
 
 
@@ -191,12 +194,12 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Curso de iOS en Español</a> &bull; 2017        
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
       </section>
     </footer>
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

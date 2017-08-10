@@ -9,13 +9,15 @@
       });
     </script>
     </script>
+    <meta http-equiv="Cache-control" content="public" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     
@@ -25,6 +27,7 @@
   <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
   <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
 
+  <title>Funciones en Swift</title>
   <meta name="twitter:title" content="Funciones en Swift">
   <meta content="Funciones en Swift" property="og:title">
   <meta content="article" property="og:type">
@@ -76,73 +79,73 @@
 
 <p>Veamos lo siguiente en el Playground que habiamos iniciado anteriormente:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s">&quot;Hello </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span><span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"Hello </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">!"</span>
   <span class="p">}</span>
 
-  <span class="n">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">)</span> <span class="c1">// Hello John!</span>
-  <span class="n">sayHello</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;Anna&quot;</span><span class="p">)</span> <span class="c1">// Hello Anna!</span></code></pre></figure>
+  <span class="nf">sayHello</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"John"</span><span class="p">)</span> <span class="c1">// Hello John!</span>
+  <span class="nf">sayHello</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Anna"</span><span class="p">)</span> <span class="c1">// Hello Anna!</span></code></pre></figure>
 
 <p>En este caso tenemos una funcion que recibe el nombre de una persona y devuelve una saludo como cadena de texto.</p>
 
 <p>La estructura de una funcion debe ser:</p>
 
-<p><code>func nombreFuncion(nombreParametro: tipo) -&gt; tipo</code></p>
+<p><code class="highlighter-rouge">func nombreFuncion(nombreParametro: tipo) -&gt; tipo</code></p>
 
 <p>Tambien puede ser que una funcion no devuelva ningun dato:</p>
 
-<p><code>func nombreFuncion(nombreParametro: tipo)</code></p>
+<p><code class="highlighter-rouge">func nombreFuncion(nombreParametro: tipo)</code></p>
 
 <p>o quizas no reciba ningun parametro:</p>
 
-<p><code>func nombreFuncion()</code></p>
+<p><code class="highlighter-rouge">func nombreFuncion()</code></p>
 
 <h5 id="veamos-los-ejemplos">Veamos los ejemplos:</h5>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// No tiene valor de retorno</span>
-    <span class="kd">func</span> <span class="nf">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Good bye </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
+    <span class="kd">func</span> <span class="nf">sayGoodBye</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Good bye </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
     <span class="p">}</span>
-    <span class="n">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">)</span> <span class="c1">// Good bye Alex!</span>
-    <span class="n">sayGoodBye</span><span class="p">(</span><span class="n">person</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">)</span> <span class="c1">// Good bye Jonh!</span>
+    <span class="nf">sayGoodBye</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"Alex"</span><span class="p">)</span> <span class="c1">// Good bye Alex!</span>
+    <span class="nf">sayGoodBye</span><span class="p">(</span><span class="nv">person</span><span class="p">:</span> <span class="s">"John"</span><span class="p">)</span> <span class="c1">// Good bye Jonh!</span>
 
     <span class="c1">// Recibe 2 parametros y devuelve un Entero</span>
-    <span class="kd">func</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">sum</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
       <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="p">}</span>
-    <span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// 110</span>
+    <span class="nf">sum</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">// 110</span>
 
     <span class="c1">// No recibe parametros y no tiene valor de retorno</span>
     <span class="kd">func</span> <span class="nf">sayWelcome</span><span class="p">(){</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Bienvenido al curso de Android!&quot;</span><span class="p">)</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Bienvenido al curso de Android!"</span><span class="p">)</span>
     <span class="p">}</span>
-    <span class="n">sayWelcome</span><span class="p">()</span> <span class="c1">// Bienvenido al curso de Android!</span></code></pre></figure>
+    <span class="nf">sayWelcome</span><span class="p">()</span> <span class="c1">// Bienvenido al curso de Android!</span></code></pre></figure>
 
 <h5 id="omitir-nombre-del-parmetro-en-la-llamada-de-la-funcin">Omitir nombre del parámetro en la llamada de la función</h5>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Escribimos un _ antes del nombre del parámetro</span>
 
-    <span class="kd">func</span> <span class="nf">sayWelcome</span><span class="p">(</span><span class="kc">_</span> <span class="n">person</span><span class="p">:</span> <span class="nb">String</span><span class="p">){</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Welcome </span><span class="si">\(</span><span class="n">person</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
+    <span class="kd">func</span> <span class="nf">sayWelcome</span><span class="p">(</span><span class="n">_</span> <span class="nv">person</span><span class="p">:</span> <span class="kt">String</span><span class="p">){</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Welcome </span><span class="se">\(</span><span class="n">person</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="n">sayWelcome</span><span class="p">(</span><span class="s">&quot;Pedro&quot;</span><span class="p">)</span> <span class="c1">// &quot;Welcome Pedro!&quot;</span></code></pre></figure>
+    <span class="nf">sayWelcome</span><span class="p">(</span><span class="s">"Pedro"</span><span class="p">)</span> <span class="c1">// "Welcome Pedro!"</span></code></pre></figure>
 
 <h5 id="retornar-mltiples-valores">Retornar múltiples valores</h5>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// Esta función nos devolvera 2 enteros y una cadena de texto</span>
 
-    <span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nv">_min</span> <span class="p">=</span> <span class="n">a</span>
-        <span class="kd">var</span> <span class="nv">_max</span> <span class="p">=</span> <span class="n">b</span>
+    <span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span><span class="o">-&gt;</span> <span class="p">(</span><span class="nv">min</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">max</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">msg</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">_min</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="k">var</span> <span class="nv">_max</span> <span class="o">=</span> <span class="n">b</span>
         <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="p">{</span>
-            <span class="n">_min</span> <span class="p">=</span> <span class="n">b</span>
-            <span class="n">_max</span> <span class="p">=</span> <span class="n">a</span>
+            <span class="n">_min</span> <span class="o">=</span> <span class="n">b</span>
+            <span class="n">_max</span> <span class="o">=</span> <span class="n">a</span>
         <span class="p">}</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">_min</span><span class="p">,</span> <span class="n">_max</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">\(</span><span class="n">_max</span><span class="si">)</span><span class="s"> es mayor que </span><span class="si">\(</span><span class="n">_min</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="nf">return</span> <span class="p">(</span><span class="n">_min</span><span class="p">,</span> <span class="n">_max</span><span class="p">,</span> <span class="s">"</span><span class="se">\(</span><span class="n">_max</span><span class="se">)</span><span class="s"> es mayor que </span><span class="se">\(</span><span class="n">_min</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="n">minMax</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">// (11, 20, &quot;20 es mayor que 11&quot;)</span></code></pre></figure>
+    <span class="nf">minMax</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">b</span><span class="p">:</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">// (11, 20, "20 es mayor que 11")</span></code></pre></figure>
 
 
         </section>
@@ -178,8 +181,8 @@
         <span class="hidden">Danny Al's Picture</span></a>
     </figure>
     <section class="author">
-        <h4> Danny Al </h4>
-        <p> Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida. </p>
+        <h4>Danny Al</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
     </section>
 
 
@@ -205,12 +208,12 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Curso de iOS en Español</a> &bull; 2017        
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
       </section>
     </footer>
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

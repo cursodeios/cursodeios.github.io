@@ -9,13 +9,15 @@
       });
     </script>
     </script>
+    <meta http-equiv="Cache-control" content="public" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     
@@ -25,6 +27,7 @@
   <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
   <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
 
+  <title>Estructuras de control - Parte 1</title>
   <meta name="twitter:title" content="Estructuras de control - Parte 1">
   <meta content="Estructuras de control - Parte 1" property="og:title">
   <meta content="article" property="og:type">
@@ -79,34 +82,34 @@
 <p>Son muy utiles para ejecutar diferentes partes de codigo basados en una condicion, veamos el ejemplo:</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">      <span class="c1">// If</span>
-      <span class="kd">var</span> <span class="nv">temperature</span> <span class="p">=</span> <span class="mi">10</span>
+      <span class="k">var</span> <span class="nv">temperature</span> <span class="o">=</span> <span class="mi">10</span>
 
       <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">15</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace frio&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hace frio"</span><span class="p">)</span>
       <span class="p">}</span>
 
       <span class="c1">// If ... else ...</span>
 
       <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace frio&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hace frio"</span><span class="p">)</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace calor&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hace calor"</span><span class="p">)</span>
       <span class="p">}</span>
 
       <span class="c1">// Multiples condiciones</span>
 
-      <span class="n">temperature</span> <span class="p">=</span> <span class="mi">16</span>
+      <span class="n">temperature</span> <span class="o">=</span> <span class="mi">16</span>
 
       <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace mucho frio&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hace mucho frio"</span><span class="p">)</span>
       <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace frio&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hace frio"</span><span class="p">)</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hace calor&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Hace calor"</span><span class="p">)</span>
       <span class="p">}</span>
 
       <span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;=</span> <span class="mi">15</span> <span class="o">&amp;&amp;</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El clima es agradable&quot;</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"El clima es agradable"</span><span class="p">)</span>
       <span class="p">}</span></code></pre></figure>
 
 <p>El switch compara un valor con varias sentencias o patrones y luego ejecuta el codigo correspondiente.</p>
@@ -114,22 +117,22 @@
 <p>Veamos el siguiente ejemplo:</p>
 
 <figure class="highlight"><pre><code class="language-swift" data-lang="swift">    
-    <span class="kd">let</span> <span class="nv">myCharacter</span> <span class="p">=</span> <span class="s">&quot;z&quot;</span>
+    <span class="k">let</span> <span class="nv">myCharacter</span> <span class="o">=</span> <span class="s">"z"</span>
 
     <span class="k">switch</span> <span class="n">myCharacter</span> <span class="p">{</span>
 
-      <span class="k">case</span> <span class="s">&quot;a&quot;</span><span class="p">:</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La primer letra del abecedario&quot;</span><span class="p">)</span>
+      <span class="k">case</span> <span class="s">"a"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"La primer letra del abecedario"</span><span class="p">)</span>
 
-      <span class="k">case</span> <span class="s">&quot;z&quot;</span><span class="p">:</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La ultima letra del abecedario&quot;</span><span class="p">)</span>
+      <span class="k">case</span> <span class="s">"z"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"La ultima letra del abecedario"</span><span class="p">)</span>
 
-      <span class="k">case</span> <span class="s">&quot;1&quot;</span><span class="p">:</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Esto es un numero&quot;</span><span class="p">)</span>
+      <span class="k">case</span> <span class="s">"1"</span><span class="p">:</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"Esto es un numero"</span><span class="p">)</span>
 
       <span class="k">default</span><span class="p">:</span>
       <span class="c1">// Se ejecuta si no cumple ninguno de los anteriores</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;No identificado&quot;</span><span class="p">)</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"No identificado"</span><span class="p">)</span>
     <span class="p">}</span></code></pre></figure>
 
 
@@ -166,8 +169,8 @@
         <span class="hidden">Danny Al's Picture</span></a>
     </figure>
     <section class="author">
-        <h4> Danny Al </h4>
-        <p> Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida. </p>
+        <h4>Danny Al</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
     </section>
 
 
@@ -193,12 +196,12 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Curso de iOS en Español</a> &bull; 2017        
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
       </section>
     </footer>
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

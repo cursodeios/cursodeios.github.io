@@ -9,13 +9,15 @@
       });
     </script>
     </script>
+    <meta http-equiv="Cache-control" content="public" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     
@@ -25,6 +27,7 @@
   <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
   <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
 
+  <title>Clases y Estructuras</title>
   <meta name="twitter:title" content="Clases y Estructuras">
   <meta content="Clases y Estructuras" property="og:title">
   <meta content="article" property="og:type">
@@ -93,10 +96,10 @@
 
 <h5 id="sintaxis-para-definir-una-clase">Sintaxis para definir una clase</h5>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">class</span> <span class="nc">NombreClase</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">class</span> <span class="kt">NombreClase</span> <span class="p">{</span>
       <span class="c1">// Definicion de la clase</span>
   <span class="p">}</span>
-  <span class="kd">struct</span> <span class="nc">NombreStructura</span> <span class="p">{</span>
+  <span class="kd">struct</span> <span class="kt">NombreStructura</span> <span class="p">{</span>
       <span class="c1">// Definicion de la estructura</span>
   <span class="p">}</span></code></pre></figure>
 
@@ -106,47 +109,47 @@
 
 <p>Veamos la definición completa de una clase y estructura:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">struct</span> <span class="nc">Resolution</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nv">width</span> <span class="p">=</span> <span class="mi">0</span>
-        <span class="kd">var</span> <span class="nv">height</span> <span class="p">=</span> <span class="mi">0</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">struct</span> <span class="kt">Resolution</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">var</span> <span class="nv">height</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="p">}</span>
 
-    <span class="kd">class</span> <span class="nc">VideoMode</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nv">resolution</span> <span class="p">=</span> <span class="n">Resolution</span><span class="p">()</span>
-        <span class="kd">var</span> <span class="nv">interlaced</span> <span class="p">=</span> <span class="kc">false</span>
-        <span class="kd">var</span> <span class="nv">frameRate</span> <span class="p">=</span> <span class="mf">0.0</span>
-        <span class="kd">var</span> <span class="nv">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+    <span class="kd">class</span> <span class="kt">VideoMode</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">resolution</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">()</span>
+        <span class="k">var</span> <span class="nv">interlaced</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">var</span> <span class="nv">frameRate</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
     <span class="p">}</span></code></pre></figure>
 
 <p>Ahora creamos la instancias de nuestra clase y estructura, luego accedemos a sus propiedades:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">var</span> <span class="nv">someResolution</span> <span class="p">=</span> <span class="n">Resolution</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="k">var</span> <span class="nv">someResolution</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">()</span>
 
-    <span class="kd">var</span> <span class="nv">someVideoMode</span> <span class="p">=</span> <span class="n">VideoMode</span><span class="p">()</span>
+    <span class="k">var</span> <span class="nv">someVideoMode</span> <span class="o">=</span> <span class="kt">VideoMode</span><span class="p">()</span>
 
     <span class="c1">// Accedemos a las propiedades de nuestras instancias</span>
 
-    <span class="bp">print</span><span class="p">(</span><span class="n">someResolution</span><span class="p">.</span><span class="n">height</span><span class="p">)</span> <span class="c1">// 0</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>  <span class="c1">// 0</span></code></pre></figure>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someResolution</span><span class="o">.</span><span class="n">height</span><span class="p">)</span> <span class="c1">// 0</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>  <span class="c1">// 0</span></code></pre></figure>
 
 <p>Podemos actualizar las propiedades de nuestras instancias:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">height</span> <span class="p">=</span> <span class="mi">1080</span>
-    <span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span> <span class="p">=</span> <span class="mi">1920</span>
-    <span class="n">someVideoMode</span><span class="p">.</span><span class="n">name</span> <span class="p">=</span> <span class="s">&quot;HD&quot;</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mi">1080</span>
+    <span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">1920</span>
+    <span class="n">someVideoMode</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"HD"</span>
 
-    <span class="bp">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">height</span><span class="p">)</span> <span class="c1">// 1080</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="p">.</span><span class="n">resolution</span><span class="p">.</span><span class="n">width</span><span class="p">)</span>  <span class="c1">// 1920</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="p">.</span><span class="n">name</span><span class="p">!)</span>  <span class="c1">// &quot;HD&quot;</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">height</span><span class="p">)</span> <span class="c1">// 1080</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="o">.</span><span class="n">resolution</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>  <span class="c1">// 1920</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someVideoMode</span><span class="o">.</span><span class="n">name</span><span class="o">!</span><span class="p">)</span>  <span class="c1">// "HD"</span>
 
-    <span class="n">someResolution</span><span class="p">.</span><span class="n">width</span> <span class="p">=</span> <span class="mi">640</span>
-    <span class="n">someResolution</span><span class="p">.</span><span class="n">width</span> <span class="p">=</span> <span class="mi">480</span>
+    <span class="n">someResolution</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">640</span>
+    <span class="n">someResolution</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mi">480</span>
 
-    <span class="bp">print</span><span class="p">(</span><span class="n">someResolution</span><span class="p">.</span><span class="n">width</span><span class="p">)</span> <span class="c1">// 640</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">someResolution</span><span class="p">.</span><span class="n">height</span><span class="p">)</span>  <span class="c1">// 480</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someResolution</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="c1">// 640</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">someResolution</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>  <span class="c1">// 480</span>
 
     <span class="c1">// Tambien podemos inicializar una estructura de esta manera:</span>
-    <span class="n">someResolution</span> <span class="p">=</span> <span class="n">Resolution</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span></code></pre></figure>
+    <span class="n">someResolution</span> <span class="o">=</span> <span class="kt">Resolution</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">640</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">480</span><span class="p">)</span></code></pre></figure>
 
 
         </section>
@@ -182,8 +185,8 @@
         <span class="hidden">Danny Al's Picture</span></a>
     </figure>
     <section class="author">
-        <h4> Danny Al </h4>
-        <p> Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida. </p>
+        <h4>Danny Al</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
     </section>
 
 
@@ -209,12 +212,12 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Curso de iOS en Español</a> &bull; 2017        
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
       </section>
     </footer>
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

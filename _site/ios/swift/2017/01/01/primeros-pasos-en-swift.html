@@ -9,13 +9,15 @@
       });
     </script>
     </script>
+    <meta http-equiv="Cache-control" content="public" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
     
@@ -25,6 +27,7 @@
   <meta property="og:image" content="http://localhost:4000/assets/images/site-img.png" />
   <meta name="twitter:image:src" content="http://localhost:4000/assets/images/site-img.png">
 
+  <title>Primeros pasos en Swift</title>
   <meta name="twitter:title" content="Primeros pasos en Swift">
   <meta content="Primeros pasos en Swift" property="og:title">
   <meta content="article" property="og:type">
@@ -84,12 +87,12 @@
 
 <p>Un Playground nos permite escribir codigo y ejecutar inmediatamente para ver el resultado, borremos el contenido y escribamos lo siguiente:</p>
 
-<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">import</span> <span class="nc">UIKit</span>
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">  <span class="kd">import</span> <span class="kt">UIKit</span>
 
-  <span class="kd">var</span> <span class="nv">title</span> <span class="p">=</span> <span class="s">&quot;Bienvenido al curso de iOS&quot;</span>
-  <span class="bp">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code></pre></figure>
+  <span class="k">var</span> <span class="nv">title</span> <span class="o">=</span> <span class="s">"Bienvenido al curso de iOS"</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code></pre></figure>
 
-<p>Ahora podemos ver al lado derecho la <em>barra de resultado</em> y en la parte inferior el <em>Área de DEBUG</em> para ver la ejecución de nuestro código. Si no pueden ver la barra en la parte inferior podemos ir al menu de XCode y seleccionar <code>View\Debug Area\Show Debug Area</code></p>
+<p>Ahora podemos ver al lado derecho la <em>barra de resultado</em> y en la parte inferior el <em>Área de DEBUG</em> para ver la ejecución de nuestro código. Si no pueden ver la barra en la parte inferior podemos ir al menu de XCode y seleccionar <code class="highlighter-rouge">View\Debug Area\Show Debug Area</code></p>
 
 <p><img src="/assets/images/post/img-2-3.png" alt="Xcode Playground" class="img-100" /></p>
 
@@ -99,33 +102,33 @@
     <span class="c1">// Una variable se declara con la palabra reservada var</span>
     <span class="c1">// Una constante con la palable reservada let</span>
 
-    <span class="kd">var</span> <span class="nv">a</span> <span class="p">=</span> <span class="mi">10</span>
-    <span class="kd">let</span> <span class="nv">b</span> <span class="p">=</span> <span class="mi">100</span>
+    <span class="k">var</span> <span class="nv">a</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">let</span> <span class="nv">b</span> <span class="o">=</span> <span class="mi">100</span>
 
-    <span class="bp">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
 
     <span class="c1">// Tambien podemos escribir especificando el tipo de datos</span>
-    <span class="kd">var</span> <span class="nv">c</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">100</span>
-    <span class="kd">let</span> <span class="nv">pi</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.14159</span>
+    <span class="k">var</span> <span class="nv">c</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">let</span> <span class="nv">pi</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">3.14159</span>
     <span class="c1">// No podemos cambiar el valor de una constante</span>
     <span class="c1">// pi = 2.10 // nos daria un error</span>
     <span class="c1">// Actualizar el valor de una variable</span>
-    <span class="n">c</span> <span class="p">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-    <span class="bp">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
     <span class="c1">// Valores booleanos</span>
-    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="kc">false</span>
-    <span class="kd">var</span> <span class="nv">z</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span>  <span class="kc">true</span>
-    <span class="k">if</span> <span class="n">z</span> <span class="p">==</span> <span class="kc">true</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;z es verdadero&quot;</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">x</span> <span class="o">=</span> <span class="kc">false</span>
+    <span class="k">var</span> <span class="nv">z</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span>  <span class="kc">true</span>
+    <span class="k">if</span> <span class="n">z</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">{</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"z es verdadero"</span><span class="p">)</span>
     <span class="p">}</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="p">==</span> <span class="kc">false</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="kc">false</span> <span class="p">{</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"x es falso"</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="c1">// Tambien lo podemos escribir de esta manera</span>
     <span class="k">if</span> <span class="o">!</span><span class="n">x</span> <span class="p">{</span>
-      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;x es falso&quot;</span><span class="p">)</span>
+      <span class="nf">print</span><span class="p">(</span><span class="s">"x es falso"</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="c1">// El signo ! es un operador lógico de negación</span></code></pre></figure>
 
@@ -166,8 +169,8 @@
         <span class="hidden">Danny Al's Picture</span></a>
     </figure>
     <section class="author">
-        <h4> Danny Al </h4>
-        <p> Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida. </p>
+        <h4>Danny Al</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
     </section>
 
 
@@ -193,12 +196,12 @@
 
     <footer class="site-footer clearfix">
       <section class="copyright">
-        <a href="/">Curso de iOS en Español</a> &bull; 2017        
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
       </section>
     </footer>
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
