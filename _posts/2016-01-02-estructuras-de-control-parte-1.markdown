@@ -6,7 +6,9 @@ categories: iOS Swift
 archive: true
 ---
 
-##### Condicionales
+Permiten modificar el flujo de ejecución de nuestro código. Esta pueden ser secuenciales o iterativas.
+
+##### Secuenciales (IF, ELSE, SWITCH)
 
 Son muy utiles para ejecutar diferentes partes de codigo basados en una condicion, veamos el ejemplo:
 
@@ -45,8 +47,6 @@ Son muy utiles para ejecutar diferentes partes de codigo basados en una condicio
 
 {% endhighlight %}
 
-
-##### Switch
 
 El switch compara un valor con varias sentencias o patrones y luego ejecuta el codigo correspondiente.
 

@@ -6,6 +6,8 @@ categories: iOS Swift
 archive: true
 ---
 
+En el post anterior estudiamos las estructuras de control secuenciales, ahora vamos a ver como funcionan las estructuras de control iterativas en Swift.
+
 ##### Ciclo For-In
 
 Itera sobre una secuencia que podria ser un arreglo, rango de numeros o los caracteres de una cadena.
