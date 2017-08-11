@@ -5,8 +5,8 @@
     <description>Curso completo de desarrollo iOS en Español</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Aug 2017 17:42:47 -0600</pubDate>
-    <lastBuildDate>Thu, 10 Aug 2017 17:42:47 -0600</lastBuildDate>
+    <pubDate>Fri, 11 Aug 2017 10:24:45 -0600</pubDate>
+    <lastBuildDate>Fri, 11 Aug 2017 10:24:45 -0600</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
     
       <item>
@@ -27,7 +27,7 @@
 
 &lt;p&gt;Ahora puedes crear un nuevo &lt;strong&gt;playground&lt;/strong&gt; y seguir los ejemplos que vamos a realizar.&lt;/p&gt;
 
-&lt;h5 id=&quot;closure-como-parmetro-en-una-funcin&quot;&gt;Closure como parámetro en una función&lt;/h5&gt;
+&lt;h5 id=&quot;closure-como-parámetro-en-una-función&quot;&gt;Closure como parámetro en una función&lt;/h5&gt;
 
 &lt;p&gt;En el siguiente ejemplo vamos a utilizar un arreglo de enteros y elevar al cuadrado cada numero. Vamos a usar la funcion &lt;code class=&quot;highlighter-rouge&quot;&gt;map()&lt;/code&gt; para crear otro arreglo de los numeros elevados al cuadrado.&lt;/p&gt;
 
@@ -332,7 +332,7 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;nf&quot;&gt;sayWelcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Bienvenido al curso de Android!&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h5 id=&quot;omitir-nombre-del-parmetro-en-la-llamada-de-la-funcin&quot;&gt;Omitir nombre del parámetro en la llamada de la función&lt;/h5&gt;
+&lt;h5 id=&quot;omitir-nombre-del-parámetro-en-la-llamada-de-la-función&quot;&gt;Omitir nombre del parámetro en la llamada de la función&lt;/h5&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;    &lt;span class=&quot;c1&quot;&gt;// Escribimos un _ antes del nombre del parámetro&lt;/span&gt;
 
@@ -342,7 +342,7 @@
 
     &lt;span class=&quot;nf&quot;&gt;sayWelcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Pedro&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;Welcome Pedro!&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h5 id=&quot;retornar-mltiples-valores&quot;&gt;Retornar múltiples valores&lt;/h5&gt;
+&lt;h5 id=&quot;retornar-múltiples-valores&quot;&gt;Retornar múltiples valores&lt;/h5&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;    &lt;span class=&quot;c1&quot;&gt;// Esta función nos devolvera 2 enteros y una cadena de texto&lt;/span&gt;
 

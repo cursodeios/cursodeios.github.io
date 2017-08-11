@@ -1,10 +1,10 @@
 {% if site.author %}
     <figure class="author-image">
-        <a class="img" href="{{site.baseurl}}" style="background-image: url({{site.profile-img}})">
+        <a class="img" href="{{site.author-url}}" target="_blank" style="background-image: url({{site.author-img}})">
         <span class="hidden">{{site.author}}'s Picture</span></a>
     </figure>
     <section class="author">
         <h4>{{site.author}}</h4>
-        <p>{{site.bio}}</p>
+        <p>{{site.author-bio}}</p>
     </section>
 {% endif %}
