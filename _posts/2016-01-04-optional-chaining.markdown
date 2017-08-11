@@ -1,11 +1,34 @@
 ---
 layout: post
-title:  "Optional Chaining"
+title:  "Optionals y Optional Chaining"
 date:   2017-01-04 11:00:00
 categories: Swift
 archive: true
 comments: true
 ---
+
+Usamos optionals en los casos que el valor de una variable podría ser nulo. Veamos el siguiente ejemolo:
+
+{% highlight swift %}
+var possibleNumber = "123"
+var convertedNumber = Int(possibleNumber) // 123
+
+// convertedNumber es de tipo int? o optional int ya que podria ser igual a nil
+
+possibleNumber = "123ABC"
+convertedNumber = Int(possibleNumber) // nil
+
+{% endhighlight %}
+
+Tambien podemos asignar `nil` a un opcional:
+
+{% highlight swift %}
+var serverResponseCode: Int? = 404 // 404
+
+serverResponseCode = nil // nil
+{% endhighlight %}
+
+##### Optional Chaining
 
 Es un proceso mediante el cual se llaman propiedades o métodos que podrian tener un valor **nulo**. Si el opcional tiene un valor entonces la llamada se satisfactoria sino retornará **nil**.
 
