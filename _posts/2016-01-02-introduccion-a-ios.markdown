@@ -4,6 +4,7 @@ title:  "Introducción a Swift y el desarrollo de iOS"
 date:   2017-01-01 10:15:00
 categories: iOS Swift
 archive: true
+comments: true
 ---
 
 Swift es un lenguaje de programación creado por Apple (desde el 2010) para el desarrollo de aplicaciones iOS y macOS. Se creó basado en lo mejor de lenguajes como Ruby, Python, Haskell, RUST y C# con la intención de ser un lenguaje seguro, de desarrollo rápido y sencillo.

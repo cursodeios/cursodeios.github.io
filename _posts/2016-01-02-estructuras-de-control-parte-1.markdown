@@ -4,6 +4,7 @@ title:  "Estructuras de control - Parte 1"
 date:   2017-01-01 10:25:00
 categories: iOS Swift
 archive: true
+comments: true
 ---
 
 Permiten modificar el flujo de ejecución de nuestro código. Esta pueden ser secuenciales o iterativas.

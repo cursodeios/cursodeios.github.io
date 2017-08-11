@@ -4,6 +4,7 @@ title:  "Estructuras de control - Parte 2"
 date:   2017-01-01 10:25:00
 categories: iOS Swift
 archive: true
+comments: true
 ---
 
 En el post anterior estudiamos las estructuras de control secuenciales, ahora vamos a ver como funcionan las estructuras de control iterativas en Swift.

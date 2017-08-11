@@ -4,6 +4,7 @@ title:  "Clases y Estructuras"
 date:   2017-01-02 11:00:00
 categories: iOS Swift
 archive: true
+comments: true
 ---
 
 Las clases y estructuras son modelos flexibles que definen una variable. Estas tienen algunas caracteristicas en común como:
