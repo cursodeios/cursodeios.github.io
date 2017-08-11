@@ -31,6 +31,8 @@
     <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
     <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    {% if jekyll.environment == 'production' %}
     {% include analytics.html %}
+    {% endif %}
 </body>
 </html>
