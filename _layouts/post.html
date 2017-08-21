@@ -22,7 +22,7 @@ post_class: post-template
         <footer class="post-footer">
          {% include post-author.html %}
          {% include share.html %}
-         {% if page.comments %}
+         {% if page.comments and jekyll.environment == 'production' %}
             {% include disqus.html %}
          {% endif %}
         </footer>

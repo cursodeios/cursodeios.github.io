@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="public" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    
+<meta name="twitter:url" content="http://localhost:4000/swift/2017/01/05/guard-and-defer.html">
+<meta property="og:url" content="http://localhost:4000/swift/2017/01/05/guard-and-defer.html" >
+
+<meta property="og:image" content="http://localhost:4000/assets/images/cover.png" />
+<meta name="twitter:image:src" content="http://localhost:4000/assets/images/cover.png">
+
+<title>Sentencias Guard y Defer</title>
+<meta name="twitter:title" content="Sentencias Guard y Defer">
+<meta content="Sentencias Guard y Defer" property="og:title">
+<meta content="article" property="og:type">
+
+
+<meta name="twitter:description" content="">
+<meta content="<p>La sentencia <strong>guard</strong> se utiliza para transferir el control del programa fuera del entorno si la condición dada no se cumple.</p>
+
+" property="og:description">
+
+
+<meta content="2017-01-05T06:00:00-06:00" property="article:published_time">
+
+
+<meta content="http://localhost:4000/assets/images/cover.png" property="og:image">
+
+
+
+<meta content="Swift" property="article:section">
+
+
+
+
+
+<style media="screen">
+.img-100,.img-50{margin-left:auto!important;margin-right:auto!important}h5{color:#00000!important;margin-top:50px!important}.img-100{width:100%;height:100%}.img-50{width:50%;height:50%}.PageNavigation{font-size:14px;display:block;width:auto;overflow:hidden}.PageNavigation a{display:block;width:50%;float:left;margin:1em 0;color:#2196F3;font-size:16px}.PageNavigation .next{text-align:right}
+</style>
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script> -->
+</head>
+<body class="home-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <header class="post-header">
+      <h1 class="post-title">Sentencias Guard y Defer</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-05">05-01-2017</time>
+          
+              en Swift
+          
+      </section>
+  </header>
+
+        <section class="post-content">
+            <p>La sentencia <strong>guard</strong> se utiliza para transferir el control del programa fuera del entorno si la condición dada no se cumple.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">getServerResponse</span><span class="p">(</span><span class="nv">code</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">code</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">500</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">code</span>
+<span class="p">}</span>
+
+<span class="nf">getServerResponse</span><span class="p">(</span><span class="nv">code</span><span class="p">:</span> <span class="s">"404"</span><span class="p">)</span> <span class="c1">// 404</span>
+<span class="nf">getServerResponse</span><span class="p">(</span><span class="nv">code</span><span class="p">:</span> <span class="s">"Not found"</span><span class="p">)</span> <span class="c1">// 500</span></code></pre></figure>
+
+<p>En este ejemplo si la conversión del valor de tipo <code class="highlighter-rouge">String</code> falla, el método retorna <code class="highlighter-rouge">500</code> (Internal Server Error) sino retorna el valor convertido.</p>
+
+<blockquote>
+  <p>La condición debe ser de tipo Bool o puede ser un valor opcional (como vimos en el post anterior donde estudiamos <strong>Optional Binding</strong>) y se puede usar la variable asignada siempre y cuando esté en el mismo ámbito.</p>
+</blockquote>
+
+<p>La sentencia <em>else</em> siempre es requerida y ademas de <em>return</em> podemos usar <em>continue</em>, <em>break</em> o <em>throw</em>. Veamos un ejemplo sencillo:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">for</span> <span class="n">number</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">20</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">continue</span>
+    <span class="p">}</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="c1">// 1...10</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>En este caso usamos un ciclo <em>for in</em> y paramos la ejecución cuando la variable <em>number</em> sea mayor que 10.</p>
+
+<h5 id="defer">Defer</h5>
+
+<p>La sentencia <strong>defer</strong> aplaza la ejecución de una instrucción hasta el final del ámbito en que se encuentra. Veamos el ejemplo:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">readFile</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?){</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">filename</span> <span class="o">=</span> <span class="n">name</span> <span class="p">{</span>
+        <span class="k">defer</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Cerrar el archivo </span><span class="se">\(</span><span class="n">filename</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Abrir el archivo </span><span class="se">\(</span><span class="n">filename</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Error al abrir archivo"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nf">readFile</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"profile.doc"</span><span class="p">)</span>
+<span class="nf">readFile</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"tables.xls"</span><span class="p">)</span>
+<span class="nf">readFile</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="c1">// Abrir el archivo profile.doc</span>
+<span class="c1">// Cerrar el archivo profile.doc</span>
+<span class="c1">// Abrir el archivo tables.xls</span>
+<span class="c1">// Cerrar el archivo tables.xls</span>
+<span class="c1">// Error al abrir archivo</span></code></pre></figure>
+
+<p>Podemos ver que al final de la ejecución del método <strong>readFile</strong> se hace el cierre del archivo cuando este es distinto de <code class="highlighter-rouge">nil</code>.</p>
+
+<p>En una sentencia <em>defer</em> no puede existir ninguna clausula <em>return</em> o <em>break</em> y en caso de que haya más de una sentencia <em>defer</em> se ejecutarán en orden contrario a su declaración, es decir, el último declarado se ejecutará primero.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">func</span> <span class="nf">readFile</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">?){</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">filename</span> <span class="o">=</span> <span class="n">name</span> <span class="p">{</span>
+        <span class="k">defer</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Cerrar sesión"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">defer</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Cerrar el archivo </span><span class="se">\(</span><span class="n">filename</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Abrir el archivo </span><span class="se">\(</span><span class="n">filename</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// Abrir el archivo tables.xls</span>
+<span class="c1">// Cerrar el archivo tables.xls</span>
+<span class="c1">// Cerrar sesión</span></code></pre></figure>
+
+
+        </section>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li>  <a href="/swift/2017/01/05/guard-and-defer.html">Sentencias Guard y Defer</a></li>
+         
+             <li>  <a href="/swift/2017/01/04/optional-chaining.html">Optionals y Optional Chaining</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/03/closures-swift.html">Closures en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/metodos-de-instancia.html">Métodos de Instancia</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/clases-y-estructuras.html">Clases y Estructuras</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/funciones-en-swift.html">Funciones en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">Estructuras de control - Parte 2</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">Estructuras de control - Parte 1</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">Primeros pasos en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/introduccion-a-ios.html">Introducción a Swift y el desarrollo de iOS</a></li>
+         
+     </ul>
+ </section>
+ 
+
+        <footer class="post-footer">
+         
+    <figure class="author-image">
+        <a class="img" href="https://www.linkedin.com/in/dannynarvaez/" target="_blank" style="background-image: url(/assets/images/danny.jpg)">
+        <span class="hidden">Danny Alejandro's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4>Danny Alejandro</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
+    </section>
+
+
+         <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Sentencias Guard y Defer&amp;url=https://cursodeios.github.io/swift/2017/01/05/guard-and-defer.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/swift/2017/01/05/guard-and-defer.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/swift/2017/01/05/guard-and-defer.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+         
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    
+</body>
+</html>
