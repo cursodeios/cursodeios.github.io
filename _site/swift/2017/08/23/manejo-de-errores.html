@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="public" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    
+<meta name="twitter:url" content="http://localhost:4000/swift/2017/08/23/manejo-de-errores.html">
+<meta property="og:url" content="http://localhost:4000/swift/2017/08/23/manejo-de-errores.html" >
+
+<meta property="og:image" content="http://localhost:4000/assets/images/cover.png" />
+<meta name="twitter:image:src" content="http://localhost:4000/assets/images/cover.png">
+
+<title>Manejo de Errores en Swift</title>
+<meta name="twitter:title" content="Manejo de Errores en Swift">
+<meta content="Manejo de Errores en Swift" property="og:title">
+<meta content="article" property="og:type">
+
+
+<meta name="twitter:description" content="">
+<meta content="<p>Es el proceso de responder y recuperarse de las condiciones de error en nuestra aplicación. Swift nos da un soporte de primera clase para lanzar, capturar, propagar y manipular errores recuperables en tiempo de ejecución.</p>
+
+" property="og:description">
+
+
+<meta content="2017-08-23T06:00:00-06:00" property="article:published_time">
+
+
+<meta content="http://localhost:4000/assets/images/cover.png" property="og:image">
+
+
+
+<meta content="Swift" property="article:section">
+
+
+
+
+
+<style media="screen">
+.img-100,.img-50{margin-left:auto!important;margin-right:auto!important}h5{color:#00000!important;margin-top:50px!important}.img-100{width:100%;height:100%}.img-50{width:50%;height:50%}.PageNavigation{font-size:14px;display:block;width:auto;overflow:hidden}.PageNavigation a{display:block;width:50%;float:left;margin:1em 0;color:#2196F3;font-size:16px}.PageNavigation .next{text-align:right}
+</style>
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script> -->
+</head>
+<body class="home-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <header class="post-header">
+      <h1 class="post-title">Manejo de Errores en Swift</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-08-23">23-08-2017</time>
+          
+              en Swift
+          
+      </section>
+  </header>
+
+        <section class="post-content">
+            <p>Es el proceso de responder y recuperarse de las condiciones de error en nuestra aplicación. Swift nos da un soporte de primera clase para lanzar, capturar, propagar y manipular errores recuperables en tiempo de ejecución.</p>
+
+<p>Por ejemplo, al leer un archivo alojado en disco podrían haber muchas maneras en que esta tarea puede fallar, el archivo no existe en el directorio especificado, el archivo no tiene permisos de lectura o podría estar en otro formato distinto al requerido. Asi que debemos encontrar la manera de resolver estos error y comunicar al usuario que ha ocurrido.</p>
+
+<p>El manejo de errores nos permite saber que algo inesperado ocurrio en el proceso y no podemos continuar, para esto usamos la sentencia <code class="highlighter-rouge">throw</code>. Por ejemplo la siguiente linea nos indica que el formato valido para un arhivo es <em>mp3</em>:</p>
+
+<p><code class="highlighter-rouge">throw FileReaderError.invalidFormat(validFormat: "mp3")</code></p>
+
+<h5 id="propagar-errores-en-funciones">Propagar errores en Funciones</h5>
+
+<p>Para indicar que una función o inicializador puede lanzar un error especificamos la palabra <code class="highlighter-rouge">throws</code> despues de los parámetros:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Con valor de retorno</span>
+<span class="n">function</span> <span class="nf">nameOfFunction</span><span class="p">(</span><span class="nv">param</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span>
+
+<span class="c1">// Sin valor de retorno</span>
+<span class="n">function</span> <span class="nf">nameOfFunction</span><span class="p">(</span><span class="nv">param</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span></code></pre></figure>
+
+<h5 id="ejemplo">Ejemplo</h5>
+
+<p>Abrimos un nuevo playground en Xcode y usamos el siguiente código:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="kt">FileReaderError</span><span class="p">:</span> <span class="kt">Error</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">notFound</span>
+    <span class="k">case</span> <span class="n">readOnly</span>
+    <span class="k">case</span> <span class="n">writeOnly</span>
+    <span class="k">case</span> <span class="nf">invalidFormat</span><span class="p">(</span><span class="nv">validFormat</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">File</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">var</span> <span class="nv">format</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Creamos una clase llamada <strong>MP3Reader</strong>:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">MP3Reader</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">tracks</span><span class="p">:</span> <span class="p">[</span><span class="kt">File</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="kd">func</span> <span class="nf">open</span><span class="p">(</span><span class="nv">file</span><span class="p">:</span> <span class="kt">File</span><span class="p">)</span> <span class="k">throws</span> <span class="p">{</span>
+
+        <span class="k">guard</span> <span class="n">file</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="s">"mp3"</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">FileReaderError</span><span class="o">.</span><span class="nf">invalidFormat</span><span class="p">(</span><span class="nv">validFormat</span><span class="p">:</span> <span class="s">"mp3"</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="n">tracks</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"File opened: </span><span class="se">\(</span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="se">)</span><span class="s">.</span><span class="se">\(</span><span class="n">file</span><span class="o">.</span><span class="n">format</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>El método <code class="highlighter-rouge">open</code> lanzara un error si el formato del archivo es diferente de <code class="highlighter-rouge">mp3</code>, utilizamos la palabra reservada <code class="highlighter-rouge">try</code> para llamar al método:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nv">musicReader</span> <span class="o">=</span> <span class="kt">MP3Reader</span><span class="p">()</span>
+<span class="k">try</span> <span class="n">musicReader</span><span class="o">.</span><span class="nf">open</span><span class="p">(</span><span class="nv">file</span><span class="p">:</span> <span class="kt">File</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"On the floor"</span><span class="p">,</span> <span class="nv">format</span><span class="p">:</span> <span class="s">"mp4"</span><span class="p">))</span></code></pre></figure>
+
+<h5 id="manejando-errorres-usando-do-catch">Manejando errorres usando Do-Catch</h5>
+
+<p>Vamos a utilizar el ejemplo de la máquina dispensadora:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="kt">VendingMachineError</span><span class="p">:</span> <span class="kt">Error</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">invalidSelection</span>
+    <span class="k">case</span> <span class="nf">insufficientFunds</span><span class="p">(</span><span class="nv">coinsNeeded</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">outOfStock</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Item</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">price</span><span class="p">:</span> <span class="kt">Int</span>
+    <span class="k">var</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Creamos la clase VendingMachine:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">VendingMachine</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">inventory</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">"Candies"</span><span class="p">:</span> <span class="kt">Item</span><span class="p">(</span><span class="nv">price</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">7</span><span class="p">),</span>
+        <span class="s">"Chips"</span><span class="p">:</span> <span class="kt">Item</span><span class="p">(</span><span class="nv">price</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="s">"Soda"</span><span class="p">:</span> <span class="kt">Item</span><span class="p">(</span><span class="nv">price</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">var</span> <span class="nv">coinsDeposited</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="kd">func</span> <span class="nf">vend</span><span class="p">(</span><span class="n">itemNamed</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="p">{</span>
+
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">item</span> <span class="o">=</span> <span class="n">inventory</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">VendingMachineError</span><span class="o">.</span><span class="n">invalidSelection</span>
+        <span class="p">}</span>
+        <span class="k">guard</span> <span class="n">item</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">VendingMachineError</span><span class="o">.</span><span class="n">outOfStock</span>
+        <span class="p">}</span>
+        <span class="k">guard</span> <span class="n">item</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;=</span> <span class="n">coinsDeposited</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">VendingMachineError</span><span class="o">.</span><span class="nf">insufficientFunds</span><span class="p">(</span><span class="nv">coinsNeeded</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">price</span> <span class="o">-</span> <span class="n">coinsDeposited</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">coinsDeposited</span> <span class="o">-=</span> <span class="n">item</span><span class="o">.</span><span class="n">price</span>
+
+        <span class="k">var</span> <span class="nv">newItem</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="n">newItem</span><span class="o">.</span><span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">inventory</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">newItem</span>
+
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Dispensando: </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Utilizamos <code class="highlighter-rouge">do-catch</code> para manejar errores de un bloque de código y determinar cual será el tipo de error que se presenta:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nv">vendingMachine</span> <span class="o">=</span> <span class="kt">VendingMachine</span><span class="p">()</span>
+
+<span class="n">vendingMachine</span><span class="o">.</span><span class="n">coinsDeposited</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="n">vendingMachine</span><span class="o">.</span><span class="nf">vend</span><span class="p">(</span><span class="nv">itemNamed</span><span class="p">:</span> <span class="s">"Soda"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">VendingMachineError</span><span class="o">.</span><span class="n">invalidSelection</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Opcion invalida."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">VendingMachineError</span><span class="o">.</span><span class="n">outOfStock</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"No hay disponible"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">VendingMachineError</span><span class="o">.</span><span class="nf">insufficientFunds</span><span class="p">(</span><span class="k">let</span> <span class="nv">coinsNeeded</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Fondos insuficientes. Inserte </span><span class="se">\(</span><span class="n">coinsNeeded</span><span class="se">)</span><span class="s"> monedas."</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Fondos insuficientes. Inserte 10 monedas.</span></code></pre></figure>
+
+<p>En este caso el error corresponde a <em>Fondos insuficientes</em> y necesitas más monedas para comprar un Soda. Es importante que realices otras pruebas en este ejemplo y puedas lanzar todos los tipos de errores en la máquina dispensadora.</p>
+
+<h5 id="convertir-errores-en-valores-opcionales">Convertir errores en Valores Opcionales</h5>
+
+<p>Usamos <code class="highlighter-rouge">try?</code> para manejar el error y convertirlo en un valor opcional. Si ocurre un error el valor de la expresión sera <code class="highlighter-rouge">nil</code>. Veamos 2 ejemplos:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">enum</span> <span class="kt">AppError</span><span class="p">:</span> <span class="kt">Error</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">invalid</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">someThrowingFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="kt">AppError</span><span class="o">.</span><span class="n">invalid</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">value</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">x</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="nf">someThrowingFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">y</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="k">try</span> <span class="nf">someThrowingFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="kc">nil</span>
+<span class="p">}</span></code></pre></figure>
+
+<h5 id="evitar-propagación-del-error">Evitar propagación del error</h5>
+
+<p>Usamos <code class="highlighter-rouge">try!</code> para deshabilitar la propagación del error. En este caso estamos seguro que no ocurrirá ningun error con la expresión, en caso contrario habrá un error en tiempo de ejecución:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">x</span> <span class="o">=</span> <span class="k">try!</span> <span class="nf">someThrowingFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">x</span> <span class="o">=</span> <span class="k">try!</span> <span class="nf">someThrowingFunction</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// Error en tiempo de ejecución </span></code></pre></figure>
+
+
+        </section>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li>  <a href="/swift/2017/08/23/manejo-de-errores.html">Manejo de Errores en Swift</a></li>
+         
+             <li>  <a href="/swift/2017/01/05/guard-and-defer.html">Sentencias Guard y Defer</a></li>
+         
+             <li>  <a href="/swift/2017/01/04/optional-chaining.html">Optionals y Optional Chaining</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/03/closures-swift.html">Closures en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/metodos-de-instancia.html">Métodos de Instancia</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/clases-y-estructuras.html">Clases y Estructuras</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/funciones-en-swift.html">Funciones en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-2.html">Estructuras de control - Parte 2</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/estructuras-de-control-parte-1.html">Estructuras de control - Parte 1</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/primeros-pasos-en-swift.html">Primeros pasos en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/introduccion-a-ios.html">Introducción a Swift y el desarrollo de iOS</a></li>
+         
+     </ul>
+ </section>
+ 
+
+        <footer class="post-footer">
+         
+    <figure class="author-image">
+        <a class="img" href="https://www.linkedin.com/in/dannynarvaez/" target="_blank" style="background-image: url(/assets/images/danny.jpg)">
+        <span class="hidden">Danny Alejandro's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4>Danny Alejandro</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
+    </section>
+
+
+         <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Manejo de Errores en Swift&amp;url=https://cursodeios.github.io/swift/2017/08/23/manejo-de-errores.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/swift/2017/08/23/manejo-de-errores.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/swift/2017/08/23/manejo-de-errores.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+         
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    
+</body>
+</html>
