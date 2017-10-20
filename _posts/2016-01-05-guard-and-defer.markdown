@@ -1,7 +1,7 @@
 ---
+title: Sentencias Guard y Defer
 layout: post
-title:  "Sentencias Guard y Defer"
-date:   2017-01-05 12:00:00
+date: '2017-01-05 06:00:00 -0600'
 categories: Swift
 archive: true
 comments: true
