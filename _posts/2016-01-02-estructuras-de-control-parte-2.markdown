@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Estructuras de control - Parte 2"
-date:   2017-01-01 10:25:00
+date:   2017-01-01 12:00:00
 categories: iOS Swift
 archive: true
 comments: true
