@@ -2,12 +2,136 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>Curso completo de desarrollo iOS en Español</description>
+    <description>Tutoriales de iOS y Swift en Español</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Oct 2017 13:32:14 -0600</pubDate>
-    <lastBuildDate>Mon, 30 Oct 2017 13:32:14 -0600</lastBuildDate>
+    <pubDate>Mon, 30 Oct 2017 13:48:07 -0600</pubDate>
+    <lastBuildDate>Mon, 30 Oct 2017 13:48:07 -0600</lastBuildDate>
     <generator>Jekyll v3.6.1</generator>
+    
+      <item>
+        <title>No tengas miedo a los Closures en Swift</title>
+        <description>&lt;h1 id=&quot;no-tengas-miedo-a-los-closures-en-swift&quot;&gt;No tengas miedo a los Closures en Swift&lt;/h1&gt;
+
+&lt;h2 id=&quot;entonces-quieres-ser-un-programador-funcional&quot;&gt;Entonces, ¿Quieres ser un programador funcional?&lt;/h2&gt;
+
+&lt;h3 id=&quot;introducción&quot;&gt;Introducción&lt;/h3&gt;
+
+&lt;p&gt;Algun tiempo atrás le temia al uso de &lt;code class=&quot;highlighter-rouge&quot;&gt;Closures&lt;/code&gt;, evité usarlos lo más posible. Esos palabras de aspecto extraño como &lt;code class=&quot;highlighter-rouge&quot;&gt;completion handler&lt;/code&gt; o &lt;code class=&quot;highlighter-rouge&quot;&gt;@escaping&lt;/code&gt; me asustaban.&lt;/p&gt;
+
+&lt;p&gt;Si no estás familiarizado con los &lt;code class=&quot;highlighter-rouge&quot;&gt;Closures&lt;/code&gt;, no te preocupes, yo te ayudaré a avanzar. Espero que al terminar entiendas el significado de devolver un valor a través de una función. Sino, puedes comenzar con mis lecciones de YouTube sobre cosas básicas y volver después.&lt;/p&gt;
+
+&lt;h3 id=&quot;recursos&quot;&gt;Recursos&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PL8btZwalbjYlRZh8Q1VK80Ly0YsZ7PZxx&quot;&gt;Tutorial de Swift con Bob&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;motivación&quot;&gt;Motivación&lt;/h3&gt;
+
+&lt;p&gt;La programación funcional es tendencia en iOS y los &lt;code class=&quot;highlighter-rouge&quot;&gt;Closures&lt;/code&gt; tienen que ver mucho con eso. ¿Qué? ¿Por qué? ¿Cómo? Bueno, creo que es demasiado pronto para discutir esta relación. Es como comer carne sin dientes.&lt;/p&gt;
+
+&lt;h3 id=&quot;lo-que-vamos-a-aprender&quot;&gt;Lo que vamos a aprender&lt;/h3&gt;
+
+&lt;p&gt;El significado de &lt;code class=&quot;highlighter-rouge&quot;&gt;Closures&lt;/code&gt;, funciones de orden superior y funciones de primera clase. Estas palabras pueden ser extrañas para tí. Bueno, aprendamos juntos.&lt;/p&gt;
+
+&lt;h3 id=&quot;que-son-los-clousures&quot;&gt;¿Que son los Clousures?&lt;/h3&gt;
+
+&lt;p&gt;Cuando se lo explico a mi hermana de 13 años, solo digo que es una función sin la palabra clave &lt;code class=&quot;highlighter-rouge&quot;&gt;func&lt;/code&gt; y sin un nombre. Sin embargo, los Clousures parecen desnudos e incluso incompletos.&lt;/p&gt;
+
+&lt;p&gt;Entonces, comparemos cómo sumarias dos números en una función vs clousure. Ambos tomarán dos parámetros Int y devolverán uno Int. Comencemos con una función.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sumarNumeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;numero1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numero2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;funcionAlmacenada&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sumarNumeros&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;funcionAlmacenada&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 14&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;He almacenado la función sumarNumeros en una variable llamada &lt;code class=&quot;highlighter-rouge&quot;&gt;funcionAlmacenada&lt;/code&gt;. ¿Pero, cómo es esto posible? Bueno, en Swift, al igual que muchos otros lenguajes de programación, las funciones se describen como una función de primera clase. No sé por qué se llama así, pero puedes almacenar una función en una variable o constante.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, no tenemos que usar la palabra clave &lt;code class=&quot;highlighter-rouge&quot;&gt;func&lt;/code&gt; para almacenar una función. De hecho, podemos usar un Clousure en su lugar.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;closureAlmacenado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numero1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero2&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nf&quot;&gt;closureAlmacenado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;numero1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;numero2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 14&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;El ejemplo anterior es idéntico al primer ejemplo. La palabra clave &lt;code class=&quot;highlighter-rouge&quot;&gt;in&lt;/code&gt; se utiliza para separar los parámetros de entrada, número 1 y número 2 de la parte de retorno. Además, hemos declarado que el tipo es (Int, Int) -&amp;gt; Int. El tipo preestablecido indica a la variable que toma dos parámetros y devuelve un &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Espero que ahora, hayas comenzado a comprender la idea de que el Clousure es una función sin nombre y la palabra clave &lt;code class=&quot;highlighter-rouge&quot;&gt;func&lt;/code&gt;. O bien, puedes decir que una función es un Clousure más detallado.&lt;/p&gt;
+
+&lt;p&gt;Pero, el ejemplo anterior se puede simplificar y, sí, todavía se llama Clousure.&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Más corto&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;closureAlmacenado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Aún más corto&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;closureAlmacenado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;¿Entonces, ¿qué diablos es $0 y $1? Bueno, es solo una sintaxis de Swift. Reconoce automáticamente dos parámetros &lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;. El primer valor de entrada es &lt;code class=&quot;highlighter-rouge&quot;&gt;$0&lt;/code&gt; y el segundo, &lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt;. Además, ni siquiera necesitamos devolver el resultado si solo estás jugando con esos dos parámetros. Sin embargo, si desea agregar un poco más de brillo al closure como imprimir algo:&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;closureAlmacenado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numero1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+ &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hola&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numero2&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;closureAlmacenado&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;Hola&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;insertar-una-funcion-en-una-funcion-open_mouth&quot;&gt;Insertar una funcion en una funcion :open_mouth:&lt;/h3&gt;
+
+&lt;p&gt;Hasta ahora, has aprendido que los Closures y las funciones son más o menos lo mismo y ambos son de primera clase, ya que puedes almacenarlos en una variable. Pero también se les llama función de orden superior. ¿Qué? (Una vez más, no sé de dónde viene el nombre). Puedes usar el Closure/función como parámetros e incluso devolverlos.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, puedes insertar una función en una función. Intentemos insertar una función de impresión que regrese, “hola mundo” dentro de una función. El tipo de función utilizada como parámetro es  &lt;code class=&quot;highlighter-rouge&quot;&gt;() -&amp;gt; String&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insertarAlgo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nf&quot;&gt;closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;OK, ahora agregamos una función que devuelve un “Hola mundo”:&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retornarHolaMundo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hola mundo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hola mundo&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ejecutemoslo:&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;insertarAlgo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retornarHolaMundo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;Hola mundo&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Solo para recapitular, has insertado retornarHolaMundo, que es una función que devuelve un valor de cadena, en &lt;code class=&quot;highlighter-rouge&quot;&gt;insertarAlgo&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si desea agregar un closure como parámetro de inmediato, puede hacerlo de esta manera:&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;closureHolaMundo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hola&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si solo quieres agregar algo de inmediato, puedes hacer esto:&lt;/p&gt;
+
+&lt;div class=&quot;language-swift highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;insertarAlgo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hola mundo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;Hola mundo&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;Últimas-observaciones&quot;&gt;Últimas observaciones&lt;/h3&gt;
+
+&lt;p&gt;Si quieres saber más sobre &lt;code class=&quot;highlighter-rouge&quot;&gt;Closures&lt;/code&gt; avanzados como &lt;code class=&quot;highlighter-rouge&quot;&gt;CompletionHandler&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;@escaping&lt;/code&gt;, puedes unirte al curso intermedio Swift. He creado un capítulo llamado “Introducción a la programación funcional”. Siéntete libre de unirte al curso &lt;a href=&quot;https://www.udemy.com/learn-swift-with-bob/?couponCode=BOBTHEDEVELOPER&quot;&gt;Aquí&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Jan 2017 06:00:00 -0600</pubDate>
+        <link>http://localhost:4000//ios/swift/2017/01/01/no-tengas-miedo-closures-swift.html</link>
+        <guid isPermaLink="true">http://localhost:4000//ios/swift/2017/01/01/no-tengas-miedo-closures-swift.html</guid>
+        
+        
+        <category>iOS</category>
+        
+        <category>Swift</category>
+        
+      </item>
     
   </channel>
 </rss>
