@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="public" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Tutoriales de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    
+<meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/03/Intro-to-generics.html">
+<meta property="og:url" content="http://localhost:4000/ios/swift/2017/01/03/Intro-to-generics.html" >
+
+<meta property="og:image" content="http://localhost:4000/assets/images/cover.png" />
+<meta name="twitter:image:src" content="http://localhost:4000/assets/images/cover.png">
+
+<title>Introducción a Generics en Swift</title>
+<meta name="twitter:title" content="Introducción a Generics en Swift">
+<meta content="Introducción a Generics en Swift" property="og:title">
+<meta content="article" property="og:type">
+
+
+<meta name="twitter:description" content="">
+<meta content="Introducción a Generics en Swift" property="og:description">
+
+
+<meta content="2017-01-03T06:00:00-06:00" property="article:published_time">
+
+
+<meta content="http://localhost:4000/assets/images/cover.png" property="og:image">
+
+
+
+<meta content="iOS" property="article:section">
+
+
+
+
+
+<style media="screen">
+.img-100,.img-50{margin-left:auto!important;margin-right:auto!important}h5{color:#00000!important;margin-top:50px!important}.img-100{width:100%;height:100%}.img-50{width:50%;height:50%}.PageNavigation{font-size:14px;display:block;width:auto;overflow:hidden}.PageNavigation a{display:block;width:50%;float:left;margin:1em 0;color:#2196F3;font-size:16px}.PageNavigation .next{text-align:right}
+</style>
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script> -->
+</head>
+<body class="home-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <!-- <header class="post-header">
+      <h1 class="post-title">Introducción a Generics en Swift</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-03">03-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+ -->
+        <section class="post-content">
+            <h1 id="introducción-a-generics-en-swift">Introducción a Generics en Swift</h1>
+
+<h2 id="sé-que-estás-frustrado-he-estado-allí-únete-a-mi-yo-te-guiaré">Sé que estás frustrado. He estado allí, únete a mi. Yo te guiaré.</h2>
+
+<h3 id="historia-personal">Historia personal</h3>
+
+<p>Mientras escribía un post sobre Programación Funcional en Swift, me di cuenta de que los lectores debían tener una base sólida en Generics y Protocolos para sobrevivir en Swift.</p>
+
+<p>Para saber si habían buenos articulos sobre Generics, visite cada enlace de las primeras 5 páginas de la búsqueda de Google. Después de haber pasado algunos, llegué a la conclusión de que tenía que hacer algo al respecto - sentí la urgencia de ayudar a mis lectores. Podía imaginar su lucha y dolor para comprender estos temas.</p>
+
+<h3 id="antecedentes">Antecedentes</h3>
+
+<p>Con el fin de disfrutar plenamente de este artículo, asegúrate que estás familiarizado con Protocolos, POO, funciones y extensiones. Si no, puedes encontrar todos los recursos necesarios disponibles aquí, que es mi viaje de aprendizaje personal. Dado que estamos hablando de Generics, voy a utilizar ejemplos de la documentación de Swift 3.</p>
+
+<h3 id="tu-pasado">Tu pasado</h3>
+
+<p>Antes de hablar de cualquier otra cosa, veamos tu pasado. Cómo te enseñaron y te lavaron el cerebro. Imagina que necesitas imprimir cada elemento dentro de un arreglo, probablemente lo hiciste asi:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">arregloString</span> <span class="o">=</span> <span class="p">[</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"2"</span><span class="p">,</span> <span class="s">"3"</span><span class="p">,</span> <span class="s">"4"</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">arregloInt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">arregloDouble</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>OK, Ahora imprimimos:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">imprimirArregloString</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="p">{</span>
+ <span class="k">for</span> <span class="n">s</span> <span class="k">in</span> <span class="n">a</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">imprimirArregloInt</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">])</span> <span class="p">{</span>
+ <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">a</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+ <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">imprimirArregloDouble</span><span class="p">(</span><span class="nv">a</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">])</span> <span class="p">{</span>
+ <span class="k">for</span> <span class="n">d</span> <span class="k">in</span> <span class="n">a</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>El código de arriba es simplemente redundante. Cada función sólo toma un tipo específico de un arreglo. Se repite como un argumento. ¿Puede haber sólo una sola función que le permite introducir cualquier parámetro cuyo tipo sea indefinido?</p>
+
+<p>Esa fue una pregunta retórica. Por supuesto. Si no hubiera, probablemente no habría escrito este artículo. Despeguemos!</p>
+
+<h3 id="generics">Generics</h3>
+
+<p>En primer lugar, sólo hay una regla si deseas hacer una función genérica. Todo lo que necesitas hacer es poner <algo> justo al lado de un nombre de función. Vamos a ver:</algo></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">funcionGenerica</span><span class="o">&lt;</span><span class="n">algo</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="n">algo</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nf">print</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">funcionGenerica</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="mi">123</span><span class="p">)</span>     <span class="c1">// Int: Wow 😀</span>
+<span class="nf">funcionGenerica</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="s">"Bob"</span><span class="p">)</span>   <span class="c1">// String: Genial 😲</span>
+<span class="nf">funcionGenerica</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="mf">123.12</span><span class="p">)</span>  <span class="c1">// Double: Wooow 😵</span>
+<span class="nf">funcionGenerica</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>    <span class="c1">// Bool: Increible 😱</span>
+</code></pre></div></div>
+
+<p>Espera un segundo. Sólo para aclarar, cuando se introduce cualquier tipo de valor, Swift determina automáticamente el tipo de valor basado en la entrada. Por ejemplo, si llama:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">funcionGenerica</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="err">“</span><span class="kt">Bob</span><span class="err">”</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>El tipo de valor ahora es String y puede utilizarse dentro de la función. Si usted llama:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">funcionGenerica</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>El valor ahora es de tipo Bool. Espero que ahora estés claro. Por supuesto, no tienes que llamarlo “algo”, puedes llamarlo como quieras:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">funcionGenerica</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nf">print</span><span class="p">(</span><span class="n">valor</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="apliquemoslo">Apliquemoslo</h3>
+
+<p>Ahora que sabemos como funcionan los generics, veamos nuestro ejemplo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">imprimirElemento</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">])</span> <span class="p">{</span>
+ <span class="k">for</span> <span class="n">elemento</span> <span class="k">in</span> <span class="n">arreglo</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="n">elemento</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Entonces tendrás como resultado:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">imprimirElemento</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="n">arregloDouble</span><span class="p">)</span>  <span class="c1">// 1.1 1.2 1.3 1.4</span>
+<span class="nf">imprimirElemento</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="n">arregloInt</span><span class="p">)</span>     <span class="c1">// 1 2 3 4</span>
+<span class="nf">imprimirElemento</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="n">arregloString</span><span class="p">)</span>  <span class="c1">// "1" "2" "3" "4"</span>
+</code></pre></div></div>
+
+<p>Así que, veamos la definición de Apple sobre los genéricos:</p>
+
+<blockquote>
+  <p>Los Generics permiten escribir funciones y tipos flexibles y reutilizables que pueden funcionar con cualquier tipo, sujeto a los requisitos que defina. Puede escribir código que evita la duplicación y expresa su intención de una manera clara y abstracta. - Lenguaje de programación rápido</p>
+</blockquote>
+
+<p>De hecho, la biblioteca Swift que usas para interactuar con una matriz y un diccionario tiene muchos Generics.</p>
+
+<h3 id="strucs-y-generics">Strucs y Generics</h3>
+
+<p>Generics no sólo se aplica a las funciones, sino también a las clases y estructuras. Digamos que hay una estructura llamada Familia, cuya propiedad array es llamada miembros. Puedes agregar o quitar un elemento a la matriz.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">Familia</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">miembros</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span>
+
+ <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="nv">miembro</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">miembros</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">miembro</span><span class="p">)</span>
+ <span class="p">}</span>
+
+ <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">miembros</span><span class="o">.</span><span class="nf">removeLast</span><span class="p">()</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>La palabra clave mutating es necesaria si desea modificar su propiedad. Puesto que usted está agregando y quitando elementos para los miembros que usted tiene que agregar mutating para esas funciones.</p>
+
+<h3 id="de-nuevo-un-problema">De nuevo, un problema</h3>
+
+<p>El problema es que sólo puede añadir String al elemento porque no sólo los miembros están predefinidos como [String], sino que también pop() y push() sólo permiten que String funcione. Esto no es genérico. Esto no es genial. Si desea crear una familia cuyo nombre esté en Int, debe crear una estructura completa.</p>
+
+<p>Permítanme presentar la estructura genérica que permite insertar cualquier cosa independientemente de su tipo. Similar a la función con la que trabajamos, usted pone algo al lado de su nombre.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">FamiliaGenial</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">miembros</span> <span class="o">=</span> <span class="p">[</span><span class="kt">T</span><span class="p">]()</span>
+
+ <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="nv">miembro</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">miembros</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">member</span><span class="p">)</span>
+ <span class="p">}</span>
+
+ <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">T</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">miembros</span><span class="o">.</span><span class="nf">removeLast</span><span class="p">()</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Por lo tanto, ahora vamos a crear un objeto cuyo tipo puede ser Declarado explicitamente o Inferido.</p>
+
+<h3 id="1--declarado-explicitamente">1- Declarado explicitamente</h3>
+
+<p>Vamos a crear un objeto utilizando la estructura FamiliaGenial. Al igual que una función, tienes que insertar &lt;&gt; en su nombre. Por ejemplo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">miFamilia</span> <span class="o">=</span> <span class="kt">FamiliaGenial</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="k">var</span> <span class="nv">otraFamilia</span> <span class="o">=</span> <span class="kt">FamiliaGenial</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Has declarado que la instancia miFamilia solo podrá interactuar con String y otraFamilia con Int. El beneficio es que no es necesario crear dos estructuras separadas con el fin de producir el resultado anterior. Así que, vamos a interactuar.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// miFamilia</span>
+<span class="n">miFamilia</span><span class="o">.</span><span class="n">members</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Mamá"</span><span class="p">,</span> <span class="s">"Papá"</span><span class="p">,</span> <span class="s">"Hermana"</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">]</span>
+<span class="n">miFamilia</span><span class="o">.</span><span class="nf">push</span><span class="p">(</span><span class="nv">member</span><span class="p">:</span> <span class="s">"Dog"</span><span class="p">)</span>
+
+<span class="c1">// otraFamilia</span>
+<span class="n">otraFamilia</span><span class="o">.</span><span class="n">members</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">otraFamilia</span><span class="o">.</span><span class="nf">pop</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="2--inferido">2- Inferido</h3>
+
+<p>Cuando creas un objeto, no tienes que especificar su tipo al igual que crear una variable. Swift es lo suficientemente inteligente como para adivinar su tipo. Por ejemplo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">nombre</span> <span class="o">=</span> <span class="s">"Bob"</span> <span class="c1">// nombre es String</span>
+</code></pre></div></div>
+
+<p>De manera similar, se aplica también a la estructura genérica. Por lo tanto, puede crear un objeto genérico como:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">familiaString</span> <span class="o">=</span> <span class="kt">FamiliaGenial</span><span class="p">(</span><span class="nv">miembros</span><span class="p">:</span> <span class="p">[</span><span class="err">“</span><span class="kt">Hola</span><span class="p">,</span> <span class="kt">Mundo</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">familiaBool</span> <span class="o">=</span> <span class="kt">FamiliaGenial</span><span class="p">(</span><span class="nv">miembros</span><span class="p">:</span> <span class="p">[</span><span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">false</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Aparentemente, familiaString solo puede interactuar con String y familiaBool solo puede interactuar con Bool. No tienes que tratar con esos &lt;&gt; cuando creas un objeto utilizando una estructura genérica.</p>
+
+<h3 id="extensiones-con-generics">Extensiones con Generics</h3>
+
+<p>No sólo eso, de hecho puede agregar una extensión a la estructura genérica o la clase también.</p>
+
+<p>Vamos a agregar una propiedad que nos devuelve el primer elemento:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">FamiliaGenial</span> <span class="p">{</span>
+
+ <span class="k">var</span> <span class="nv">primerElemento</span><span class="p">:</span> <span class="kt">T</span><span class="p">?</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="n">miembros</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="kc">nil</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">miembros</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ahora, puedes utilizar libremente la propiedad dentro de un objeto:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">familiaTigres</span> <span class="o">=</span> <span class="kt">FamiliaGenial</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="n">familiaTigres</span><span class="o">.</span><span class="n">primerElemento</span>  <span class="c1">// nil</span>
+
+<span class="k">let</span> <span class="nv">familiaLeones</span> <span class="o">=</span> <span class="kt">FamiliaGenial</span><span class="p">(</span><span class="nv">members</span><span class="p">:</span> <span class="p">[</span><span class="s">"Padre"</span><span class="p">,</span> <span class="s">"Madre"</span><span class="p">])</span>
+<span class="n">familiaLeones</span><span class="o">.</span><span class="n">primerElemento</span>   <span class="c1">// "Padre"</span>
+</code></pre></div></div>
+
+<p>Estupendo! Has recorrido un largo camino. Estoy agradecido por tu atención y amor. Ahora vamos a la parte final.</p>
+
+<h3 id="restricción-de-tipos">Restricción de tipos</h3>
+
+<p>Recuerda que creaste una función genérica:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">hacerAlgo</span><span class="o">&lt;</span><span class="n">algo</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="p">[</span><span class="n">algo</span><span class="p">])</span> <span class="p">{}</span>
+<span class="kd">func</span> <span class="n">hacerNada</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">valor</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>Puedes agregar cualquier cosa independientemente, cualquier objeto. Sin embargo, ¿qué pasa si desea limitar a sólo un par de tipos? ¿Podemos limitar una función que sólo puede tomar ciertas clases?</p>
+
+<p>Justo al lado de T, puede especificar los tipos con los que sólo trabaja. Vamos a crear una clase llamada, LOL.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">LOL</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>OK, entonces creamos una función genérica que solo acepte LOL:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="n">agregarClase</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">LOL</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">])</span> <span class="p">{}</span>
+
+<span class="nf">agregarClase</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="p">[</span><span class="kt">LOL</span><span class="p">(),</span> <span class="kt">LOL</span><span class="p">(),</span> <span class="kt">LOL</span><span class="p">()])</span> <span class="c1">// Funciona</span>
+<span class="nf">agregarClase</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="p">[</span><span class="s">"Lol"</span><span class="p">,</span> <span class="s">"Lol"</span><span class="p">,</span> <span class="s">"Lol"</span><span class="p">])</span> <span class="c1">// No funciona</span>
+</code></pre></div></div>
+
+<p>Crea una subclase de LOL:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">HijoLOL</span><span class="p">:</span> <span class="kt">LOL</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>Tambien puedes agregar a la función un valor que sea de tipo LOL:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">agregarClase</span><span class="p">(</span><span class="nv">arreglo</span><span class="p">:</span> <span class="p">[</span><span class="kt">LOL</span><span class="p">(),</span> <span class="kt">LOL</span><span class="p">(),</span> <span class="kt">HijoLOL</span><span class="p">(),</span> <span class="kt">HijoLOL</span><span class="p">()])</span>
+</code></pre></div></div>
+
+<p>¿Por qué? HijoLOL() ha sido automáticamente convertido a LOL. Si no estás seguro como funciona la conversión de tipos, no dudes en unirte al curso intermedio Swift.</p>
+
+<h3 id="Últimos-comentarios">Últimos Comentarios</h3>
+
+<p>De ahora en adelante, usarás muchos Generics. Sólo he cubierto los aspectos teóricos de los Generics. ¡Si piensas que disfrutaste este artículo o aprendiste algo nuevo, por favor ♥ o comenta abajo para mostrar tu ayuda y amor!</p>
+
+<p>En la próxima serie, hablaré sobre cómo aplicar Generics a Protocolos y AssociatedType. Si estás interesado, no dudes en seguirme! 🤗</p>
+
+<h3 id="recursos">Recursos</h3>
+
+<p><a href="https://github.com/bobthedev/Blog_Intro_to_Swift_Generics">Código fuente</a></p>
+
+        </section>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li>  <a href="/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html">No tengas miedo a los Closures en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/04/generic-protocols-with-associated-type.html">Protocolos Genéricos con Tipo Asociado</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/03/Intro-to-generics.html">Introducción a Generics en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/POP-in-Swift-part-2.html">Programación Orientada a Protocolos en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/Introduction-to-protocol-oriented-programming-in-swift.html">Introducción a la Programación Orientada a Protocolos</a></li>
+         
+     </ul>
+ </section>
+ 
+
+        <footer class="post-footer">
+         
+    <figure class="author-image">
+        <a class="img" href="https://www.linkedin.com/in/dannynarvaez/" target="_blank" style="background-image: url(/assets/images/danny.jpg)">
+        <span class="hidden">Danny Narvaez's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4>Danny Narvaez</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
+    </section>
+
+
+         <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Introducción a Generics en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/03/Intro-to-generics.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/03/Intro-to-generics.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/03/Intro-to-generics.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+         
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    
+</body>
+</html>

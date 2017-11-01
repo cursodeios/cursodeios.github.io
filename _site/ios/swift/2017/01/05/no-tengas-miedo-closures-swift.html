@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="public" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Tutoriales de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    
+<meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html">
+<meta property="og:url" content="http://localhost:4000/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html" >
+
+<meta property="og:image" content="http://localhost:4000/assets/images/cover.png" />
+<meta name="twitter:image:src" content="http://localhost:4000/assets/images/cover.png">
+
+<title>No tengas miedo a los Closures en Swift</title>
+<meta name="twitter:title" content="No tengas miedo a los Closures en Swift">
+<meta content="No tengas miedo a los Closures en Swift" property="og:title">
+<meta content="article" property="og:type">
+
+
+<meta name="twitter:description" content="">
+<meta content="No tengas miedo a los Closures en Swift" property="og:description">
+
+
+<meta content="2017-01-05T06:00:00-06:00" property="article:published_time">
+
+
+<meta content="http://localhost:4000/assets/images/cover.png" property="og:image">
+
+
+
+<meta content="iOS" property="article:section">
+
+
+
+
+
+<style media="screen">
+.img-100,.img-50{margin-left:auto!important;margin-right:auto!important}h5{color:#00000!important;margin-top:50px!important}.img-100{width:100%;height:100%}.img-50{width:50%;height:50%}.PageNavigation{font-size:14px;display:block;width:auto;overflow:hidden}.PageNavigation a{display:block;width:50%;float:left;margin:1em 0;color:#2196F3;font-size:16px}.PageNavigation .next{text-align:right}
+</style>
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script> -->
+</head>
+<body class="home-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <!-- <header class="post-header">
+      <h1 class="post-title">No tengas miedo a los Closures en Swift</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-05">05-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+ -->
+        <section class="post-content">
+            <h1 id="no-tengas-miedo-a-los-closures-en-swift">No tengas miedo a los Closures en Swift</h1>
+
+<h2 id="entonces-quieres-ser-un-programador-funcional">Entonces, ¿Quieres ser un programador funcional?</h2>
+
+<h3 id="introducción">Introducción</h3>
+
+<p>Algun tiempo atrás le temia al uso de <code class="highlighter-rouge">Closures</code>, evité usarlos lo más posible. Esos palabras de aspecto extraño como <code class="highlighter-rouge">completion handler</code> o <code class="highlighter-rouge">@escaping</code> me asustaban.</p>
+
+<p>Si no estás familiarizado con los <code class="highlighter-rouge">Closures</code>, no te preocupes, yo te ayudaré a avanzar. Espero que al terminar entiendas el significado de devolver un valor a través de una función. Sino, puedes comenzar con mis lecciones de YouTube sobre cosas básicas y volver después.</p>
+
+<h3 id="recursos">Recursos</h3>
+
+<p><a href="https://www.youtube.com/playlist?list=PL8btZwalbjYlRZh8Q1VK80Ly0YsZ7PZxx">Tutorial de Swift con Bob</a></p>
+
+<h3 id="motivación">Motivación</h3>
+
+<p>La programación funcional es tendencia en iOS y los <code class="highlighter-rouge">Closures</code> tienen que ver mucho con eso. ¿Qué? ¿Por qué? ¿Cómo? Bueno, creo que es demasiado pronto para discutir esta relación. Es como comer carne sin dientes.</p>
+
+<h3 id="lo-que-vamos-a-aprender">Lo que vamos a aprender</h3>
+
+<p>El significado de <code class="highlighter-rouge">Closures</code>, funciones de orden superior y funciones de primera clase. Estas palabras pueden ser extrañas para tí. Bueno, aprendamos juntos.</p>
+
+<h3 id="que-son-los-clousures">¿Que son los Clousures?</h3>
+
+<p>Cuando se lo explico a mi hermana de 13 años, solo digo que es una función sin la palabra clave <code class="highlighter-rouge">func</code> y sin un nombre. Sin embargo, los Clousures parecen desnudos e incluso incompletos.</p>
+
+<p>Entonces, comparemos cómo sumarias dos números en una función vs clousure. Ambos tomarán dos parámetros Int y devolverán uno Int. Comencemos con una función.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">sumarNumeros</span><span class="p">(</span><span class="nv">numero1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">numero2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="n">numero1</span> <span class="o">+</span> <span class="n">numero2</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">funcionAlmacenada</span> <span class="o">=</span> <span class="n">sumarNumeros</span>
+<span class="nf">funcionAlmacenada</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">// 14</span>
+
+</code></pre></div></div>
+
+<p>He almacenado la función sumarNumeros en una variable llamada <code class="highlighter-rouge">funcionAlmacenada</code>. ¿Pero, cómo es esto posible? Bueno, en Swift, al igual que muchos otros lenguajes de programación, las funciones se describen como una función de primera clase. No sé por qué se llama así, pero puedes almacenar una función en una variable o constante.</p>
+
+<p>Sin embargo, no tenemos que usar la palabra clave <code class="highlighter-rouge">func</code> para almacenar una función. De hecho, podemos usar un Clousure en su lugar.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">closureAlmacenado</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="p">{</span> <span class="p">(</span><span class="n">numero1</span><span class="p">,</span> <span class="n">numero2</span><span class="p">)</span> <span class="k">in</span>
+ <span class="k">return</span> <span class="n">numero1</span> <span class="o">+</span> <span class="n">numero2</span>
+<span class="p">}</span>
+
+<span class="nf">closureAlmacenado</span><span class="p">(</span><span class="nv">numero1</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nv">numero2</span><span class="p">:</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">// 14</span>
+</code></pre></div></div>
+
+<p>El ejemplo anterior es idéntico al primer ejemplo. La palabra clave <code class="highlighter-rouge">in</code> se utiliza para separar los parámetros de entrada, número 1 y número 2 de la parte de retorno. Además, hemos declarado que el tipo es (Int, Int) -&gt; Int. El tipo preestablecido indica a la variable que toma dos parámetros y devuelve un <code class="highlighter-rouge">Int</code>.</p>
+
+<p>Espero que ahora, hayas comenzado a comprender la idea de que el Clousure es una función sin nombre y la palabra clave <code class="highlighter-rouge">func</code>. O bien, puedes decir que una función es un Clousure más detallado.</p>
+
+<p>Pero, el ejemplo anterior se puede simplificar y, sí, todavía se llama Clousure.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Más corto</span>
+<span class="k">var</span> <span class="nv">closureAlmacenado</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$0</span> <span class="o">+</span> <span class="nv">$1</span> <span class="p">}</span>
+
+<span class="c1">// Aún más corto</span>
+<span class="k">var</span> <span class="nv">closureAlmacenado</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">+</span> <span class="nv">$1</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>¿Entonces, ¿qué diablos es $0 y $1? Bueno, es solo una sintaxis de Swift. Reconoce automáticamente dos parámetros <code class="highlighter-rouge">Int</code>. El primer valor de entrada es <code class="highlighter-rouge">$0</code> y el segundo, <code class="highlighter-rouge">$1</code>. Además, ni siquiera necesitamos devolver el resultado si solo estás jugando con esos dos parámetros. Sin embargo, si desea agregar un poco más de brillo al closure como imprimir algo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">closureAlmacenado</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="o">=</span> <span class="p">{</span> <span class="p">(</span><span class="n">numero1</span><span class="p">,</span> <span class="n">numero2</span><span class="p">)</span> <span class="k">in</span>
+ <span class="nf">print</span><span class="p">(</span><span class="s">"Hola"</span><span class="p">)</span>
+ <span class="k">return</span> <span class="n">numero1</span> <span class="o">+</span> <span class="n">numero2</span>
+
+<span class="p">}</span>
+<span class="nf">closureAlmacenado</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">// "Hola"</span>
+</code></pre></div></div>
+
+<h3 id="insertar-una-funcion-en-una-funcion-open_mouth">Insertar una funcion en una funcion :open_mouth:</h3>
+
+<p>Hasta ahora, has aprendido que los Closures y las funciones son más o menos lo mismo y ambos son de primera clase, ya que puedes almacenarlos en una variable. Pero también se les llama función de orden superior. ¿Qué? (Una vez más, no sé de dónde viene el nombre). Puedes usar el Closure/función como parámetros e incluso devolverlos.</p>
+
+<p>Por ejemplo, puedes insertar una función en una función. Intentemos insertar una función de impresión que regrese, “hola mundo” dentro de una función. El tipo de función utilizada como parámetro es  <code class="highlighter-rouge">() -&gt; String</code></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">insertarAlgo</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nf">closure</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>OK, ahora agregamos una función que devuelve un “Hola mundo”:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">retornarHolaMundo</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+ <span class="nf">print</span><span class="p">(</span><span class="s">"Hola mundo"</span><span class="p">)</span>
+ <span class="k">return</span> <span class="s">"Hola mundo"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ejecutemoslo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">insertarAlgo</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="n">retornarHolaMundo</span><span class="p">)</span> <span class="c1">// "Hola mundo"</span>
+</code></pre></div></div>
+
+<p>Solo para recapitular, has insertado retornarHolaMundo, que es una función que devuelve un valor de cadena, en <code class="highlighter-rouge">insertarAlgo</code>.</p>
+
+<p>Si desea agregar un closure como parámetro de inmediato, puede hacerlo de esta manera:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">closureHolaMundo</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="o">=</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Hola"</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Si solo quieres agregar algo de inmediato, puedes hacer esto:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">insertarAlgo</span><span class="p">(</span><span class="nv">closure</span><span class="p">:</span> <span class="p">{</span> <span class="k">return</span> <span class="s">"Hola mundo"</span><span class="p">})</span> <span class="c1">// "Hola mundo"</span>
+</code></pre></div></div>
+
+<h3 id="Últimas-observaciones">Últimas observaciones</h3>
+
+<p>Si quieres saber más sobre <code class="highlighter-rouge">Closures</code> avanzados como <code class="highlighter-rouge">CompletionHandler</code>, <code class="highlighter-rouge">@escaping</code>, puedes unirte al curso intermedio Swift. He creado un capítulo llamado “Introducción a la programación funcional”. Siéntete libre de unirte al curso <a href="https://www.udemy.com/learn-swift-with-bob/?couponCode=BOBTHEDEVELOPER">Aquí</a></p>
+
+        </section>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li>  <a href="/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html">No tengas miedo a los Closures en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/04/generic-protocols-with-associated-type.html">Protocolos Genéricos con Tipo Asociado</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/03/Intro-to-generics.html">Introducción a Generics en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/POP-in-Swift-part-2.html">Programación Orientada a Protocolos en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/Introduction-to-protocol-oriented-programming-in-swift.html">Introducción a la Programación Orientada a Protocolos</a></li>
+         
+     </ul>
+ </section>
+ 
+
+        <footer class="post-footer">
+         
+    <figure class="author-image">
+        <a class="img" href="https://www.linkedin.com/in/dannynarvaez/" target="_blank" style="background-image: url(/assets/images/danny.jpg)">
+        <span class="hidden">Danny Narvaez's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4>Danny Narvaez</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
+    </section>
+
+
+         <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=No tengas miedo a los Closures en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+         
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    
+</body>
+</html>

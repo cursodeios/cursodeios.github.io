@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="public" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Tutoriales de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    
+<meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/02/POP-in-Swift-part-2.html">
+<meta property="og:url" content="http://localhost:4000/ios/swift/2017/01/02/POP-in-Swift-part-2.html" >
+
+<meta property="og:image" content="http://localhost:4000/assets/images/cover.png" />
+<meta name="twitter:image:src" content="http://localhost:4000/assets/images/cover.png">
+
+<title>Programación Orientada a Protocolos en Swift</title>
+<meta name="twitter:title" content="Programación Orientada a Protocolos en Swift">
+<meta content="Programación Orientada a Protocolos en Swift" property="og:title">
+<meta content="article" property="og:type">
+
+
+<meta name="twitter:description" content="">
+<meta content="Programación Orientada a Protocolos en Swift" property="og:description">
+
+
+<meta content="2017-01-02T06:00:00-06:00" property="article:published_time">
+
+
+<meta content="http://localhost:4000/assets/images/cover.png" property="og:image">
+
+
+
+<meta content="iOS" property="article:section">
+
+
+
+
+
+<style media="screen">
+.img-100,.img-50{margin-left:auto!important;margin-right:auto!important}h5{color:#00000!important;margin-top:50px!important}.img-100{width:100%;height:100%}.img-50{width:50%;height:50%}.PageNavigation{font-size:14px;display:block;width:auto;overflow:hidden}.PageNavigation a{display:block;width:50%;float:left;margin:1em 0;color:#2196F3;font-size:16px}.PageNavigation .next{text-align:right}
+</style>
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script> -->
+</head>
+<body class="home-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <!-- <header class="post-header">
+      <h1 class="post-title">Programación Orientada a Protocolos en Swift</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-02">02-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+ -->
+        <section class="post-content">
+            <h1 id="programación-orientada-a-protocolos-en-swift">Programación Orientada a Protocolos en Swift</h1>
+
+<h2 id="aprende-cómo-animar-buttons-labels-e-imageviews-sin-crear-muchas-clases">Aprende cómo animar Buttons, Labels e ImageViews sin crear muchas clases.</h2>
+
+<p>Hay una frase que dice: el conocimiento sin ejecución es como tener dientes, pero sólo beber leche. Ya es suficiente de teorías. ¿Cómo puedes empezar a usar la POP en tu aplicación? 🤔</p>
+
+<p>Con el fin de sacar mejor provecho, espero que ya estés familiarizado con los <strong>completion handlers</strong> en Swift y su implementación básica protocolos. Si aun no estas claro con el uso de protocolos, te pido que revises el post sobre  (<a href="https://blog.bobthedeveloper.io/introduction-to-protocol-oriented-programming-in-swift-b358fe4974f">Introdución a Protocolos en Swift</a>).</p>
+
+<h3 id="que-aprenderás-en-este-post">Que aprenderás en este Post</h3>
+
+<p>Aprenderás a utilizar Protocolos para animar componentes de la interfaz de usuario tales como UIButton, UILabel y UIImageView. También te mostraré las diferencias entre los métodos tradicionales versus Protocolos. 😎</p>
+
+<h3 id="ui-interfaz-de-usuario">UI (Interfaz de usuario)</h3>
+
+<p>La aplicación de demostración se llama “Bienvenido a mi fiesta”. He hecho esta aplicación para verificar si te he invitado a mi fiesta y debes introducir tu código de invitación. No hay lógica detrás de esta aplicación. Si presionas el botón, los componentes se animarán. Hay cuatro componentes que se animan codigoTextField, loginButton, errorLabel y perfilImageView.</p>
+
+<p>Hay dos animaciones: Vibrar y Desvanecer.</p>
+
+<p><img src="https://cdn.bobthedeveloper.io/posts/5993515e761f601bc340f5c6/completed-project-using-protocol-oriented-programming.gif" alt="Animaciones" /></p>
+
+<h3 id="echemos-un-vistazo">Echemos un vistazo</h3>
+
+<p>Para comprender completamente el poder de la POP en aplicaciones reales, vamos a comparar con el método tradicional. Digamos que deseamos animar un UIButton y UILabel, puedes hacer una subclase para ambos y luego agregar un método a él:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">BotonAnimado</span><span class="p">:</span> <span class="kt">UIButton</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">vibrar</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de la animación }</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">EtiquetaAnimada</span><span class="p">:</span> <span class="kt">UIButton</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">vibrar</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de la animación }</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Entonces hagamos que vibre al presionarl el botón:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">@IBOutlet</span> <span class="n">wear</span> <span class="k">var</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="kt">EtiquetaAnimada</span><span class="o">!</span>
+<span class="kd">@IBOutlet</span> <span class="n">wear</span> <span class="k">var</span> <span class="nv">loginButton</span><span class="p">:</span> <span class="kt">BotonAnimado</span><span class="o">!</span>
+
+<span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">verificarCodigo</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+ <span class="n">errorLabel</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+ <span class="n">loginButton</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>¿Ves cómo estamos repitiendo? La lógica de animación es al menos 5 líneas y hay una “mejor” manera de hacerlo usando un extensión porque UILabel y UIButton pertenecen a UIView, podemos añadir:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">UIView</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">vibrar</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de la animación }</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Entonces nuestro BotonAnimado y EtiquetaAnimada tendrian un método <strong>vibrar</strong>. Ya no estamos repitiendo en nuestro código:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">BotonAnimado</span><span class="p">:</span> <span class="kt">UIButton</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="kt">EtiquetaAnimada</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="p">{}</span>
+
+<span class="kd">@IBOutlet</span> <span class="n">wear</span> <span class="k">var</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="kt">EtiquetaAnimada</span><span class="o">!</span>
+<span class="kd">@IBOutlet</span> <span class="n">wear</span> <span class="k">var</span> <span class="nv">loginButton</span><span class="p">:</span> <span class="kt">BotonAnimado</span><span class="o">!</span>
+
+<span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">verificarCodigo</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+ <span class="n">errorLabel</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+ <span class="n">loginButton</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="esta-bien-pero--por-qué-usar-pop">Esta bien pero, ¿ Por qué usar POP?</h3>
+
+<p>Como Has visto, el errorLabel, que dice “introduce por favor un código válido 😂” también tiene una animación, aparece y desaparece.</p>
+
+<p>Hay dos maneras de hacer esto. En primer lugar, podrías de nuevo agregar otro método a UIView.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Extensión de UIView</span>
+<span class="kd">extension</span> <span class="kt">UIView</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">vibrar</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de Animación }</span>
+ <span class="kd">func</span> <span class="nf">desvanecer</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de Animación del UILabel }</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Sin embargo, si agregamos métodos a UIView, el método desvanecer estará disponible para otros components además del UILabel y estariamos heredando  funciones innecesarias.</p>
+
+<p>La segunda forma sería hacer una subclase de UILabel:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Subclase de UILabel</span>
+<span class="kd">class</span> <span class="kt">EtiquetaAnimada</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">desvanecer</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de Animaciń del UILabel }  </span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>De esta forma funcionaría bien pero ahora voy a mostrarte como se hace con POP.</p>
+
+<h3 id="usando-programación-orientada-a-protocolos">Usando Programación Orientada a Protocolos</h3>
+
+<p>Bueno, suficiente de hacer subclases. Vamos a crear un protocolo “Vibrante” primero.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Vibrante</span> <span class="p">{}</span>
+
+<span class="kd">extension</span> <span class="kt">Vibrante</span> <span class="k">where</span> <span class="k">Self</span><span class="p">:</span> <span class="kt">UIView</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">vibrar</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de Animación }</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Por lo tanto, cualquier componente que se ajuste al protocolo Vibrante tendría el método vibrar asociado. A diferencia de la extensión sólo aquellos que se ajustan al protocolo tendrán ese método. Se utiliza Self: UIView para indicar que el protocolo debe ser sólo conformado con UIView o componentes que heredan de UIView.</p>
+
+<p>Ahora, vamos a aplicar Vibrante a loginButton, codigoTextField, errorLabel y perfilImageView Pero, espera, ¿como hacemos para Desvanecer?</p>
+
+<p>Bueno de la misma manera:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Desvanecedor</span> <span class="p">{}</span>
+
+<span class="kd">extension</span> <span class="kt">Desvanecedor</span> <span class="k">where</span> <span class="k">Self</span><span class="p">:</span> <span class="kt">UIView</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">desvanecer</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// Lógica de Animación }</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ahora vamos a completarlo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">TextFieldAnimado</span><span class="p">:</span> <span class="kt">UITextField</span><span class="p">,</span> <span class="kt">Vibrante</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="kt">ButtonAnimado</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">,</span> <span class="kt">Vibrante</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="kt">ImageViewAnimado</span><span class="p">:</span> <span class="kt">UIImageView</span><span class="p">,</span> <span class="kt">Vibrante</span> <span class="p">{}</span>
+<span class="kd">class</span> <span class="kt">LabelAnimado</span><span class="p">:</span> <span class="kt">UILabel</span><span class="p">,</span> <span class="kt">Vibrante</span><span class="p">,</span> <span class="kt">Desvanecedor</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="kt">LoginViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+
+  <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">codigoTextField</span><span class="p">:</span> <span class="kt">TextFieldAnimado</span><span class="o">!</span>
+  <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">loginButton</span><span class="p">:</span> <span class="kt">ButtonAnimado</span><span class="o">!</span>
+  <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">errorLabel</span><span class="p">:</span> <span class="kt">LabelAnimado</span><span class="o">!</span>
+  <span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">perfilImageView</span><span class="p">:</span> <span class="kt">ImageViewAnimado</span><span class="o">!</span>
+
+  <span class="kd">@IBAction</span> <span class="kd">func</span> <span class="nf">verificarCodigo</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">UIButton</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">codigoTextField</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+    <span class="n">loginButton</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+    <span class="n">errorLabel</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+    <span class="n">errorLabel</span><span class="o">.</span><span class="nf">desvanecer</span><span class="p">()</span>
+    <span class="n">perfilImageView</span><span class="o">.</span><span class="nf">vibrar</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Lo genial de la POP es que incluso puedes aplicar desvanecer a cualquier otro componente sin hacer subclase en absoluto.</p>
+
+<p><code class="highlighter-rouge">class LabelAnimado: UILabel, Vibrante, Desvanecedor</code></p>
+
+<p>Ahora declaramos nuestra clase de forma más elegante conociendo los protocolos a los que conforma y evitaremos crear subclases, tendremos nombres de clases más flexibles y nos sentiremos mejores desarrolladores de Swift. 😎</p>
+
+<h3 id="Última-observación">Última observación</h3>
+
+<p>Si has encontrado este tutorial útil y crees que hice un buen trabajo, por favor ❤️ para mí y comparte con tu comunidad. Más desarrolladores iOS deben implementar POP! y es por eso que escribí esto, pero necesito tu apoyo para un mayor impacto!</p>
+
+<p>Ahora, si deseas llevar su juego Swift al siguiente nivel, no dudes en unirse al curso intermedio de Swift. Aprenderá acerca de los enumeraciones avanzados, introducción a la programación funcional, protocolos, genéricos y más. Aprende Swift con Bob.</p>
+
+        </section>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li>  <a href="/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html">No tengas miedo a los Closures en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/04/generic-protocols-with-associated-type.html">Protocolos Genéricos con Tipo Asociado</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/03/Intro-to-generics.html">Introducción a Generics en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/POP-in-Swift-part-2.html">Programación Orientada a Protocolos en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/Introduction-to-protocol-oriented-programming-in-swift.html">Introducción a la Programación Orientada a Protocolos</a></li>
+         
+     </ul>
+ </section>
+ 
+
+        <footer class="post-footer">
+         
+    <figure class="author-image">
+        <a class="img" href="https://www.linkedin.com/in/dannynarvaez/" target="_blank" style="background-image: url(/assets/images/danny.jpg)">
+        <span class="hidden">Danny Narvaez's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4>Danny Narvaez</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
+    </section>
+
+
+         <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Programación Orientada a Protocolos en Swift&amp;url=https://cursodeios.github.io/ios/swift/2017/01/02/POP-in-Swift-part-2.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/02/POP-in-Swift-part-2.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/02/POP-in-Swift-part-2.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+         
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    
+</body>
+</html>

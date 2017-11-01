@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="public" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Tutoriales de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas." />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.min.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    
+<meta name="twitter:url" content="http://localhost:4000/ios/swift/2017/01/04/generic-protocols-with-associated-type.html">
+<meta property="og:url" content="http://localhost:4000/ios/swift/2017/01/04/generic-protocols-with-associated-type.html" >
+
+<meta property="og:image" content="http://localhost:4000/assets/images/cover.png" />
+<meta name="twitter:image:src" content="http://localhost:4000/assets/images/cover.png">
+
+<title>Protocolos Genéricos con Tipo Asociado</title>
+<meta name="twitter:title" content="Protocolos Genéricos con Tipo Asociado">
+<meta content="Protocolos Genéricos con Tipo Asociado" property="og:title">
+<meta content="article" property="og:type">
+
+
+<meta name="twitter:description" content="">
+<meta content="Protocolos Genéricos con Tipo Asociado" property="og:description">
+
+
+<meta content="2017-01-04T06:00:00-06:00" property="article:published_time">
+
+
+<meta content="http://localhost:4000/assets/images/cover.png" property="og:image">
+
+
+
+<meta content="iOS" property="article:section">
+
+
+
+
+
+<style media="screen">
+.img-100,.img-50{margin-left:auto!important;margin-right:auto!important}h5{color:#00000!important;margin-top:50px!important}.img-100{width:100%;height:100%}.img-50{width:50%;height:50%}.PageNavigation{font-size:14px;display:block;width:auto;overflow:hidden}.PageNavigation a{display:block;width:50%;float:left;margin:1em 0;color:#2196F3;font-size:16px}.PageNavigation .next{text-align:right}
+</style>
+
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1673144615294747",
+        enable_page_level_ads: true
+      });
+    </script> -->
+</head>
+<body class="home-template">
+    <header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        <a class="back-button icon-arrow-left" href="/">Inicio</a>
+        <a class="subscribe-button icon-feed" href="/feed.xml">Suscribirse</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+        <!-- <header class="post-header">
+      <h1 class="post-title">Protocolos Genéricos con Tipo Asociado</h1>
+      <section class="post-meta">
+          <time class="post-date" datetime="2017-01-04">04-01-2017</time>
+          
+              en iOS and Swift
+          
+      </section>
+  </header>
+ -->
+        <section class="post-content">
+            <h1 id="protocolos-genéricos-con-tipo-asociado">Protocolos Genéricos con Tipo Asociado</h1>
+
+<h2 id="aprende-cómo-crear-protocolos-genéricos-y-tipos-asociados">Aprende cómo crear Protocolos Genéricos y Tipos Asociados</h2>
+
+<h3 id="introducción">Introducción</h3>
+
+<p>Ya hemos aprendido a usar Protocolos y sé que te has vuelto adicto a ellos. Ahora vamos a crear Protocolos Genericos con Tipos Asociados y utilizar la palabra reservada <code class="highlighter-rouge">where</code> para Restricciones de Tipo, similar a cómo se hace con los Generics. Empecemos!</p>
+
+<h3 id="requisitos">Requisitos</h3>
+
+<p>Este tutorial es para un nivel intermedio/avanzado. Por lo tanto, espero que estés familiarizado con los temas a continuación:</p>
+
+<ul>
+  <li>Introducción a Genérics.</li>
+  <li>Introducción a la Programación Orientada a Protocolo.</li>
+  <li>Closures</li>
+  <li>Typealias.</li>
+</ul>
+
+<p>Si no estas familiarizado con estos temas te recomiendo el <a href="https://www.udemy.com/learn-swift-with-bob/?couponCode=BOBTHEDEVELOPER">Curso de Bob</a>.</p>
+
+<h3 id="la-regla-principal">La regla principal</h3>
+
+<p>El lenguaje de programación Swift se considera Type Safe (de tipado seguro). Esto significa que los Tipos de Datos deben ser definidos antes de ser compilados.</p>
+
+<h3 id="recordatorio">Recordatorio</h3>
+
+<p>Antes de sumergirnos en Protocolos Genéricos, debes familiarizarte con el código siguiente:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">EstructuraGenerica</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">propiedad</span><span class="p">:</span> <span class="kt">T</span><span class="p">?</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Podrías declarar explícitamente el tipo de T o dejar que Swift deduzca basado en el valor:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">estructuraExplicita</span> <span class="o">=</span> <span class="kt">EstructuraGenerica</span><span class="o">&lt;</span><span class="kt">Bool</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="c1">// T es Bool</span>
+<span class="k">let</span> <span class="nv">estructuraImplicita</span> <span class="o">=</span> <span class="kt">EstructuraGenerica</span><span class="p">(</span><span class="nv">propiedad</span><span class="p">:</span> <span class="s">"Bob"</span><span class="p">)</span>
+<span class="c1">// T es String</span>
+</code></pre></div></div>
+
+<p>Ten en cuenta el principio de que todo Tipo debe ser definido.</p>
+
+<h3 id="protocolo-normal">Protocolo normal</h3>
+
+<p>Antes de apreciar los Protocolos Genéricos, echemos un vistazo a como lo haciamos antes. Vamos a crear un protocolo que requiere agregar una propiedad cuyo tipo sea String:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">ProtocoloNormal</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">propiedad</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Creamos una clase que conforme el Protocolo:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ClaseNormal</span><span class="p">:</span> <span class="kt">ProtocoloNormal</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">propiedad</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Bob"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Suena bien. Sin embargo, <code class="highlighter-rouge">ProtocoloNormal</code> obliga a <code class="highlighter-rouge">ClaseNormal</code> a trabajar con String. Pero, ¿qué pasa si quieres una propiedad Int o Bool?</p>
+
+<p>Es hora de introducir los Tipos Asociados en Protocolos.</p>
+
+<h3 id="introducción-a-los-tipos-asociados">Introducción a los Tipos Asociados</h3>
+
+<p>En Protocolos Genéricos, para crear algo como <T> en genéricos, debes agregar un Tipo Asociado (associatedtype):</T></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="kd">associatedtype</span> <span class="n">miTipo</span>
+ <span class="k">var</span> <span class="nv">miPropiedad</span><span class="p">:</span> <span class="n">miTipo</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Associated type = type alias + generics</code></p>
+
+<p>Ahora, cualquier cosa que se conforme a <code class="highlighter-rouge">ProtocoloGenerico</code> debe implementar <code class="highlighter-rouge">miPropiedad</code>. Sin embargo, el Tipo no está definido. Por lo tanto, la clase o estructura que se conforma con el protocolo debe definirlo implícita o explícitamente.</p>
+
+<p>En primer lugar, vamos a crear una clase <code class="highlighter-rouge">MiClase</code> que conforme a <code class="highlighter-rouge">ProtocoloGenerico</code>. Debemos definir <code class="highlighter-rouge">miTipo</code>. Hay dos maneras de definir como se indicó anteriormente.</p>
+
+<h3 id="definir-tipo-asociado-implicitamente">Definir Tipo Asociado implicitamente</h3>
+
+<p>Puede definir <code class="highlighter-rouge">miTipo</code> basado en el valor asociado con <code class="highlighter-rouge">miPropiedad</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">MiClase</span><span class="p">:</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">miPropiedad</span><span class="p">:</span> <span class="n">miTipo</span> <span class="o">=</span> <span class="s">"Bob"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ahora, <code class="highlighter-rouge">miTipo</code> se ha definido como String basado en “Bob”. Sin embargo, puedes dejar que Swift lo infiera como se muestra a continuación:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">MiClase</span><span class="p">:</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">miPropiedad</span> <span class="o">=</span> <span class="s">"Bob"</span> <span class="c1">// miTipo is "String"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="definir-tipo-asociado-explicitamente">Definir Tipo Asociado explicitamente</h3>
+
+<p>También puedes definir el tipo asociado <code class="highlighter-rouge">miTipo</code> llamando a <code class="highlighter-rouge">typealias</code>. ¿Qué? Vamos a ver.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">MiClase</span><span class="p">:</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="kd">typealias</span> <span class="n">miTipo</span> <span class="o">=</span> <span class="kt">String</span>
+ <span class="k">var</span> <span class="nv">miPropiedad</span><span class="p">:</span> <span class="n">miTipo</span> <span class="o">=</span> <span class="s">"Bob"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Si desea definir el tipo asociado <code class="highlighter-rouge">miTipo</code>, puede utilizar <code class="highlighter-rouge">typealias</code>. Por supuesto, no es necesario ya que puede definir <code class="highlighter-rouge">miTipo</code> implícitamente como hemos visto.</p>
+
+<p>Hasta ahora, has definido <code class="highlighter-rouge">miTipo</code> como <code class="highlighter-rouge">String</code>. Vamos a crear una estructura que se ajuste a <code class="highlighter-rouge">ProtocoloGenerico</code> pero <code class="highlighter-rouge">miTipo</code> es <code class="highlighter-rouge">Int</code> en su lugar.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">MiEstructura</span><span class="p">:</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="k">var</span> <span class="nv">miPropiedad</span> <span class="o">=</span> <span class="mi">1996</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Has declarado implícitamente que <code class="highlighter-rouge">miTipo</code> es <code class="highlighter-rouge">Int</code> basado en el valor de <code class="highlighter-rouge">1996</code>.</p>
+
+<p>Si escuchas Protocol Associated Types (PATs), sólo significa protocolos genéricos.</p>
+
+<h3 id="extensiones-de-protocolos-y-restricciones-de-tipos">Extensiones de Protocolos y Restricciones de Tipos</h3>
+
+<p>Como ya sabes, la extensión de protocolo es increíble porque proporciona implementaciones predeterminadas sin tener que definir los métodos y propiedades necesarios. Veamos:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="kd">static</span> <span class="kd">func</span> <span class="nf">saludar</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"Hola, soy Bob"</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Cualquier cosa que adopte <code class="highlighter-rouge">ProtocoloGenerico</code> ahora contiene esta magia:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MiClase</span><span class="o">.</span><span class="nf">saludar</span><span class="p">()</span> <span class="c1">// Hola, soy Bob</span>
+<span class="kt">MiEstructura</span><span class="o">.</span><span class="nf">saludar</span><span class="p">()</span> <span class="c1">// Hola, soy Bob</span>
+</code></pre></div></div>
+
+<p>Pero si solo quieres que <code class="highlighter-rouge">miTipo</code> como <code class="highlighter-rouge">String</code> tenga el método <code class="highlighter-rouge">saludar()</code>. ¿Cómo lo harias?</p>
+
+<h3 id="usando-la-instrucción-where">Usando la instrucción Where</h3>
+
+<p>No te preocupe si nunca has usado <code class="highlighter-rouge">where</code>. Es sólo una forma más corta de escribir una declaración <code class="highlighter-rouge">if-else</code>.</p>
+
+<p>Vamos a agregar <code class="highlighter-rouge">saludar()</code> para aquellos que no sólo se ajustan a <code class="highlighter-rouge">ProtocoloGenerico</code> pero también tiene el tipo asociado como String.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">ProtocoloGenerico</span> <span class="k">where</span> <span class="n">miTipo</span> <span class="o">==</span> <span class="kt">String</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">saludar</span><span class="p">(){</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"Hola, soy Bob"</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>La cláusula <code class="highlighter-rouge">where</code> indica que si <code class="highlighter-rouge">miTipo</code> es <code class="highlighter-rouge">String</code>, procede, si no ignora el bloque de extensión completo.</p>
+
+<h3 id="hagamos-la-prueba">Hagamos la prueba</h3>
+
+<p>Si recuerdas, <code class="highlighter-rouge">MiClase</code> tiene <code class="highlighter-rouge">String</code> y <code class="highlighter-rouge">MiEstructura</code> tiene <code class="highlighter-rouge">Int</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">instanciaMiClase</span> <span class="o">=</span> <span class="kt">MiClase</span><span class="p">()</span><span class="o">.</span><span class="nf">saludar</span><span class="p">()</span> <span class="c1">// "Hola, soy Bob"</span>
+</code></pre></div></div>
+
+<p>Probemos hacerlo con <code class="highlighter-rouge">MiEstructura</code>:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">instaciaMiEsctructura</span> <span class="o">=</span> <span class="kt">MiEstructura</span><span class="p">()</span> <span class="c1">// Error</span>
+</code></pre></div></div>
+
+<h3 id="múltiples-condiciones-where-con-self">Múltiples condiciones Where con Self</h3>
+
+<p>Puedes agregar varias cláusulas <code class="highlighter-rouge">where</code> para que la extensión sea más específica. Todo lo que tienes que hacer es agregar más condiciones al final.</p>
+
+<p>Esta vez, vamos a añadir una restricción más que solo <code class="highlighter-rouge">MiClase</code> puede tener el método <code class="highlighter-rouge">saludar()</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">extension</span> <span class="kt">ProtocoloGenerico</span> <span class="k">where</span> <span class="n">type</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span> <span class="k">Self</span> <span class="o">==</span> <span class="kt">MiClase</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">saludar</span><span class="p">(){</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"Hola, soy Bob"</span><span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>El <code class="highlighter-rouge">Self</code> se refiere a la estructura/clase/enum que conforma ProtocoloGenerico. Como resultado, sólo <code class="highlighter-rouge">MiClase</code> tendrá el método <code class="highlighter-rouge">saludar()</code>.</p>
+
+<h3 id="sobreescribir-el-tipo-asociado">Sobreescribir el Tipo Asociado</h3>
+
+<p>Hasta ahora, en <code class="highlighter-rouge">ProtocoloGenerico</code>, no hemos definido <em>associatedtype</em> dentro del propio protocolo.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">ProtocoloGenerico</span> <span class="p">{</span>
+ <span class="kd">associatedtype</span> <span class="n">miTipo</span>
+ <span class="k">var</span> <span class="nv">miPropiedad</span><span class="p">:</span> <span class="n">miTipo</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>El tipo de <code class="highlighter-rouge">miTipo</code> ha sido definido por aquellos que se ajustan al protocolo. Sin embargo, también puede predefinirse tipos asociados dentro de un protocolo.</p>
+
+<h3 id="tipos-asociados-predefinidos-en-un-protocolo">Tipos Asociados predefinidos en un Protocolo</h3>
+
+<p>Vamos a crear un protocolo llamado <code class="highlighter-rouge">Familiar</code> que contiene un tipo asociado llamado <code class="highlighter-rouge">TipoFamilia</code>. Pero, se pre-define su tipo como <code class="highlighter-rouge">Int</code>.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Familiar</span> <span class="p">{</span>
+ <span class="kd">associatedtype</span> <span class="kt">TipoFamilia</span> <span class="o">=</span> <span class="kt">Int</span>
+ <span class="kd">func</span> <span class="nf">obtenerNombre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">TipoFamilia</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Es muy parecido a <code class="highlighter-rouge">typealias</code>.</p>
+
+<h3 id="adoptar-tipos-asociados-predefinidos-en-el-protocolo">Adoptar Tipos Asociados predefinidos en el Protocolo</h3>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">FamiliaNumerica</span><span class="p">:</span> <span class="kt">Familiar</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">obtenerNombre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">TipoFamilia</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>tambien podría ser:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">FamiliaNumerica</span><span class="p">:</span> <span class="kt">Familiar</span> <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">obtenerNombre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ahora creamos una instancia:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">familiaDeNumeros</span> <span class="o">=</span> <span class="kt">FamiliaNumerica</span><span class="p">()</span> <span class="c1">// FamiliaNumerica&lt;Int&gt;</span>
+</code></pre></div></div>
+
+<p>Sin embargo, es posible anular/cambiar el tipo predefinido de un protocolo.</p>
+
+<h3 id="sobreescribir-el-tipo-asociado-1">Sobreescribir el Tipo Asociado</h3>
+
+<p>Primero, crearemos una estructura genérica llamada <code class="highlighter-rouge">FamiliaNormal</code> que se ajustará a <code class="highlighter-rouge">Familiar</code>, eso significa que <code class="highlighter-rouge">Familiar</code> forzará a la estructura a trabajar con <code class="highlighter-rouge">Int</code>, pero esto no es lo que queremos.</p>
+
+<p>Deseamos que la estructura funcione con String, ya que una familia normal debe tener nombres como “Bob” o “Bobby” en lugar de 1, 2, 3.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">FamiliaNormal</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">ExpressibleByStringLiteral</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">Familiar</span>  <span class="p">{</span>
+ <span class="kd">func</span> <span class="nf">obtenerNombre</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="s">"Bob"</span><span class="p">,</span> <span class="s">"Bobby"</span><span class="p">,</span> <span class="s">"Lee"</span><span class="p">]</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ahora creamos una instancia:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">familiaNormal</span> <span class="o">=</span> <span class="kt">FamiliaNormal</span><span class="p">()</span> <span class="c1">// FamiliaNormal&lt;String&gt;</span>
+</code></pre></div></div>
+
+<p>¿Cómo es esto posible? Bueno, si presionas option + clic sobre String en Swift, descubrirás que String se ajusta a ExpressibleByStringLiteral.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Libreria de Swift</span>
+<span class="kd">extension</span> <span class="kt">String</span> <span class="p">:</span> <span class="kt">ExpressibleByStringLiteral</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>Descarga el <a href="https://github.com/bobthedev/Blog_Protocol_Associated_Type">Código fuente</a></p>
+
+<h3 id="Últimos-comentarios">Últimos Comentarios</h3>
+
+<p>En este tutorial, has aprendido cómo sobreescribir Tipos Asociados  e incluso combinar protocolos con genéricos. ¿Cómo fue tu aprendizaje? Hemos hablado de muchas teorías en este artículo. Por supuesto, si usted desea aprender la programación práctica orientada protocolo, RxSwift, MVVM, te recomiendo encarecidamente a unirte a mi lista de correo.</p>
+
+        </section>
+        
+ <section class="archive">
+     <h5>Archivo</h5>
+     <ul>
+         
+             <li>  <a href="/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html">No tengas miedo a los Closures en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/04/generic-protocols-with-associated-type.html">Protocolos Genéricos con Tipo Asociado</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/03/Intro-to-generics.html">Introducción a Generics en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/02/POP-in-Swift-part-2.html">Programación Orientada a Protocolos en Swift</a></li>
+         
+             <li>  <a href="/ios/swift/2017/01/01/Introduction-to-protocol-oriented-programming-in-swift.html">Introducción a la Programación Orientada a Protocolos</a></li>
+         
+     </ul>
+ </section>
+ 
+
+        <footer class="post-footer">
+         
+    <figure class="author-image">
+        <a class="img" href="https://www.linkedin.com/in/dannynarvaez/" target="_blank" style="background-image: url(/assets/images/danny.jpg)">
+        <span class="hidden">Danny Narvaez's Picture</span></a>
+    </figure>
+    <section class="author">
+        <h4>Danny Narvaez</h4>
+        <p>Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.</p>
+    </section>
+
+
+         <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-twitter" href="http://twitter.com/share?text=Protocolos Genéricos con Tipo Asociado&amp;url=https://cursodeios.github.io/ios/swift/2017/01/04/generic-protocols-with-associated-type.html"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://cursodeios.github.io/ios/swift/2017/01/04/generic-protocols-with-associated-type.html"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=https://cursodeios.github.io/ios/swift/2017/01/04/generic-protocols-with-associated-type.html"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+         
+        </footer>
+    </article>
+</main>
+
+    <footer class="site-footer clearfix">
+      <section class="copyright">
+        <a href="/">Curso de iOS y Swift</a> &bull; 2017
+      </section>
+    </footer>
+    <script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.min.js"></script>
+    <script type="text/javascript" src="/assets/js/index.min.js"></script>
+    
+</body>
+</html>

@@ -1,6 +1,6 @@
 name: Curso de iOS y Swift
-description: Curso completo de desarrollo iOS en Español
-meta_description: "Curso completo de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas."
+description: Tutoriales de iOS y Swift en Español
+meta_description: "Tutoriales de iOS en español. Aprende a desarrollar Apps para iOS con el lenguaje de progración Swift y las APIs de iOS más utlizadas."
 cover: '/assets/images/cover.png'
 url: 'https://cursodeios.github.io'
 baseurl: '/'
@@ -13,7 +13,7 @@ paginate: 100
 #google_analytics: 'UA-XXXXXXXX-X'
 gems: [jekyll-paginate, jekyll-sitemap, jekyll-paginate]
 # Author
-author: 'Danny Alejandro'
+author: 'Danny Narvaez'
 author-bio: 'Desarrollando Apps para iOS desde 2015, localizado en Managua, Nicaragua. He participado en varios proyectos de e-commerce, e-banking y aplicaciones de negocios hechas a la medida.'
 author-img: '/assets/images/danny.jpg'
 author-url: 'https://www.linkedin.com/in/dannynarvaez/'
