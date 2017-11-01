@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "No tengas miedo a los Closures en Swift"
-date: 2017-01-01 12:00:00
+date: 2017-01-05 12:00:00
 categories: iOS Swift
 archive: true
 comments: true

@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/ios/swift/2017/01/01/no-tengas-miedo-closures-swift.html</loc>
+<loc>http://localhost:4000/ios/swift/2017/01/01/Introduction-to-protocol-oriented-programming-in-swift.html</loc>
 <lastmod>2017-01-01T06:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/ios/swift/2017/01/02/POP-in-Swift-part-2.html</loc>
+<lastmod>2017-01-02T06:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/ios/swift/2017/01/03/Intro-to-generics.html</loc>
+<lastmod>2017-01-03T06:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/ios/swift/2017/01/04/generic-protocols-with-associated-type.html</loc>
+<lastmod>2017-01-04T06:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/ios/swift/2017/01/05/no-tengas-miedo-closures-swift.html</loc>
+<lastmod>2017-01-05T06:00:00-06:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/about.html</loc>
