@@ -15,9 +15,9 @@
 <meta content="{{site.title}}" property="og:title">
 <meta content="website" property="og:type">
 {% endif %}
-{% if page.excerpt %}
+{% if page.title %}
 <meta name="twitter:description" content="{{page.description}}">
-<meta content="{{page.excerpt}}" property="og:description">
+<meta content="{{page.title}}" property="og:description">
 {% else %}
 <meta name="twitter:description" content="{{site.description}}">
 <meta content="{{site.description}}" property="og:description">
